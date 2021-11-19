@@ -37,7 +37,7 @@
 		<ol>
 
 			<li><a href="loginform">로그인</a></li>
-			<li><a href="joinform">회원가입</a></li>
+			<li><a href="/member/joinform">회원가입</a></li>
 			<li><a href="my_recruit">나의 지원 이력</a></li>
 			<li><a href="my_inform">마이페이지</a></li>
 

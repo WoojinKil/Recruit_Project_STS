@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MemberMapper {
 	public void join(Map<String, Object> map);
+	public int idJoinCheck(String id);
 }

@@ -22,8 +22,11 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("Service들어감"+ map);
 		mapper.join(map);
 
-	
+	}
+	public int idJoinCheck(String id )throws Exception{
 		
+		
+		return mapper.idJoinCheck(id); 
 	}
 
 }

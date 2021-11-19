@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.MemberDto;
 import com.example.demo.service.MemberService;
 
 @Controller
+@RequestMapping("member")
 public class JoinController {
 
 	@Autowired
@@ -30,6 +32,7 @@ public class JoinController {
 	}
 
 	@PostMapping("/join")
+	
 	public String join(@RequestParam Map <String, Object> map, Model model) throws Exception {
 
 
@@ -38,7 +41,14 @@ public class JoinController {
 
 		return "redirect:/";
 	}
-	
+	@PostMapping("/idJoinCheck")
+	@ResponseBody
+	public int join(@RequestParam String id) throws Exception{
+		
+		return service.idJoinCheck(id);
+
+		
+	}
 //	@GetMapping("/join")
 //	public String join2(@RequestParam Map <String, Object> map, Model model) throws Exception {
 //

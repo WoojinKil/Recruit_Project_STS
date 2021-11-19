@@ -13,7 +13,10 @@
 	    	   , memberPw
 	    	   , memberPwConfirm
 	    	   , memberRoot
-	    	   , memberPhoneNumber
+	    	   , memberPhoneNumber1
+	    	   , memberPhoneNumber2
+	    	   , memberPhoneNumber3
+	    	   , memberEmailChecked
 	    	 )
 	         VALUES(
 	         	#{memberName} 
@@ -22,8 +25,21 @@
 	            , #{memberPw}
 	            , #{memberPwConfirm}
 	            , #{memberRoot}
-	            , #{memberPhoneNumber}
+	            , #{memberPhoneNumber1}
+	            , #{memberPhoneNumber2}
+	            , #{memberPhoneNumber3}
+	            , 0
+	            
 	         )
     </insert>
+   
+   <select id="idJoinCheck" parameterType="String" resultType="int">
+   		SELECT (*) 
+   				FROM TA_RECRUIT_MEMBER
+   				WHERE = MEMBERID = #{MEMBERID}
+   			
+   
+   </select>
+  
    
 </mapper>
