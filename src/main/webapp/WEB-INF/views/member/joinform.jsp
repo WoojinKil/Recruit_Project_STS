@@ -7,7 +7,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입</title>
+<title>회원가입 화면 샘플 - Bootstrap</title>
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+	crossorigin="anonymous">
+	
+</script>
+
+<!-- CSS 적용 -->
 <link rel="stylesheet" href="/resources/css/member/joinform.css">
 
 <!-- Bootstrap CSS -->
@@ -15,202 +22,392 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<style>
-body {
-	min-height: 100vh;
-	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
-		to(#1d466c));
-	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
-	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
-}
 
-.input-form {
-	max-width: 680px;
-	margin-top: 80px;
-	padding: 32px;
-	background: #fff;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
-	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
-	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
-}
+</head>
 
-#essentionalred {
-	color: red;
-	/* 필수 항목에는 빨간색 '*'을 표시 */
-}
-</style>
 <script type="text/javascript">
-		//각 항목이 유효한지 나타내는 변수
-	var idCheck = false;
-	var pwCheck = false;
-	var pwConfirmCheck = false;
-	var nameCheck = false;
-	var birthCheck = false;
-	var phoneNumber1Check = false;
-	var phoneNumber2Check = false;
-	var phoneNumber3Check = false;
-
-$(document).ready(function() {
-	//버튼을 클릭하는 순간 메소드가 작동
-	$(".join_button").click(function(){
-		//$안에 class명을 입력
-		var id = $('.input_memberId').val();
-		var pw = $('.input_memberPw').val();
-		var pwConfirm = $('.input_memberPwConfirm').val();
-		var name = $('.input_memberName').val();
-		var birth = $('.input_memberBirth').val();
-		
-		if(name == ""){
-			$('.final_memberName_ck').css('display','block');
-			nameCheck = false;
-		}else{
-			$('.final_memberName_ck').css('display','none');
-			nameCheck = true;
-		}
-	});
-});
-
-
-
-
+	
 </script>
 
 
-
-</head>
 <body>
 
-	<!-- 헤더 -->
 	<header><%@ include file="../header.jsp"%></header>
-
 	<div class="container">
 		<div class="input-form-backgroud row">
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">회원가입</h4>
 				<p style="color: red">*은 필수 입력 사항입니다.</p>
-				
-				<!-- 회원가입 폼  -->
-				<form name="joinFrm" class="validation-form" method="post" action="member/join">
+				<form id="join_form" class="validation-form" method="post">
+
 					<div class="row">
-						<div class="col-md-6 mb-3"><!-- 이름 -->
-							<label for="name">이름<a id="essentionalred">*</a></label>
-							<span>
-								<span class="final_memberName_ck">이름을 입력하세요.</span>
-							
-							</span>
-							<input type="text" class="input_memberName" name="memberName" placeholder="한글 성명" required>
-						</div>
-						
-						<div class="col-md-3 mb-3"><!-- 생년월일 -->
-							<label for="birth">생년월일<a id="essentionalred">*</a></label>
-							<span>
-								<span class="final_memberBirth_ck">생년월일을 입력하세요.</span>
-							</span> 
-							<input type ="text" class="input_memberBirth" maxlength="8" name="memberBirth" placeholder="19951102">
+						<div class="col-md-6 mb-3">
+
+							<label for="name">이름<a id="essentionalred">*</a></label> <span>
+								<span class="final_memberId_ck"><a id="essentionalred">이름을
+										입력해주세요.</a></span>
+
+							</span> <input type="text" class="form-control input_memberName"
+								name="memberName" placeholder="한글 성명">
 
 						</div>
-						<div class="col-md-3 mb-3"><!-- 성별 -->
-							<label for="gender">성별<a id="essentionalred">*</a></label>
-							<select class="custom-select d-block w-100" name="memberGender">
-								<option value="male" selected="selected">남자</option>
-								<option value="female">여자</option>
-								<option value="etc">기타</option>
-							</select>
+						<div class="col-md-6 mb-3">
+							<label for="birth">생년월일<a id="essentionalred">*</a></label> <span>
+								<span class="final_memberBirth_ck"><a id="essentionalred">양식에
+										맞게 생년월일을 입력해주세요.</a></span>
+							</span> <input type="text" class="form-control input_memberBirth"
+								name="memberBirth" placeholder="19951102" value="">
 						</div>
 					</div>
-					<div class="mb-3"><!-- 아이디 -->
-						<label for="id">이메일아이디<a id="essentionalred">*</a>
-							<span>
-								<span class="input_memberId_re1">사용 가능한 아이디입니다.</span>
-								
-								<span class="input_memberId_re2">사용 중인 아이디입니다.</span>
-								<span class="final_memberId_ck">아이디를 입력해주세요.</span>
-								
-							</span>
-							
-						</label> 
-						<input type="text" id="memberId" class="input_memberId" name="memberId" placeholder="you@example.com">
-					</div>
 
-					<div class="mb-3"><!-- 비밀번호 -->
-						<label for="password">비밀번호<a id="essentionalred">*</a>
-							<span>
-								<span class="final_memberPw_ck">비밀번호를 입력해주세요.</span>
-							</span>	
-						</label>
-							
-						<input type="password" maxlength="12" class="input_memberPw" name="memberPw" placeholder="특수문자 조합  8자 이상, 12자 이하">
-					</div>
-					<div class="mb-3"><!-- 비밀번호 확인 -->
-						<label for="passwordConfirm">비밀번호 확인<a id="essentionalred">*</a>
-							<span>
-								<span class="final_memberPwConfirm_ck">비밀번호 확인을 입력해주세요.</span>
-							</span>
-				
-						</label>
-						<input type="password" class="input_memberPwConfirm" name="memberPwConfirm" maxlength="12" placeholder="특수문자 조합  8자 이상, 12자 이하">
 
-					</div>
 					<div class="row">
-						<div class="col-md-3 mb-3"><!-- 가입경로 -->
-							<label for="root">가입 경로
-							</label>
-							 <select class="custom-select d-block w-100" name="memberRoot">
-								<option value="회사 홈페이지" selected="selected">회사 홈페이지</option>
+
+
+						<div class="col-md-6 mb-3">
+							<label for="id">아이디<a id="essentionalred">*</a></label> <span>
+								<span class="input_memberId_re1">사용 가능한 아이디입니다.</span> <span
+								class="input_memberId_re2">사용 중인 아이디입니다.</span> <span
+								class="final_memberId_ck"><a id="essentionalred">아이디를
+										입력해주세요.</a></span>
+
+							</span> <input type="text" class="form-control input_memberId"
+								name="memberId" placeholder="you@example.com" required>
+
+						</div>
+
+
+
+
+					</div>
+
+
+
+
+					<div class="col-md-6 mb-3">
+						<label for="password">비밀번호<a id="essentionalred">*</a></label> <span>
+							<span class="final_memberPw_ck"><a id="essentionalred">비밀번호를
+									입력해주세요.</a></span>
+						</span> <input type="password" class="form-control input_memberPw"
+							maxlength="12" name="memberPw"
+							placeholder="특수문자 조합  8자 이상, 12자 이하">
+
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="passwordConfirm">비밀번호 확인<a id="essentionalred">*</a></label>
+						<span class="final_memberPwConfirm_ck"><a
+							id="essentionalred">비밀번호 확인을 입력해주세요.</a></span><span
+							class="input_memberPw_re1">비밀번호가 일치합니다.</span> <span
+							class="input_memberPw_re2">비밀번호가 일치하지 않습니다.</span> <input
+							type="password" class="form-control input_memberPwConfirm"
+							maxlength="12" name="memberPwConfirm"
+							placeholder="특수문자 조합  8자 이상, 12자 이하">
+					</div>
+
+
+
+					<div class="row">
+						<div class="col-md-3 mb-3">
+							<label for="root">가입 경로</label> <select
+								class="custom-select d-block w-100" name="memberRoot">
+
+								<option value="회사 홈페이지 방문">회사 홈페이지 방문</option>
 								<option value="인터넷 검색">인터넷 검색</option>
-								<option value="지인">지인</option>
 								<option value="구인 사이트">구인 사이트</option>
-								<option value="기타"></option>
+								<option value="지인">지인</option>
+								<option value="기타">기타</option>
 							</select>
 						</div>
-						
-						<div class="col-md-8 mb-3"><!-- 휴대폰 번호 -->
+						<div class="col-md-8 mb-3">
+							<!-- 휴대폰 번호 -->
 							<label for="phone">휴대폰 번호<a id="essentionalred">*</a>
-								<span>
-									<span class="final_memberPhoneNumber">휴대폰 번호를 입력하세요.</span>
-								</span>
-							</label>
+
+							</label> <span class="final_memberPhone_ck"><a id="essentionalred">휴대폰
+									번호를 입력해주세요.</a></span>
 
 							<div class="row">
 								<div class="col-md-3 mb-3">
-									<input maxlength="3" type="text" class="input_memberPhoneNumber1" name="memberPhoneNumber1" placeholder="">
+									<input maxlength="3" type="text"
+										class="form-control input_memberPhoneNumber1"
+										name="memberPhoneNumber1" placeholder="">
 								</div>
 								-
 								<div class="col-md-3 mb-3">
-									<input maxlength="4" type="text" class="input_memberPhoneNumber1" name="memberPhoneNumber2" placeholder="">
+									<input maxlength="4" type="text"
+										class="form-control input_memberPhoneNumber2"
+										name="memberPhoneNumber2" placeholder="">
 								</div>
 								-
 								<div class="col-md-3 mb-3">
-									<input maxlength="4" type="text" class="input_memberPhoneNumber1"  name="memberPhoneNumber3" placeholder="">
+									<input maxlength="4" type="text"
+										class="form-control input_memberPhoneNumber3"
+										name="memberPhoneNumber3" placeholder="">
 								</div>
 
 							</div>
-
 						</div>
 					</div>
 
 
+
+
 					<div class="mb-4"></div>
-					<input type="button" id="join_button"
-						class="btn btn-primary btn-lg btn-block" onclick="CheckForm()"
-						value="가입 하기">
+					<input type="button"
+						class="btn btn-primary btn-lg btn-block join_button" value="가입완료">
+
 
 				</form>
-				<button class="btn btn-danger btn-lg btn-block"
-					onclick="location='../'">돌아가기</button>
+				<input type="button" class="btn btn-danger btn-lg btn-block"
+					onclick="location='../'" value="돌아가기">
 			</div>
 
 		</div>
 
 	</div>
+
+	<script>
+		/* 유효성 검사 통과유무 변수 */
+		var idCheck = false; // 아이디
+		var pwCheck = false; // 비번
+		var pwckCheck = false; // 비번 확인
+		var pwckcorCheck = false; // 비번 확인 일치 확인
+		var nameCheck = false; // 이름
+		var birthCheck = false; //생년월일 검사
+		var phoneNumberCheck = false; //휴대폰 번호 검사
+
+		$(document)
+				.ready(
+						function() {
+							//회원가입 버튼(회원가입 기능 작동)
+							$(".join_button")
+									.click(
+											function() {
+
+												var id = $('.input_memberId')
+														.val();
+												var pw = $('.input_memberPw')
+														.val();
+												var pwck = $(
+														'.input_memberPwConfirm')
+														.val();
+												var name = $(
+														'.input_memberNameConfirm')
+														.val();
+												var birth = $(
+														'.input_memberBirth')
+														.val();
+												var phone1 = $(
+														'.input_memberPhoneNumber1')
+														.val();
+												var phone2 = $(
+														'.input_memberPhoneNumber2')
+														.val();
+												var phone3 = $(
+														'.input_memberPhoneNumber3')
+														.val();
+												var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+												/* 이름 유효성검사 */
+												if (name == "") {
+													$('.final_memberName_ck')
+															.css('display',
+																	'block');
+
+													nameCheck = false; //비어있으면 "입력해주세요"
+												} else {
+													$('.final_memberName_ck')
+															.css('display',
+																	'none');
+
+													nameCheck = true;
+												}
+
+												/* 아이디 유효성검사 */
+												if (id == "") {
+													$('.final_memberId_ck')
+															.css('display',
+																	'block');
+													$('.input_memberId_re1')
+															.css('display',
+																	'none');
+													idCheck = false; //비어있으면 "입력해주세요"
+												} else {
+													$('.final_memberId_ck')
+															.css('display',
+																	'none');
+													if (form.test(id) == false) {
+														alert("형식에 맞는 이메일을 입력하세요");
+														idCheck = false;
+														return;
+													} else {
+														idCheck = true;
+													}
+
+													idCheck = true;
+												}
+
+												/* 비밀번호 유효성 검사 */
+												if (pw == "" || pw.length < 8) {
+													$('.final_memberPw_ck')
+															.css('display',
+																	'block');
+
+													pwCheck = false;
+
+													console.log("비밀번호" + pw
+															+ pwCheck);
+												} else {
+													$('.final_memberPw_ck')
+															.css('display',
+																	'none');
+													pwCheck = true;
+													console.log("비밀번호" + pw
+															+ pwCheck);
+												}
+
+												/* 비밀번호 확인 유효성 검사 */
+												if (pwck == "") {
+													$(
+															'.final_memberPwConfirm_ck')
+															.css('display',
+																	'block');
+
+													pwckCheck = false;
+													console.log("비밀번호확인" + pwck
+															+ pwckCheck);
+												} else {
+													$(
+															'.final_memberPwConfirm_ck')
+															.css('display',
+																	'none');
+													pwckCheck = true;
+													console.log("비밀번호확인" + pwck
+															+ pwckCheck);
+												}
+
+												/* 생년월일의 유효성검사 */
+												if (birth == "" || isNaN(birth)
+														|| birth.length != 8) {
+													$('.final_memberBirth_ck')
+															.css('display',
+																	'block');
+
+													birthCheck = false; //비어있으면 "정확한 생년월일을 입력해주세요"
+												} else {
+													$('.final_memberBirth_ck')
+															.css('display',
+																	'none');
+
+													birthCheck = true;
+												}
+												/* 휴대폰 번호의 유효성 검사*/
+												if (isNaN(phone1)
+														|| isNaN(phone2)
+														|| isNaN(phone3)
+														|| phone1 == ""
+														|| phone2 == ""
+														|| phone3 == "") {
+													$('.final_memberPhone_ck')
+															.css('display',
+																	'block');
+													phoneNumberCheck = false;
+												} else {
+													$('.final_memberPhone_ck')
+															.css('display',
+																	'none');
+													phoneNumberCheck = true;
+												}
+
+												//최종 유효성 검사
+												if (idCheck && pwCheck
+														&& pwckCheck
+														&& pwckcorCheck
+														&& nameCheck
+														&& birthCheck
+														&& phoneNumberCheck) {
+
+													$("#join_form").attr(
+															"action",
+															"/member/join");
+													$("#join_form").submit();
+												}
+
+												return false;
+
+											});
+						});
+
+		$('.input_memberId').on(
+				"propertychange change keyup paste input",
+				function() {
+
+					var memberId = $('.input_memberId').val(); // .input_memberId에 입력되는 값
+					var data = {
+						memberId : memberId
+					} // '컨트롤에 넘길 데이터 이름' : '데이터(.input_memberId에 입력되는 값)'
+
+					$
+							.ajax({
+								type : "post",
+								url : "/member/memberIdChk",
+								data : data,
+								success : function(result) {
+
+									if (result != 'fail') {
+										$('.input_memberId_re1').css("display",
+												"inline-block");
+										$('.input_memberId_re2').css("display",
+												"none");
+										$('.final_memberId_ck').css('display',
+												'none');
+										idCheck = true;
+									} else {
+										$('.input_memberId_re2').css("display",
+												"inline-block");
+										$('.input_memberId_re1').css("display",
+												"none");
+
+										idCheck = false;
+									}
+
+								}//success종료
+							}); // ajax 종료
+
+				});// function 종료
+
+		/* 비밀번호 확인 일치 유효성 검사 */
+
+		$('.input_memberPwConfirm').on(
+				"propertychange change keyup paste input", function() {
+					console.log("come on");
+
+					var pw = $('.input_memberPw').val();
+					var pwck = $('.input_memberPwConfirm').val();
+
+					//$('.final_memberPw_ck').css('display', 'none');
+
+					if (pw == pwck) {
+						$('.input_memberPw_re1').css('display', 'block');
+						$('.input_memberPw_re2').css('display', 'none');
+
+						pwckcorCheck = true;
+						console.log("일치여부" + pwckcorCheck);
+
+					} else {
+						$('.input_memberPw_re1').css('display', 'none');
+						$('.input_memberPw_re2').css('display', 'block');
+
+						pwckcorCheck = false;
+						console.log("일치여부" + pwckcorCheck);
+
+					}
+
+				});
+	</script>
+
+
 	<footer class="my-3 text-center text-small">
 		<%@ include file="../footer.jsp"%>
 	</footer>
+
 </body>
 </html>
-

@@ -5,41 +5,56 @@
 <mapper namespace="com.example.demo.mapper.MemberMapper">
 	<!-- 게시판 글 작성 -->
 	<insert id="join">
-	    INSERT INTO 
-	    	TA_RECRUIT_MEMBER(
-	    	   memberName
-	    	   , memberBirth
-	    	   , memberId
-	    	   , memberPw
-	    	   , memberPwConfirm
-	    	   , memberRoot
-	    	   , memberPhoneNumber1
-	    	   , memberPhoneNumber2
-	    	   , memberPhoneNumber3
-	    	   , memberEmailChecked
-	    	 )
-	         VALUES(
-	         	#{memberName} 
-	            , #{memberBirth}
-	            , #{memberId}
-	            , #{memberPw}
-	            , #{memberPwConfirm}
-	            , #{memberRoot}
-	            , #{memberPhoneNumber1}
-	            , #{memberPhoneNumber2}
-	            , #{memberPhoneNumber3}
-	            , 0
-	            
-	         )
-    </insert>
-   
-   <select id="idJoinCheck" parameterType="String" resultType="int">
-   		SELECT (*) 
-   				FROM TA_RECRUIT_MEMBER
-   				WHERE = MEMBERID = #{MEMBERID}
-   			
-   
-   </select>
-  
-   
+		INSERT INTO
+		TA_RECRUIT_MEMBER(
+		memberName
+		, memberBirth
+		, memberId
+		, memberPw
+		, memberPwConfirm
+		, memberRoot
+		, memberPhoneNumber1
+		, memberPhoneNumber2
+		, memberPhoneNumber3
+		, memberIsAdmin
+		)
+		VALUES(
+		#{memberName}
+		, #{memberBirth}
+		, #{memberId}
+		, #{memberPw}
+		, #{memberPwConfirm}
+		, #{memberRoot}
+		, #{memberPhoneNumber1}
+		, #{memberPhoneNumber2}
+		, #{memberPhoneNumber3}
+		,0
+
+		)
+	</insert>
+
+	<select id="idCheck" resultType="int">
+
+		SELECT COUNT(*) FROM TA_RECRUIT_MEMBER WHERE MEMBERID = #{MEMBERID}
+
+	</select>
+
+
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="com.example.demo.dto.MemberDto">
+
+		SELECT
+		memberId
+		, memberName
+		, memberPw
+		FROM
+		TA_RECRUIT_MEMBER
+		WHERE
+		memberId = #{memberId} 
+		and 
+		memberPw = #{memberPw}
+
+	</select>
+
+
 </mapper>

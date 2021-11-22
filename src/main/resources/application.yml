@@ -2,14 +2,6 @@
 spring:
   datasource:
   
-# project
-#    url: jdbc:mysql://14.63.166.136/test6?useUnicode=true&characterEncoding=utf-8
-#    username: pandora_ojt
-#    password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-
-# prac
-#    url: jdbc:mysql://localhost:3306/prac?serverTimezone=Asia/Seoul
     url: jdbc:mysql://14.63.166.136:3306/test5?useUnicode=true&characterEncoding=utf-8
     username: pandora_ojt
     password: 1234
@@ -19,16 +11,7 @@ spring:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
-#  jpa:
-#    open-in-view: true
-#    hibernate:
-#      ddl-auto: create
-#      naming:
-#        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-#      use-new-id-generator-mappings: false
-#    show-sql: true
-#    properties:
-#      hibernate.format_sql: true
+
 
   jackson:
     serialization:

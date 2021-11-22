@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Login Page</title>
-
+<link rel="stylesheet" href="/resources/css/member/loginform.css">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -60,17 +60,17 @@ body {
 			<div class="input-form col-md-12 mx-auto">
 				<h4 class="mb-3">로그인</h4>
 				
-				<form action="login" name="loginFrm" class="validation-form" method="post">
+				<form action="login" id="login_form" name="loginFrm" class="validation-form" method="post">
 
 					<div class="mb-3">
 						<label for="id">이메일아이디</label> <input type="text"
-							class="form-control" name="memberId" placeholder="you@example.com"
+							class="form-control input_memberId " name="memberId" placeholder="you@example.com"
 							>
 
 					</div>
 					<div class="mb-3">
 						<label for="password">비밀번호</label> <input type="password"
-							class="form-control" name="memberPw"
+							class="form-control input_memberPw" name="memberPw"
 							placeholder="특수문자 조합  8자 이상, 12자 이하" >
 	
 					</div>
@@ -80,16 +80,16 @@ body {
 						
 					
 
-						<button class="btn btn-success btn-lg btn-block" onclick="CheckNullId()">로그인</button>
+						<input type="button" class="btn btn-success btn-lg btn-block login_button" value="로그인">
 					</div>
 				</form>
 				
 				<div class="mb-3">
-				<button class="btn btn-secondary btn-lg btn-block" onclick="location='../'">돌아가기</button>
+					<input type="button" class="btn btn-danger btn-lg btn-block" onclick="location='../'" value="돌아가기">
 				</div>
 				<div class="row">
 					<div class="col-md-3 mb-4">
-						<button class="btn btn-primary btn-lg btn-block" onclick="location.href='/joinform'" >회원가입</button>
+						<button class="btn btn-primary btn-lg btn-block" onclick="location.href='member/joinform'" >회원가입</button>
 					</div>
 					<div class="col-md-3 mb-4">
 						<button class="btn btn-secondary btn-lg btn-info" onclick="location.href='/joinform'" >비밀번호 찾기</button>
@@ -99,7 +99,10 @@ body {
 				
 				</div>
 				
-				
+ 
+            	<c:if test = "${result == 0 }">
+               		 <div style="color:'red'"" class = "login_warn">사용자 아이디 또는 비밀번호를 잘못 입력하셨습니다.</div>
+           		</c:if>
 			</div>
 
 		</div>
@@ -108,6 +111,23 @@ body {
 	<footer class="my-3 text-center text-small">
 		<%@ include file="../footer.jsp"%>
 	</footer>
+	
+	<script>
+ 
+    /* 로그인 버튼 클릭 메서드 */
+    $(".login_button").click(function(){
+        
+      
+
+        
+        /* 로그인 메서드 서버 요청 */
+        $("#login_form").attr("action", "/member/login");
+        $("#login_form").submit();
+    });
+ 
+	</script>
+	
+	
 </body>
 
 </html>

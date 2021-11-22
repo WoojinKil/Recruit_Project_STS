@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.dto.MemberDto;
 import com.example.demo.mapper.MemberMapper;
 import com.example.demo.service.MemberService;
 @Service
@@ -23,10 +24,29 @@ public class MemberServiceImpl implements MemberService {
 		mapper.join(map);
 
 	}
-	public int idJoinCheck(String id )throws Exception{
+
+
+
+
+
+	@Override
+	public int idCheck(String memberId) throws Exception {
+		// TODO Auto-generated method stub
 		
 		
-		return mapper.idJoinCheck(id); 
+		return mapper.idCheck(memberId);
 	}
+
+
+
+
+
+	@Override
+	public MemberDto memberLogin(MemberDto member) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.memberLogin(member);
+		
+	}
+
 
 }
