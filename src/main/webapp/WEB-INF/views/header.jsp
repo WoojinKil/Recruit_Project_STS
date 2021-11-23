@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -12,16 +13,16 @@
 		
 		<div class="navbar-header">
 	
-
-			<a class="navbar-brand" href="./">지원안내</a>
+			<a class="navbar-brand" href="/">HOME</a>
+			<a class="navbar-brand" href="/">지원 안내</a>
 			<c:if test = "${member ==null}">
 				<a class="navbar-brand" href="/member/loginform">로그인</a>
 			</c:if>
 			<c:if test = "${member !=null}">
-				<a class="navbar-brand" href="./">입사지원</a>
-				<a class="navbar-brand" href="/member/loginform">로그아웃</a>
-				<a class="navbar-brand" href="/member/loginform">지원 내역</a>
-				<a class="navbar-brand" href="/member/loginform">지원 내역</a>
+				<a class="navbar-brand" href="/">입사지원</a>
+				<a class="navbar-brand" href="/member/logout.do">로그아웃</a>
+				<a class="navbar-brand" href="/">지원 내역</a>
+
 				&nbsp;
 				&nbsp;
 				&nbsp;

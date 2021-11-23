@@ -99,7 +99,7 @@ public class MemberController {
     	HttpSession session = request.getSession(); //세션을 가져오게 함
     	
     	session.invalidate(); //세션 무효화 =로그아웃 
-    	return "redirect:/";
+    	return "home";
     }
     
 

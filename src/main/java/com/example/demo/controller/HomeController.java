@@ -12,6 +12,8 @@ public class HomeController {
 	public String index() {
 		//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 		//logger.info("go to HomeController");
+		
+		
 		return "home";
 	}
 }
