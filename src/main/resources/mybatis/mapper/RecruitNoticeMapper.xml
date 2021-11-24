@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RecruitNoticeMapper">
+	<select id="noticeList" resultType="com.example.demo.dto.RecruitNoticeDto">
+		SELECT * FROM TA_RECRUIT_NOTICE ORDER BY RECRUITNO DESC;
+	
+	
+	
+	</select>
+
+
+	<select id="recruitNoticeView" resultType="com.example.demo.dto.RecruitNoticeDto">
+
+		SELECT * FROM TA_RECRUIT_NOTICE WHERE RECRUITNO = #{RECRUITNO}
+
+	</select>
+
+
+	<update id="recruitNoticeHitUp">
+		UPDATE TA_RECRUIT_NOTICE SET RECRUITHIT = RECRUITHIT + 1 WHERE RECRUITNO = #{RECRUITNO}
+	
+	
+	</update>
+
+
+</mapper>
