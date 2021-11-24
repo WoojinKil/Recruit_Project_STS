@@ -7,27 +7,27 @@
 	<insert id="join">
 		INSERT INTO
 		TA_RECRUIT_MEMBER(
-		memberName
-		, memberBirth
-		, memberId
-		, memberPw
-		, memberPwConfirm
-		, memberRoot
-		, memberPhoneNumber1
-		, memberPhoneNumber2
-		, memberPhoneNumber3
-		, memberIsAdmin
+		MEMBERNAME
+		, MEMBERBIRTH
+		, MEMBERID
+		, MEMBERPW
+		, MEMBERPWCONFIRM
+		, MEMBERROOT
+		, MEMBERPHONENUMBER1
+		, MEMBERPHONENUMBER2
+		, MEMBERPHONENUMBER3
+		, MEMBERISADMIN
 		)
 		VALUES(
-		#{memberName}
-		, #{memberBirth}
-		, #{memberId}
-		, #{memberPw}
-		, #{memberPwConfirm}
-		, #{memberRoot}
-		, #{memberPhoneNumber1}
-		, #{memberPhoneNumber2}
-		, #{memberPhoneNumber3}
+		#{MEMBERNAME}
+		, #{MEMBERBIRTH}
+		, #{MEMBERID}
+		, #{MEMBERPW}
+		, #{MEMBERPWCONFIRM}
+		, #{MEMBERROOT}
+		, #{MEMBERPHONENUMBER1}
+		, #{MEMBERPHONENUMBER2}
+		, #{MEMBERPHONENUMBER3}
 		,0
 
 		)
@@ -50,11 +50,21 @@
 		FROM
 		TA_RECRUIT_MEMBER
 		WHERE
-		memberId = #{memberId} 
-		and 
-		memberPw = #{memberPw}
+		MEMBERID = #{memberId} 
+		AND 
+		MEMBERPW = #{memberPw}
 
 	</select>
 
+
+	<select id ="memberView" resultType="com.example.demo.dto.MemberDto">
+		SELECT
+		*
+		FROM
+		TA_RECRUIT_MEMBER
+		WHERE
+		MEMBERID = #{memberId} 
+	
+	</select>
 
 </mapper>

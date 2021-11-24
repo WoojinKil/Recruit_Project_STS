@@ -73,11 +73,14 @@ public class MemberController {
 	 
     /* 로그인 */
     @RequestMapping(value="/login", method=RequestMethod.POST)
+
     public String loginPOST(HttpServletRequest request, MemberDto member, RedirectAttributes rttr) throws Exception{
-        
+    	logger.info("try to login");
 
     	HttpSession session = request.getSession();
+    	
     	MemberDto member1 = service.memberLogin(member); //객체끼리 비교하기 위해서
+ 
         if(member1 == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
             
             int result = 0;
@@ -87,6 +90,8 @@ public class MemberController {
         }
         
         session.setAttribute("member", member1);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
+        
+        logger.info("login complete");
         
         return "redirect:/";
     }

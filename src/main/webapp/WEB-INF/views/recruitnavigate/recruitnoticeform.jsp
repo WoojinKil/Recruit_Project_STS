@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.io.PrintWriter" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,7 @@
 	%> --%>
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/recruitnavigate/recruitnotice	">채용공고</a>
+			<a class="navbar-brand" href="/recruitnavigate/recruitnotice">채용공고</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -41,7 +41,6 @@
 				<thead>
 					<tr>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">말머리</th>
 						<th style="background-color: #eeeeee; text-align: center;">채용유형</th>
 						<th style="background-color: #eeeeee; text-align: center;">공고명</th>
 						<th style="background-color: #eeeeee; text-align: center;">채용규모</th>
@@ -52,10 +51,9 @@
 				
 					<c:forEach items ="${noticeArray}" var="noticeArray">
 					<tr>
-						<td>${noticeArray.recruitNoticeNo}</td>
-						<td>${noticeArray.recruitNoticeHeader }</td>
-						<td>${noticeArray.recruitNoticeType }</td>
-						<td><a href="/recruitnavigate/recruitnoticeview?recruitNoticeNo=${noticeArray.recruitNoticeNo}">${noticeArray.recruitName }</a></td>
+						<td>${noticeArray.recruitNo}</td>
+						<td>${noticeArray.recruitType }</td>
+						<td><a href="/recruitnavigate/recruitnoticeview?recruitNo=${noticeArray.recruitNo}">${noticeArray.recruitName }</a></td>
 						<td>${noticeArray.recruitScale }</td>
 						<td>${noticeArray.recruitHit}</td>
 					</tr>

@@ -12,4 +12,5 @@ public interface MemberMapper {
 	public void join(Map<String, Object> map);
 	public int idCheck(String memberId);
 	public MemberDto memberLogin(MemberDto dto);
+	public MemberDto memberView(String memberId);
 }
