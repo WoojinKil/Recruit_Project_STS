@@ -38,17 +38,9 @@ body {
 .button2 {background-color: #008CBA;}
 </style>
 <script type="text/javascript">
-	functioin CheckNullId{
-		
-		var id = document.loginFrm.memberId;
-		var pw = document.loginFrm.pw;
-		
-		if(id.value=="" || pw. value ==""){
-			alert("아이디 및 비밀번호를 입력해주세요.");
-			
-		}
-	}
-	
+
+
+
 	
 </script>
 </head>

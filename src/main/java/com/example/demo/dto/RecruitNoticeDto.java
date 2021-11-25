@@ -5,7 +5,7 @@ import java.sql.Date;
 public class RecruitNoticeDto {
 
 	private int recruitNo; //채용공고 번호
-	private String recruitType; //채용 유형 (수시, 공채, 혹은null)
+	private String typeNo; //채용 유형 (수시, 공채, 혹은null)
 	private String recruitObject; //채용 대상( 신입, 경력 혹은 null)
 	private String recruitName; //채용공고 이름
 	private String recruitScale; //채용 규모 (000명, 혹은 null)
@@ -29,11 +29,11 @@ public class RecruitNoticeDto {
 		this.recruitNo = recruitNo;
 	}
 
-	public String getRecruitType() {
-		return recruitType;
+	public String getTypeNo() {
+		return typeNo;
 	}
-	public void setRecruitType(String recruitType) {
-		this.recruitType = recruitType;
+	public void setTypeNo(String typeNo) {
+		this.typeNo = typeNo;
 	}
 	public String getRecruitObject() {
 		return recruitObject;

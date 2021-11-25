@@ -9,6 +9,7 @@ public class MemberDto {
 	private String memberPwConfirm;
 	private String memberRoot;
 	private String memberPhoneNumber;
+	private int memberIsAdmin;
 
 	public String getMemberPw() {
 		return memberPw;
@@ -66,12 +67,20 @@ public class MemberDto {
 		this.memberId = memberId;
 	}
 
-	@Override
-	public String toString() {
-		return "MemberDto [memberName=" + memberName + ", memberBirth=" + memberBirth + ", memberId=" + memberId
-				+ ", memberPw=" + memberPw + ", memberPwConfirm=" + memberPwConfirm + ", memberRoot=" + memberRoot
-				+ ", memberPhoneNumber=" + memberPhoneNumber + "]";
+	public int getMemberIsAdmin() {
+		return memberIsAdmin;
 	}
+
+	public void setMemberIsAdmin(int memberIsAdmin) {
+		this.memberIsAdmin = memberIsAdmin;
+	}
+
+//	@Override
+//	public String toString() {
+//		return "MemberDto [memberName=" + memberName + ", memberBirth=" + memberBirth + ", memberId=" + memberId
+//				+ ", memberPw=" + memberPw + ", memberPwConfirm=" + memberPwConfirm + ", memberRoot=" + memberRoot
+//				+ ", memberPhoneNumber=" + memberPhoneNumber + "]";
+//	}
 
 	
 

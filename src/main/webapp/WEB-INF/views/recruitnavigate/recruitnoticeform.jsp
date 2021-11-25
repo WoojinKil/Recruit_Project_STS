@@ -27,13 +27,7 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/recruitnavigate/recruitnotice">채용공고</a>
 		</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">메인</a></li>
-				<li class="active"><a href="bbs.jsp">게시판</a></li>
-			</ul>
 
-		</div>
 	</nav>
 	<div class="container">
 		<div class="row">
@@ -52,7 +46,7 @@
 					<c:forEach items ="${noticeArray}" var="noticeArray">
 					<tr>
 						<td>${noticeArray.recruitNo}</td>
-						<td>${noticeArray.recruitType }</td>
+						<td>${noticeArray.typeNo }</td>
 						<td><a href="/recruitnavigate/recruitnoticeview?recruitNo=${noticeArray.recruitNo}">${noticeArray.recruitName }</a></td>
 						<td>${noticeArray.recruitScale }</td>
 						<td>${noticeArray.recruitHit}</td>
@@ -66,7 +60,7 @@
 			</table>
 			
 			
-			<c:if test= "${member.memberId == 'admin' }">
+			<c:if test= "${member.memberIsAdmin == 1}">
 			
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 			</c:if>

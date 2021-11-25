@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +39,10 @@ public class RecruitNoticeController {
 	}
 	
 	@RequestMapping("/recruitnoticeview")
-	public String recruitNoticeView(@RequestParam int recruitNo,  Model model) throws Exception{
+	public String recruitNoticeView( @RequestParam int recruitNo,  Model model) throws Exception{
 		
 		service.recruitNoticeHitUp(recruitNo);
+		
 		RecruitNoticeDto dto = service.recruitNoticeView(recruitNo);
 		model.addAttribute("NoticeView", dto);
 		return "/recruitnavigate/recruitnoticeview-2";

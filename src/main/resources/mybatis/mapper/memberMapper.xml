@@ -47,6 +47,7 @@
 		memberId
 		, memberName
 		, memberPw
+		, memberIsAdmin
 		FROM
 		TA_RECRUIT_MEMBER
 		WHERE
