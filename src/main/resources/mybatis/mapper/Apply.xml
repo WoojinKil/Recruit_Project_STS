@@ -5,16 +5,70 @@
   <mapper namespace="com.example.demo.mapper.ApplyMapper">
   	<select id="typeView" resultType="com.example.demo.dto.TypeDto">
   	
-  		select 
-  		*
-  		from 
-  		ta_recruit_type, 
-  		ta_recruit_notice 
-  		where ta_recruit_notice.recruitNo = #{RECRUITNO}
-  		and ta_recruit_notice.typeNo = ta_recruit_type.typeNo
+  		SELECT 
+  		TA_RECRUIT_TYPE.TYPENO
+  		,TA_RECRUIT_TYPE.TYPENAME
+  		FROM 
+  		TA_RECRUIT_TYPE, 
+  		TA_RECRUIT_NOTICE 
+  		WHERE TA_RECRUIT_NOTICE.RECRUITNO = #{RECRUITNO}
+  		AND TA_RECRUIT_NOTICE.TYPENO = TA_RECRUIT_TYPE.TYPENO
   		 
   	
   	</select>
+  	
+  	<select id="workView" resultType="com.example.demo.dto.WorkDto">
+  		SELECT
+  		DISTINCT
+  		TA_RECRUIT_WORK.workno
+  		,TA_RECRUIT_WORK.workname
+  		FROM 
+  		TA_RECRUIT_WORK, 
+  		TA_RECRUIT_APPLY,
+  		TA_RECRUIT_PART 
+  		WHERE 
+  		TA_RECRUIT_APPLY.RECRUITNO = #{recruitNo}
+  		AND TA_RECRUIT_APPLY.PARTNO = TA_RECRUIT_PART.PARTNO
+  		AND TA_RECRUIT_WORK.WORKNO = TA_RECRUIT_APPLY.WORKNO;
+  		
+  	</select>
+  	
+  	<select id= "partView" resultType="com.example.demo.dto.PartDto">
+		SELECT 
+		DISTINCT 
+		P.PARTNO,
+		P.PARTNAME 
+		FROM 
+		TA_RECRUIT_PART AS P
+		, TA_RECRUIT_APPLY AS A 
+		WHERE 
+		P.PARTNO = A.PARTNO 
+		AND 
+		A.RECRUITNO = #{recruitNo};
+  		
+  	</select>
+  	
+  	<select id ="applyView" resultType="com.example.demo.dto.ApplyDto">
+		select
+
+		ta_recruit_part.partName
+		,ta_recruit_work.workName
+		,ta_recruit_object.objectName
+		FROM
+		ta_recruit_apply
+		,ta_recruit_notice
+		,ta_recruit_part
+		,ta_recruit_work
+		,ta_recruit_object
+		where
+		ta_recruit_notice.recruitNo = #{recruitNo}
+		and ta_recruit_part.partNo=ta_recruit_apply.partNo
+		and ta_recruit_work.workNo=ta_recruit_apply.workNo
+		and ta_recruit_object.objectNo=ta_recruit_apply.objectNo
+  	
+  	
+  	</select>
+  	
   	
   
   </mapper>

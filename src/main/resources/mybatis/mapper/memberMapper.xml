@@ -44,10 +44,10 @@
 	<select id="memberLogin" resultType="com.example.demo.dto.MemberDto">
 
 		SELECT
-		memberId
-		, memberName
-		, memberPw
-		, memberIsAdmin
+		MEMBERID
+		, MEMBERNAME
+		, MEMBERPW
+		, MEMBERISADMIN
 		FROM
 		TA_RECRUIT_MEMBER
 		WHERE

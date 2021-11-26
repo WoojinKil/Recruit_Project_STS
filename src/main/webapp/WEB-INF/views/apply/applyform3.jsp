@@ -33,13 +33,13 @@
 					<tbody>
 						<tr>
 							<th align="center">지원자 이름</th>
-							<td >${applicant.memberName}</td>
+							<td class="notice_no">${applicant.memberName}</td>
 							<th align="center">생년월일</th>
 							<td>${applicant.memberBirth}</td>
 						</tr>
 						<tr>
 							<th align="center">공고명</th>
-							<td colspan="3"><a class="notice_no">${noticeInfo.recruitNo }</a>/${noticeInfo.recruitName}</td>
+							<td colspan="3">${noticeInfo.recruitName}</td>
 						</tr>
 						<tr>
 							<th align="center">유형</th>
@@ -47,20 +47,19 @@
 							<th align="center">사업부 선택</th>
 							<td colspan="3">
 								<div>
-  									<select name="part_name" class="select_part"  style="width:100%">
-  										
-  										<c:forEach items ="${ adtos}" var="adtos">
-  											<option class="adto" value="${ adtos.partNo}">${ adtos.partNo}</option>
+  									<select name="part_name" class="select_part">
+  										<c:forEach items ="${ parts}" var="parts">
+  											<option class="part_no" value="${ parts.partNo}">${ parts.partName}</option>
   											
   										
   										</c:forEach>
  										
   									</select>
 								</div>
-
+							<div id="output">
+							</div>
 							</td>
 						</tr>
-
 						<tr>
 							<td colspan="4" height="200px">
 								내용 or 이미지 <br>
@@ -100,7 +99,7 @@
 
 		$(document).ready(function(){
 
-			var recruitNo = $(".notice_no").text();
+
 			//var source = $("select[name=userListname]").val();
 			$(".press_ex").click(function(){
 				
@@ -109,59 +108,34 @@
 		
 			});
 			
-			
-			
 			//사업부의 내용이 바뀔때마다 선택할수 있는 채용유형이 바뀌어야 한다.
 			$('.select_part').on(
-				"change", function(){
-					var partNo = $(".select_part").val();
-				console.log(partNo);
-				console.log(recruitNo);
-/* 				
-				if(partNo === "P001"){
-					
-				}else if(partNo === "P002"){
-					
-				}else if(partNo === "P003"){
-					
-				}else if(partNo === "P004"){
-					
-				} */
-				
-	/* 			
+				"propertychange change keyup paste input", function(){
+
+				console.log($(".select_part").val());	
+				var partNo = $(".select_part").val()
 				var data = {
-						recruitNo : recruitNo,
-						partNo : partNo
-						
-				}//컨트롤에 넘길 데이터 이름
- 			 	$.ajax({
-					type : "get",
-					url : "/apply/workView.do",
+						//recruitNo : recruitNo
+						//partNo : 
+				}
+ 			/* 	$.ajax({
+					type : "post",
+					url : "/apply/workView?partNo="+partNo,
 					data : data,
+					async : false,
 					success : function(result){
 						
-						
-						if(result == "가가가"){
-							console.log("결과값이 비어있음");
-							
-						}else{
-							console.log("typeof : ", typeof result);
-							console.log("result : ", result);
-							console.log(result+ "뭔가 있음");
-						}
-						
-						
 					}
+					 */
 				
 				
-				
-				});
- 			 	*/
+			
+				}); 
 				
 				});
 			
 			
-			 
+			
 			
 		});
 			
