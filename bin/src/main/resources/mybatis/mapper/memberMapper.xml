@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MemberMapper">
+	<!-- 게시판 글 작성 -->
+	<insert id="join">
+		INSERT INTO
+		TA_RECRUIT_MEMBER(
+		MEMBERNAME
+		, MEMBERBIRTH
+		, MEMBERID
+		, MEMBERPW
+		, MEMBERPWCONFIRM
+		, MEMBERROOT
+		, MEMBERPHONENUMBER1
+		, MEMBERPHONENUMBER2
+		, MEMBERPHONENUMBER3
+		, MEMBERISADMIN
+		)
+		VALUES(
+		#{MEMBERNAME}
+		, #{MEMBERBIRTH}
+		, #{MEMBERID}
+		, #{MEMBERPW}
+		, #{MEMBERPWCONFIRM}
+		, #{MEMBERROOT}
+		, #{MEMBERPHONENUMBER1}
+		, #{MEMBERPHONENUMBER2}
+		, #{MEMBERPHONENUMBER3}
+		,0
+
+		)
+	</insert>
+
+	<select id="idCheck" resultType="int">
+
+		SELECT COUNT(*) FROM TA_RECRUIT_MEMBER WHERE MEMBERID = #{MEMBERID}
+
+	</select>
+
+
+	<!-- 로그인 -->
+	<select id="memberLogin" resultType="com.example.demo.dto.MemberDto">
+
+		SELECT
+		MEMBERID
+		, MEMBERNAME
+		, MEMBERPW
+		, MEMBERISADMIN
+		FROM
+		TA_RECRUIT_MEMBER
+		WHERE
+		MEMBERID = #{memberId} 
+		AND 
+		MEMBERPW = #{memberPw}
+
+	</select>
+
+
+	<select id ="memberView" resultType="com.example.demo.dto.MemberDto">
+		SELECT
+		*
+		FROM
+		TA_RECRUIT_MEMBER
+		WHERE
+		MEMBERID = #{memberId} 
+	
+	</select>
+
+</mapper>

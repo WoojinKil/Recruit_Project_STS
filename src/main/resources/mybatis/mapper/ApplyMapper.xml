@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.example.demo.mapper.ApplyMapper">
+  	<select id="typeView" resultType="com.example.demo.dto.TypeDto">
+  	
+  		SELECT 
+  		TA_RECRUIT_TYPE.TYPENO
+  		,TA_RECRUIT_TYPE.TYPENAME
+  		FROM 
+  		TA_RECRUIT_TYPE, 
+  		TA_RECRUIT_NOTICE 
+  		WHERE TA_RECRUIT_NOTICE.RECRUITNO = #{RECRUITNO}
+  		AND TA_RECRUIT_NOTICE.TYPENO = TA_RECRUIT_TYPE.TYPENO
+  		 
+  	
+  	</select>
+  	
+  	<select id="workView" resultType="com.example.demo.dto.WorkDto">
+<!--  
+  		SELECT
+  		DISTINCT
+  		TA_RECRUIT_WORK.workno
+  		,TA_RECRUIT_WORK.workname
+  		FROM 
+  		TA_RECRUIT_WORK, 
+  		TA_RECRUIT_APPLY,
+  		TA_RECRUIT_PART 
+  		WHERE 
+  		TA_RECRUIT_APPLY.RECRUITNO = #{recruitNo}
+  		AND TA_RECRUIT_APPLY.PARTNO = TA_RECRUIT_PART.PARTNO
+  		AND TA_RECRUIT_WORK.WORKNO = TA_RECRUIT_APPLY.WORKNO;
+ -->
+ 
+ 		select
+		ta_recruit_work.workName
+
+		FROM
+		ta_recruit_apply
+
+		,ta_recruit_work
+
+		where
+		ta_recruit_apply.recruitNo = #{recruitNo}
+
+		and ta_recruit_work.workNo=ta_recruit_apply.workNo
+
+  	
+ 
+ 
+   		
+  	</select>
+  	
+  	<select id= "partView" resultType="com.example.demo.dto.PartDto">
+<!-- 
+		SELECT 
+		DISTINCT 
+		P.PARTNO,
+		P.PARTNAME 
+		FROM 
+		TA_RECRUIT_PART AS P
+		, TA_RECRUIT_APPLY AS A 
+		WHERE 
+		P.PARTNO = A.PARTNO 
+		AND 
+		A.RECRUITNO = #{recruitNo};
+ -->  	
+ 
+  		select
+		ta_recruit_part.partName
+
+		FROM
+		ta_recruit_apply
+
+		,ta_recruit_part
+
+		where
+		ta_recruit_apply.recruitNo =2
+		and ta_recruit_part.partNo=ta_recruit_apply.partNo
+  	
+ 
+ 
+ 	
+  	</select>
+  	
+  	<select id ="applyView" resultType="com.example.demo.dto.ApplyDto">
+		select
+		*
+
+		FROM
+		ta_recruit_apply
+
+		where
+		ta_recruit_apply.recruitNo = #{recruitNo}
+
+  	
+  	</select>
+  	<select id="objectView" resultType="com.example.demo.dto.ObjectDto">
+<!-- 
+  	  	select
+		ta_recruit_object.objectName
+
+		FROM
+		ta_recruit_apply
+		,ta_recruit_notice
+		,ta_recruit_part
+		,ta_recruit_work
+		,ta_recruit_object
+		where
+		ta_recruit_notice.recruitNo = #{recruitNo}
+		and ta_recruit_part.partNo=ta_recruit_apply.partNo
+		and ta_recruit_work.workNo=ta_recruit_apply.workNo
+		and ta_recruit_object.objectNo=ta_recruit_apply.objectNo
+    
+ -->
+ 
+		select
+		ta_recruit_object.objectName
+
+		FROM
+		ta_recruit_apply
+
+		,ta_recruit_object
+
+		where
+		ta_recruit_apply.recruitNo = #{recruitNo}
+		and ta_recruit_object.objectNo=ta_recruit_apply.objectNo;
+   	
+  	</select>
+  	
+  
+  </mapper>
