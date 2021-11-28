@@ -51,8 +51,7 @@
   										
   										<c:forEach var="adtos" items="${adtos }"  varStatus="status" >
   											<option value="${adtos.applyNo }">${parts[status.index].partName } - ${wdtos[status.index].workName } - ${odtos[status.index].objectName } </option>
-  											
-  										
+  											  										
   										</c:forEach> 
  										
   									</select>
