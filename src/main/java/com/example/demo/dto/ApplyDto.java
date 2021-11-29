@@ -38,6 +38,13 @@ public class ApplyDto {
 	public void setWorkNo(String workNo) {
 		this.workNo = workNo;
 	}
+
+	@Override
+	public String toString() {
+		return "ApplyDto [applyNo=" + applyNo + ", recruitNo=" + recruitNo + ", partNo=" + partNo + ", objectNo="
+				+ objectNo + ", workNo=" + workNo + "]";
+	}
+	
 	
 	
 }

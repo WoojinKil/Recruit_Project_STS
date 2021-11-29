@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.ApplyDto;
+
+// TODO Auto-generated method stub
+	
+		
+
+
+import com.example.demo.dto.ObjectDto;
 import com.example.demo.dto.PartDto;
 import com.example.demo.dto.TypeDto;
 import com.example.demo.dto.WorkDto;
@@ -49,6 +56,30 @@ public class ApplyServiceImpl implements ApplyService {
 		return mapper.applyView(recruitNo);
 		
 	}
+
+
+	@Override
+	public ArrayList<ObjectDto> objectView(int recruitNo) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.objectView(recruitNo);
+	}
+
+
+	@Override
+	public int applyChecked(int recruitNo, String memberId) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.applyChecked(recruitNo, memberId);
+	}
+
+
+	@Override
+	public void applicantInsert(int recruitNo, String memberId) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.applicantInsert(recruitNo, memberId);
+	}
+
+
+
 
 	
 }

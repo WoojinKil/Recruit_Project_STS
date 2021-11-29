@@ -2,15 +2,21 @@ package com.example.demo.serviceImpl;
 
 import java.util.Map;
 
+// TODO Auto-generated method stub
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.controller.MemberController;
 import com.example.demo.dto.MemberDto;
 import com.example.demo.mapper.MemberMapper;
 import com.example.demo.service.MemberService;
 @Service
 public class MemberServiceImpl implements MemberService {
-
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	@Autowired
 	private MemberMapper mapper;
 	
@@ -44,7 +50,8 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDto memberLogin(MemberDto member) throws Exception {
 		// TODO Auto-generated method stub
-		
+		logger.info("goto memberLogin serviceImpl");
+
 		return mapper.memberLogin(member);
 		
 	}

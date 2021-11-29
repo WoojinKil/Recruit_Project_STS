@@ -93,7 +93,7 @@ body {
 				
  
             	<c:if test = "${result == 0 }">
-               		 <div style="color:'red'"" class = "login_warn">사용자 아이디 또는 비밀번호를 잘못 입력하셨습니다.</div>
+               		 <div style="color:'red'" class = "login_warn">사용자 아이디 또는 비밀번호를 잘못 입력하셨습니다.</div>
            		</c:if>
 			</div>
 

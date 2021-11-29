@@ -27,7 +27,6 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/recruitnavigate/recruitnotice">채용공고</a>
 		</div>
-
 	</nav>
 	<div class="container">
 		<div class="row">
@@ -54,7 +53,6 @@
 					
 					
 					</c:forEach>
-
 				
 				</tbody>
 			</table>

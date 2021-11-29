@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+.final_memberId_ck{
+    display: none;
+} 
+.final_memberPw_ck{
+    display: none;
+}
+
+.final_memberPwConfirm_ck{
+    display: none;
+}
+.final_memberName_ck{
+    display: none;
+}
+.final_memberPhone_ck{
+	display: none;
+}
+ .final_memberBirth_ck{
+    display: none;
+} 
+.input_memberId_re1_ck{
+	display: none;
+	
+}
+.input_memberId_re2_ck{
+	display: none;
+	
+}
+
+	/* 중복아이디 존재하지 않는경우 */
+.input_memberId_re1{
+	color : green;
+	display : none;
+}
+/* 중복아이디 존재하는 경우 */
+.input_memberId_re2{
+	color : red;
+	display : none;
+}
+
+#essentionalred {
+	color: red;
+	/* 필수 항목에는 빨간색 '*'을 표시 */
+}
+
+
+ 
+/* 비밀번호 확인 일치 유효성검사 */
+.input_memberPw_re1{
+        color : green;
+        display : none;    
+}
+.input_memberPw_re2{
+        color : red;
+        display : none;    
+}   
+
+.input-form {
+	max-width: 680px;
+	margin-top: 80px;
+	padding: 32px;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+	box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+}
+body {
+	min-height: 100vh;
+	background: -webkit-gradient(linear, left bottom, right top, from(#92b5db),
+		to(#1d466c));
+	background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+	background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+}

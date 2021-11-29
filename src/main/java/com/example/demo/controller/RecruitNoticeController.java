@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dto.MemberDto;
 import com.example.demo.dto.RecruitNoticeDto;
+import com.example.demo.service.ApplyService;
 import com.example.demo.service.RecruitNoticeService;
 
 
@@ -22,14 +24,16 @@ import com.example.demo.service.RecruitNoticeService;
 public class RecruitNoticeController {
 	
 	@Autowired
-	RecruitNoticeService service;
+	RecruitNoticeService rservice;
+	@Autowired
+	ApplyService aservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(RecruitNoticeController.class);
 	
 	@RequestMapping("/recruitnotice")
 	public String recruitNoticeForm(Model model) throws Exception {
 	
-		ArrayList<RecruitNoticeDto> array =  (ArrayList<RecruitNoticeDto>)service.noticeList();
+		ArrayList<RecruitNoticeDto> array =  (ArrayList<RecruitNoticeDto>)rservice.noticeList();
 		
 		model.addAttribute("noticeArray", array);
 	
@@ -37,15 +41,31 @@ public class RecruitNoticeController {
 		return "/recruitnavigate/recruitnoticeform";
 	
 	}
-	
+	//채용공고를 클릭하면 이 지원자가 해당공고를 지원하였는지 확인한다.
 	@RequestMapping("/recruitnoticeview")
-	public String recruitNoticeView( @RequestParam int recruitNo,  Model model) throws Exception{
+	public String recruitNoticeView(@RequestParam int recruitNo, HttpSession session, Model model) throws Exception{
+		logger.info("recruitNoticeView");
+		MemberDto mdto = (MemberDto)session.getAttribute("member");
+		int applyChecked;
+		if(mdto == null) {
+			logger.info("비어있는 세션");
+			applyChecked =0;
+		}else {
+			String memberId = mdto.getMemberId();
+			applyChecked = aservice.applyChecked(recruitNo, memberId);
+			if(applyChecked == 0) {
+				applyChecked= 0;
+			}else {
+				applyChecked=1; //이미 지원중
+			}
+		}
 		
-		service.recruitNoticeHitUp(recruitNo);
+		rservice.recruitNoticeHitUp(recruitNo);
 		
-		RecruitNoticeDto dto = service.recruitNoticeView(recruitNo);
+		RecruitNoticeDto dto = rservice.recruitNoticeView(recruitNo);
 		model.addAttribute("NoticeView", dto);
-		return "/recruitnavigate/recruitnoticeview-2";
+		model.addAttribute("applyCheckedResult",applyChecked);
+		return "/recruitnavigate/recruitnoticeview";
 		
 	}
 	

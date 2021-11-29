@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.login_warn{
+    margin-top: 30px;
+    text-align: center;
+    color : red;
+}

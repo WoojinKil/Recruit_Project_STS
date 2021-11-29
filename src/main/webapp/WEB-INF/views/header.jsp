@@ -21,7 +21,7 @@
 			<c:if test = "${member !=null}">
 				<a class="navbar-brand" href="/">입사지원</a>
 				<a class="navbar-brand" href="/member/logout.do">로그아웃</a>
-				<a class="navbar-brand" href="/">지원 내역</a>
+				<a class="navbar-brand" href="/myApply/myApplyList">지원 내역</a>
 
 				&nbsp;
 				&nbsp;
