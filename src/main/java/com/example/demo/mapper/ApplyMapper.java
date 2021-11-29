@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.dto.ApplyDto;
-
+import com.example.demo.dto.CertificateDto;
 import com.example.demo.dto.ObjectDto;
 import com.example.demo.dto.PartDto;
 import com.example.demo.dto.TypeDto;
@@ -36,5 +36,11 @@ public interface ApplyMapper {
 	//로그인한 회원이 지원하기 버튼을 누르면 지원자의 정보가 삽입된다.
 	public void applicantInsert(int recruitNo, String memberId) throws Exception;
 	
+	
+	//비동기로 자격증을 추가버튼을 누를때마다 삽입된다.
+	public void addCertificate(int applicantNo) throws Exception;
+	
+	//비동기로 자젹증 리스트를 보여준다.
+	public ArrayList<CertificateDto> certificateList(int applicantNo) throws Exception;
 	
 }

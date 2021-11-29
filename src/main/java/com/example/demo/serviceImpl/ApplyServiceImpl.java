@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.ApplyDto;
+import com.example.demo.dto.CertificateDto;
 
 // TODO Auto-generated method stub
 	
@@ -76,6 +77,22 @@ public class ApplyServiceImpl implements ApplyService {
 	public void applicantInsert(int recruitNo, String memberId) throws Exception {
 		// TODO Auto-generated method stub
 		mapper.applicantInsert(recruitNo, memberId);
+	}
+
+
+	@Override
+	public void addCertificate(int applicantNo) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.addCertificate(applicantNo);
+		
+	}
+
+
+	@Override
+	public ArrayList<CertificateDto> certificateList(int applicantNo) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.certificateList(applicantNo);
+		
 	}
 
 

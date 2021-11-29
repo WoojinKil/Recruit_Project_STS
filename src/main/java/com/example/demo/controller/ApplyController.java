@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.ApplyDto;
 import com.example.demo.dto.MemberDto;
@@ -220,8 +221,11 @@ public class ApplyController {
 	}
     
 //수정해야할꺼	
-//	@Responsebody
-//	@PostMapping("/addCertificate")
-//	public void addCertificate(@RequestMapping)
+	@ResponseBody
+	@PostMapping("/addCertificate")
+	public void addCertificate(Model model) {
+		
+		
+	}
 	
 }
