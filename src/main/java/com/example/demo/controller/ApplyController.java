@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.dto.ApplicantDto;
 import com.example.demo.dto.ApplyDto;
 import com.example.demo.dto.MemberDto;
 /*
@@ -93,6 +94,7 @@ import com.example.demo.dto.PartDto;
 import com.example.demo.dto.RecruitNoticeDto;
 import com.example.demo.dto.TypeDto;
 import com.example.demo.dto.WorkDto;
+import com.example.demo.service.ApplicantService;
 import com.example.demo.service.ApplyService;
 import com.example.demo.service.MemberService;
 import com.example.demo.service.RecruitNoticeService;
@@ -107,6 +109,8 @@ public class ApplyController {
 	MemberService mservice;
 	@Autowired
 	ApplyService aservice;
+	@Autowired
+	ApplicantService apcntservice;
 
 	private static final Logger logger = LoggerFactory.getLogger(ApplyController.class);
 
@@ -204,7 +208,8 @@ public class ApplyController {
 		logger.info("odtos complete" + odtos);
 		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
 		logger.info("adtos complete" + adtos);
-		
+		ApplicantDto apdto = apcntservice.viewApplicantNo(memberId, recruitNo);
+		logger.info("apdto complete" + apdto);
 		model.addAttribute("noticeInfo", rdto);
 		model.addAttribute("applicant", mdto);
 		model.addAttribute("type", tdto);
@@ -212,7 +217,7 @@ public class ApplyController {
 		model.addAttribute("wdtos", wdtos);
 		model.addAttribute("odtos", odtos);
 		model.addAttribute("adtos",adtos);
-		
+		model.addAttribute("apdto",apdto);
 		
 		return "/apply/applyform";
 		
@@ -221,11 +226,6 @@ public class ApplyController {
 	}
     
 //수정해야할꺼	
-	@ResponseBody
-	@PostMapping("/addCertificate")
-	public void addCertificate(Model model) {
-		
-		
-	}
+
 	
 }

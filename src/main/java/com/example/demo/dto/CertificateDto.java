@@ -6,8 +6,8 @@ public class CertificateDto {
 
 	private int applicantNo;
 	private String certificateName;
-	private String certifacateScore;
-	private Date certificateDate;
+	private String certificateScore;
+	private String certificateDate;
 	private String certificateCode;
 	public int getApplicantNo() {
 		return applicantNo;
@@ -21,16 +21,16 @@ public class CertificateDto {
 	public void setCertificateName(String certificateName) {
 		this.certificateName = certificateName;
 	}
-	public String getCertifacateScore() {
-		return certifacateScore;
+	public String getCertificateScore() {
+		return certificateScore;
 	}
-	public void setCertifacateScore(String certifacateScore) {
-		this.certifacateScore = certifacateScore;
+	public void setCertificateScore(String certificateScore) {
+		this.certificateScore = certificateScore;
 	}
-	public Date getCertificateDate() {
+	public String getCertificateDate() {
 		return certificateDate;
 	}
-	public void setCertificateDate(Date certificateDate) {
+	public void setCertificateDate(String certificateDate) {
 		this.certificateDate = certificateDate;
 	}
 	public String getCertificateCode() {
@@ -38,6 +38,12 @@ public class CertificateDto {
 	}
 	public void setCertificateCode(String certificateCode) {
 		this.certificateCode = certificateCode;
+	}
+	@Override
+	public String toString() {
+		return "CertificateDto [applicantNo=" + applicantNo + ", certificateName=" + certificateName
+				+ ", certificateScore=" + certificateScore + ", certificateDate=" + certificateDate
+				+ ", certificateCode=" + certificateCode + "]";
 	}
 	
 	

@@ -1,14 +1,17 @@
 package com.example.demo.dto;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class ApplicantDto {
 	private int applicantNo;
 	private String applicantId;
 	private int recruitNo;
 	private int applyNo;
+	private ArrayList<CertificateDto> certificates;
 	private int finalApplyChecked;
 	private Date applyDate;
+	
 	public int getApplicantNo() {
 		return applicantNo;
 	}
@@ -32,6 +35,13 @@ public class ApplicantDto {
 	}
 	public void setApplyNo(int applyNo) {
 		this.applyNo = applyNo;
+	}
+	
+	public ArrayList<CertificateDto> getCertificates() {
+		return certificates;
+	}
+	public void setCertificates(ArrayList<CertificateDto> certificates) {
+		this.certificates = certificates;
 	}
 	public int getFinalApplyChecked() {
 		return finalApplyChecked;

@@ -165,35 +165,5 @@
  
  </insert> 
  
- <insert id ="addCertificate">
- 	insert ta_recruit_certificate
- 	(
- 	applicantNo
- 	, certificateName
- 	, certificateScore
- 	, certificateDate
- 	, certificateCode
- 	)
- 	values
- 	(
- 	#{applicantNo}
- 	, #{certificateName}
- 	, #{certificateScore}
- 	, #{certificateDate}
- 	, #{certificateCode}
- 	
- 	);
- 	
- 
- 
- </insert>
- 
- <select id= "certificateList" resultType="com.example.demo.dto.CertificateDto">
- 	
- 	select * from
- 	ta_recruit_certificate 
- 	where applicantNo = #{applicantNo};
- 
- </select> 
- 
+
   </mapper>
