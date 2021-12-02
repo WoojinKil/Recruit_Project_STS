@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.example.demo.mapper.CareerMapper">
+ 	<insert id="addCareer">
+ 		insert into ta_recruit_career
+		(
+		careerRegisterNo
+		,applicantNo
+		, careerName
+		, careerRole
+		, careerStartDate
+		, careerEndDate
+		, careerContent
+		)
+		values
+		(
+		(SELECT IFNULL(MAX(careerRegisterNo),1) FROM ta_recruit_career C)+1
+		, #{applicantNo}
+		, #{careerName}
+		, #{careerRole}
+		, #{careerStartDate}
+		, #{careerEndDate}
+		, #{careerContent}
+		);
+ 		
+ 	
+ 	</insert>
+ 	
+ 	<select id="careerList" resultType="com.example.demo.dto.CareerDto">
+ 		select * from
+ 		ta_recruit_career
+ 		where applicantNo = #{applicantNo};
+ 	
+ 	
+ 	</select>
+ 	
+ 	<delete id="careerDelete">
+ 	
+ 		delete from ta_recruit_career
+ 		where careerRegisterNo = #{careerRegisterNo};
+ 	
+ 		
+ 	</delete>
+ 
+ 
+ </mapper>

@@ -29,6 +29,14 @@ public class CertificateServiceImpl implements CertificateService {
 		return mapper.certificateList(map);
 	}
 
+	
+
+	@Override
+	public void certificateDelete(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.certificateDelete(map);
+	}
+
 
 
 }

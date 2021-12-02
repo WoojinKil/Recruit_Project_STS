@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.example.demo.mapper.ActivationMapper">
+ 	<insert id="addActivation">
+ 		insert into ta_recruit_activation
+		(
+		activationRegisterNo
+		,applicantNo
+		, activationName
+		, activationKind
+		, activationContent
+		, activationRole
+		, activationStartDate
+		, activationEndDate
+		, activationOrgan
+		)
+		values
+		(
+		(SELECT IFNULL(MAX(activationRegisterNo),1) FROM ta_recruit_activation A)+1
+		, #{applicantNo}
+		, #{activationName}
+		, #{activationKind}
+		, #{activationContent}
+		, #{activationRole}
+		, #{activationStartDate}
+		, #{activationEndDate}
+		, #{activationOrgan}
+		);
+ 		
+ 	
+ 	</insert>
+ 	
+ 	<select id="activationList" resultType="com.example.demo.dto.ActivationDto">
+ 		select * from
+ 		ta_recruit_activation
+ 		where applicantNo = #{applicantNo};
+ 	
+ 	
+ 	</select>
+ 	
+ 	<delete id="activationDelete">
+ 	
+ 		delete from ta_recruit_activation
+ 		where activationRegisterNo = #{activationRegisterNo};
+ 	
+ 		
+ 	</delete>
+ 
+ 
+ </mapper>

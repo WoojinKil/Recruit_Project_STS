@@ -5,9 +5,10 @@
 <mapper namespace="com.example.demo.mapper.CertificateMapper">
 
 	<insert id="addCertificate">
-		insert ta_recruit_certificate
+		insert into ta_recruit_certificate
 		(
-		applicantNo
+		certificateRegisterNo
+		,applicantNo
 		, certificateName
 		, certificateScore
 		, certificateDate
@@ -15,7 +16,8 @@
 		)
 		values
 		(
-		#{applicantNo}
+		(SELECT IFNULL(MAX(certificateRegisterNo),1) FROM ta_recruit_certificate C)+1
+		, #{applicantNo}
 		, #{certificateName}
 		, #{certificateScore}
 		, #{certificateDate}
@@ -35,5 +37,13 @@
 		where applicantNo = #{applicantNo};
 
 	</select>
+	
+	<delete id= "certificateDelete">
+		delete from
+		ta_recruit_certificate
+		where certificateRegisterNo = #{certificateRegisterNo};
+	
+	</delete>
+	
 </mapper>
  

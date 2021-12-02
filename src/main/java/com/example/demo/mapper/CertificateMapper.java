@@ -13,5 +13,6 @@ public interface CertificateMapper {
 
 	public void addCertificate(Map<String, Object> map) throws Exception;
 	public ArrayList<CertificateDto> certificateList (Map<String, Object> map ) throws Exception;
+	public void certificateDelete(Map<String, Object> map) throws Exception;
 	
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.ApplicantDto;
 import com.example.demo.dto.MemberDto;
@@ -53,14 +54,16 @@ public class MyApplyController {
 				
 	}
 	
-	@RequestMapping("/myDeleteApply")
+	@PostMapping("/myDeleteApply.do")
+	@ResponseBody
 	public String deleteApply(@RequestParam int recruitNo, HttpSession session,Model model) throws Exception{
 		
 		MemberDto mdto = (MemberDto)session.getAttribute("member");
 		String memberId = mdto.getMemberId();
 		maservice.myDeleteApply(memberId, recruitNo);
-		
-		return "/myapply/myapplylist";
+		logger.info("삭제 성공");
+		String result= "success";
+		return result;
 	}
 	
 	

@@ -1,12 +1,17 @@
 
 spring:
   datasource:
-  
+
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://14.63.166.136:3306/test5?useUnicode=true&characterEncoding=utf-8
+    
+    #driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    #url: jdbc:log4jdbc:mysql://14.63.166.136:3306/test5?useUnicode=true&characterEncoding=utf-8
     username: pandora_ojt
     password: 1234
-    driver-class-name: com.mysql.cj.jdbc.Driver
     
+
+   
   mvc:
     view:
       prefix: /WEB-INF/views/
@@ -30,3 +35,8 @@ server:
 mybatis:
   type-aliases-package: com.example.demo.dto
   mapper-locations: mybatis/mapper/**/*.xml
+  
+  
+  
+  
+

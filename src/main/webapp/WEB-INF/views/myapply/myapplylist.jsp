@@ -98,10 +98,34 @@ $(document).ready(function(){
 	
 */
 function deleteApply(recruitNo){
-    var answer=confirm("공고삭제?");
+    var answer=confirm("지원중인 이력서를 삭제하시겠습니까?"+recruitNo);
+    
         if(answer){
         	
-        	window.location.href="/myApply/myDeleteApply?recruitNo="+recruitNo;
+        	$.ajax({
+        		url : '/myApply/myDeleteApply.do',
+				type : 'post',
+				data :{
+					"recruitNo" : recruitNo
+				},
+				success : function(result){
+					if(result == "success"){
+
+						alert("삭제되었습니다.");
+						window.location.href="/myApply/myApplyList";
+					}else{
+						alert("에러발생!!");
+					}
+				},
+				error : function(result){
+					alert("에러발생");
+				}
+				
+				
+				
+				
+        	});
+        	//location.href="/myApply/myDeleteApply?recruitNo="+recruitNo;
         }  
     }
 

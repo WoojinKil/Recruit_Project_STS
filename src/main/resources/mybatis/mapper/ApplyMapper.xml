@@ -148,12 +148,14 @@
  <insert id="applicantInsert">
  	insert 
 	ta_recruit_applicant(
-	applicantId
+	applicantNo
+	,applicantId
 	,recruitNo
 	,finalApplyChecked
 	)
 	values(
-	#{memberId}
+	(SELECT IFNULL(MAX(applicantNo),1) FROM ta_recruit_applicant B)+1
+	,#{memberId}
 	,#{recruitNo}
 	,0
 	

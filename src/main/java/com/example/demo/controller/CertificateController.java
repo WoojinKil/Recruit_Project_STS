@@ -36,7 +36,7 @@ public class CertificateController {
 	
 	@PostMapping("/addCertificate.do")
 	@ResponseBody
-	public int addCertificate(@RequestParam Map<String, Object> map, HttpSession session, Model model) throws Exception {
+	public int addCertificate(@RequestParam Map<String, Object> map, HttpSession session) throws Exception {
 	
 		logger.info("addCertificate");
 		MemberDto dto = (MemberDto) session.getAttribute("member");
@@ -74,7 +74,7 @@ public class CertificateController {
 		String applicantNo =(String) map.get("applicantNo");
 		logger.info(applicantNo);
 		ArrayList<CertificateDto> cdtos = cservice.certificateList(map);
-		System.out.println(cdtos);
+		
 
 		model.addAttribute("certificates",cdtos);
 		
@@ -82,6 +82,17 @@ public class CertificateController {
 		
 		
 		
+	}
+	@PostMapping("certificateDelete.do")
+	@ResponseBody
+	public String certificateDelete(@RequestParam Map<String,Object> map) throws Exception{
+		
+		logger.info("goto certificateDelete");
+		int certificateRegisterNo = Integer.parseInt((String)map.get("certificateRegisterNo"));
+		logger.info((String)map.get("certificateRegisterNo"));
+		cservice.certificateDelete(map);
+		String result = "success";
+		return result;
 	}
 
 	
