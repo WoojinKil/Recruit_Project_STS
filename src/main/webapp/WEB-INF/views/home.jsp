@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<title>채용 Homepage_1</title>
+<title>채용 Homepage</title>
 
 </head>
 <body>
