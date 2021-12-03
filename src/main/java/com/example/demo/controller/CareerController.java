@@ -26,22 +26,37 @@ public class CareerController {
 
 	@PostMapping("addCareer.do")
 	@ResponseBody
-	public int addActivation(@RequestParam Map<String, Object> map) throws Exception{
+	public String addActivation(@RequestParam Map<String, Object> map) throws Exception{
 	
-		logger.info("goto addCareer");
-		carservice.addCareer(map);
-		int result =1;
-		
-		return result;
+		try {
+			logger.info("goto addCareer");
+			carservice.addCareer(map);
+			String result = "success";
+			
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			// TODO: handle exception
+		}
+
 		
 	}
 	
 	@PostMapping("careerList.do")
 	@ResponseBody
-	public ArrayList<CareerDto> activationList(@RequestParam Map<String, Object> map, Model model) throws Exception{
-		logger.info("goto careerList");
-		//model attribute 안함
-		return carservice.activationList(map);
+	public ArrayList<CareerDto> activationList(@RequestParam Map<String, Object> map) throws Exception{
+		try {
+			logger.info("goto careerList");
+			//model attribute 안함
+			return carservice.activationList(map);
+		} catch (Exception e) {
+			
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 
 	
@@ -49,9 +64,17 @@ public class CareerController {
 	@ResponseBody
 	public String activationDelete(@RequestParam Map<String, Object> map) throws Exception{
 
-		carservice.careerDelete(map);
-		String result = "success";
-		return result;
+		try {
+			carservice.careerDelete(map);
+			String result = "success";
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+			
+		}
+
 	}
 	
 }

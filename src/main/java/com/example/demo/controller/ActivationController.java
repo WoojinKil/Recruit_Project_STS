@@ -27,31 +27,53 @@ public class ActivationController {
 	
 	@PostMapping("/addActivation.do")
 	@ResponseBody
-	public int addActivation(@RequestParam Map<String, Object> map) throws Exception{
+	public String addActivation(@RequestParam Map<String, Object> map) throws Exception{
 	
-		logger.info("goto addActivation");
-		actservice.addActivation(map);
-		int result =1;
-		
-		return result;
+		try {
+			logger.info("goto addActivation");
+			actservice.addActivation(map);
+			String result ="success";
+			
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			// TODO: handle exception
+		}
+
 		
 	}
 	
 	@PostMapping("/activationList.do")
 	@ResponseBody
 	public ArrayList<ActivationDto> activationList(@RequestParam Map<String, Object> map, Model model) throws Exception{
-		logger.info("goto activationList");
-		//model attribute 안함
-		return actservice.activationList(map);
+		try {
+			logger.info("goto activationList");
+			//model attribute 안함
+			return actservice.activationList(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			// TODO: handle exception
+		}
+
 	}
 
 	
 	@PostMapping("/activationDelete.do")
 	@ResponseBody
 	public String activationDelete(@RequestParam Map<String, Object> map) throws Exception{
+		
+		try {
+			actservice.activationDelete(map);
+			String result = "success";
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
 
-		actservice.activationDelete(map);
-		String result = "success";
-		return result;
+
 	}
 }

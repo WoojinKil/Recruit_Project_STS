@@ -36,49 +36,40 @@ public class CertificateController {
 	
 	@PostMapping("/addCertificate.do")
 	@ResponseBody
-	public int addCertificate(@RequestParam Map<String, Object> map, HttpSession session) throws Exception {
+	public String addCertificate(@RequestParam Map<String, Object> map) throws Exception {
 	
-		logger.info("addCertificate");
-		MemberDto dto = (MemberDto) session.getAttribute("member");
-		logger.info("session complete"+dto);
+
 		
-		String memberId = dto.getMemberId();
-		logger.info(memberId+ (String) map.get("applicantNo"));
-		int applicantNo = Integer.parseInt((String) map.get("applicantNo"));
-		
-		String certificateName = (String)map.get("certificateName");
-		logger.info(certificateName);
-		
-		String certificateScore = (String)map.get("certificateScore");
-		logger.info(certificateScore);
-		
-		String certificateDate = (String)map.get("certificateDate");
-		logger.info(certificateDate);
-		
-		String certificateCode = (String)map.get("certificateCode");
+		try {
+			cservice.addCertificate(map);
+			String result = "success";
 	
-		logger.info(certificateCode);
-		
-		logger.info("dto+ applicantNo complete"+memberId + applicantNo);
-		
-		cservice.addCertificate(map);
-		int result = 1;
-		
-		return result;
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
 		
 	}
 	
 	@PostMapping("certificateList.do")
 	@ResponseBody
-	public ArrayList<CertificateDto> certificateList(@RequestParam Map<String, Object> map,Model model) throws Exception{
-		String applicantNo =(String) map.get("applicantNo");
-		logger.info(applicantNo);
-		ArrayList<CertificateDto> cdtos = cservice.certificateList(map);
+	public ArrayList<CertificateDto> certificateList(@RequestParam Map<String, Object> map) throws Exception{
+		
+		try {
+			ArrayList<CertificateDto> cdtos = cservice.certificateList(map);
+			return cdtos;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+
+		
 		
 
-		model.addAttribute("certificates",cdtos);
-		
-		return cdtos;
 		
 		
 		
@@ -87,12 +78,18 @@ public class CertificateController {
 	@ResponseBody
 	public String certificateDelete(@RequestParam Map<String,Object> map) throws Exception{
 		
-		logger.info("goto certificateDelete");
-		int certificateRegisterNo = Integer.parseInt((String)map.get("certificateRegisterNo"));
-		logger.info((String)map.get("certificateRegisterNo"));
-		cservice.certificateDelete(map);
-		String result = "success";
-		return result;
+		try {
+			cservice.certificateDelete(map);
+			String result = "success";
+			return result;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+		
+		
+		
 	}
 
 	
