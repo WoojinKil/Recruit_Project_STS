@@ -50,7 +50,7 @@ public class MemberController {
 		return "redirect:/";
 	}
 
-	@RequestMapping(value="/memberIdChk", method = RequestMethod.POST)
+	@PostMapping("/memberIdChk.do")
 	@ResponseBody
 	public String memberIdChkPost(String memberId) throws Exception{
 		logger.info("go to memberIdChkPost method");
