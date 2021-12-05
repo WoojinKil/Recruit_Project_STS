@@ -65,7 +65,7 @@
 
 					<tr>
 						<th align="center">병역사항</th>
-						<td><select class="military">
+						<td><select class="select_applicant_millitary">
 								<option value="만기제대">만기제대(소집해제)</option>
 								<option value="복무 중">복무중</option>
 								<option value="면제">면제</option>
@@ -74,13 +74,13 @@
 
 						</select></td>
 						<th align="center">보훈 대상</th>
-						<td><label> 대상 <input type="radio" name="select_veteran" value="대상" /></label> <label>비대상</label> <input type="radio" name="select_veteran" value="비대상" /></td>
+						<td><label> 대상 </label> <input type="radio" name="veteran" class="select_veteran" value="대상" /><label>비대상</label> <input type="radio" name="veteran" class="select_veteran" value="비대상" checked="checked" /></td>
 
 					</tr>
 
 					<tr>
 						<th align="center">장애 유무</th>
-						<td><select class="disable">
+						<td><select class="select_disability">
 								<option value="해당없음">해당없음</option>
 								<option value="3급">3급</option>
 								<option value="2급">2급</option>
@@ -89,7 +89,7 @@
 
 						</select></td>
 						<th align="center">취업 보호 대상</th>
-						<td><label> 대상 <input type="radio" name="select_job_pro" value="대상" /></label> <label>비대상</label> <input type="radio" name="select_job_pro" value="비대상" /></td>
+						<td><label> 대상 <input type="radio"  name="job_pro" class="select_job_pro" value="대상" /></label> <label>비대상</label> <input type="radio" name="job_pro" class="select_job_pro" value="비대상" checked="checked" /></td>
 
 					</tr>
 
@@ -103,7 +103,7 @@
 
 		</form>
 
-<!-- 학교 입력 폼(임시) -->
+		<!-- 학교 입력 폼(임시) -->
 		<form>
 			<div class="container">학력정보</div>
 			<table border="1" class="table table-striped" style="text-align: center;">
@@ -132,8 +132,8 @@
 
 
 
-		<!-- 학교 form -->
-		<form method="post" id=activationForm>
+		<!-- 대학교(2,3,4년제) / 대학원 form -->
+		<form method="post" id=collegeForm>
 			<div class="container">
 				<strong>대학교/대학원 정보(2, 3년제 포함)</strong>
 			</div>
@@ -142,7 +142,7 @@
 
 				<colgroup>
 					<col width="130px" />
-					<col width="500px" />
+					<col width="800px" />
 					<col width="130px" />
 					<col width="500px" />
 				</colgroup>
@@ -151,63 +151,59 @@
 
 					<tr>
 						<th align="center">대학명</th>
-						<td>
-							<input name="college_name" style="width: 50%" class="input_college_name" type="text">
-							편입
-							<input name="college_transfer" type="checkbox" class="input_college_transfer">						
-						</td>
+						<td><input name="college_name" style="width: 50%" class="input_college_name" type="text"> 편입 여부 <label>Y</label><input name="college_transfer" type="radio" class="input_college_transfer" value="Y"> <label>N</label><input name="college_transfer" type="radio" class="input_college_transfer" value="N" checked="checked"></td>
 						<th align="center">학위</th>
-						<td>
-							<select id="college_degree" style="width: 50%">
+						<td><select class="select_college_degree" style="width: 50%">
 
 								<option value="학사">학사</option>
 								<option value="전문학사">전문학사</option>
 								<option value="석사">석사</option>
 								<option value="박사">박사</option>
 								<option value="석박사">석박사</option>
-						
-							</select>
-						</td>
+
+						</select></td>
 
 					</tr>
 
 					<tr>
 						<th align="center">학과</th>
-						<td>
-							<input name="college_major1" style="width: 30%" class="input_college_major1" type="text" placeholder="주전공">
-							<input name="college_major2" style="width: 30%" class="input_college_major2" type="text" placeholder="복수전공/부전공">
-						</td>
-						<th style="width: 10%" align="center">학점</th>
-						<td>
-							<input style="width: 100px" name="college_score" class="input_college_score" type="number" step="0.01">
-							/<select>
+						<td><input name="college_major1" style="width: 30%" class="input_college_major1" type="text" placeholder="주전공"> <input name="college_major2" style="width: 30%" class="input_college_major2" type="text" placeholder="복수전공/부전공"> 단일전공<input type="checkbox" class="input_double_major" checked="checked"> <select class="select_college_double_majorKind">
+
+								<option value="복수전공" selected="selected">복수전공</option>
+								<option value="부전공">부전공</option>
+								<option value="기타">기타</option>
+
+
+						</select></td>
+						<th style="width: 10%" align="center">학점<br></th>
+						<td><input style="width: 100px" name="college_score" class="input_college_score" type="text" step="0.01" maxlength="5"> / <select class="select_college_scoreMax">
 								<option value="4.5">4.5점</option>
 								<option value="4.0">4.0점</option>
 								<option value="100">100점</option>
-								
-							
-							</select>
-						</td>
+
+
+						</select> <br>
+						<span style="font-size: 1em; color: red">소수 둘째 자리에서 반올림</span></td>
 					</tr>
 
 
 					<tr>
 						<th align="center">재학 기간</th>
-						<td><input name="college_start_date" class="input_college_start_date" type="date"> ~ <input name="college_end_date" class="input_college_end_date" type="date"></td>
+						<td><input name="college_start_date" class="input_college_start_date" type="month"> ~ <input name="college_end_date" class="input_college_end_date" type="month"></td>
 
 						<th align="center">졸업여부</th>
-						<td>
-							<select id =college_degree>
+						<td><select class=select_college_graduate>
 								<option value="졸업">졸업</option>
 								<option value="졸업예정">졸업예정</option>
-								<option value="재학">재학</option>
+								<option value="수료">수료</option>
+								<option value="휴학">휴학</option>
+								<option value="재학 중">재학 중</option>
 								<option value="중퇴">중퇴</option>
-								
-							</select>
-						</td>
+
+						</select></td>
 					</tr>
 					<tr>
-						<th align="center"><button type="button" class="btn btn-primary add_activation">학교 추가</button></th>
+						<th align="center"><button type="button" class="btn btn-primary add_college">학교 추가</button></th>
 
 						<td colspan="4">
 
@@ -215,16 +211,21 @@
 								<thead>
 									<tr>
 
-										<th style="background-color: #eeeeee; text-align: center;">활동명</th>
-										<th style="background-color: #eeeeee; text-align: center;">기관명</th>
-										<th style="background-color: #eeeeee; text-align: center;">구분</th>
-										<th style="background-color: #eeeeee; text-align: center;">역할</th>
-										<th style="background-color: #eeeeee; text-align: center;">활동기간</th>
-										<th style="background-color: #eeeeee; text-align: center;">내용</th>
+										<th style="background-color: #eeeeee; text-align: center;">학교</th>
+										<th style="background-color: #eeeeee; text-align: center;">주전공</th>
+
+										<th style="background-color: #eeeeee; text-align: center;">다중전공</th>
+										<th style="background-color: #eeeeee; text-align: center;">학점</th>
+										<th style="background-color: #eeeeee; text-align: center;">학위</th>
+										<th style="background-color: #eeeeee; text-align: center;">재학기간</th>
+										<th style="background-color: #eeeeee; text-align: center;">편입</th>
+										<th style="background-color: #eeeeee; text-align: center;">재적</th>
+
 										<th style="background-color: #eeeeee; text-align: center;">삭제</th>
+
 									</tr>
 								</thead>
-								<tbody class="activation_list">
+								<tbody class="college_list">
 
 
 
@@ -344,7 +345,7 @@
 						<th align="center">활동명</th>
 						<td><input name="activation_name" style="width: 100%" class="input_activation_name" type="text"></td>
 						<th align="center">구분</th>
-						<td><select id="activation_kind" style="width: 50%">
+						<td><select class="select_activation_kind" style="width: 50%">
 
 								<option value="인턴">인턴</option>
 								<option value="교육">교육</option>
@@ -365,7 +366,7 @@
 
 					<tr>
 						<th align="center">활동 기간</th>
-						<td><input name="activation_start_date" class="input_activation_start_date" type="date"> ~ <input name="activation_end_date" class="input_activation_end_date" type="date"></td>
+						<td><input name="activation_start_date" class="input_activation_start_date" type="month"> ~ <input name="activation_end_date" class="input_activation_end_date" type="month"></td>
 
 						<th align="center">기관명</th>
 						<td><input name="activation_organ" class="input_activation_organ" type="text"></td>
@@ -437,7 +438,7 @@
 
 					<tr>
 						<th align="center">근무 기간</th>
-						<td><input name="career_start_date" class="input_career_start_date" type="date"> ~ <input name="career_end_date" class="input_career_end_date" type="date"></td>
+						<td><input name="career_start_date" class="input_career_start_date" type="month"> ~ <input name="career_end_date" class="input_career_end_date" type="month"></td>
 
 						<th align="center">업무내용</th>
 						<td><textarea name="career_content" class="input_career_content" cols="50%"></textarea></td>
@@ -478,72 +479,72 @@
 			</table>
 
 		</form>
-			
+
+
+		<!-- 자기소개서 form -->
 		<form>
 			<div class="container">
 				<strong>자기소개서</strong>
 			</div>
 			<table border="1" class="table table-striped">
 				<tr>
-					<th style="text-align: center; width: 10%" >글자 수</th>
-					<th>항목 1) 링크 컴퍼니에 3가지 인재상 중에 자신이 부합하다고 생각하는 인재상을 하나 선택하여<br>
-						그렇게 생각하는 이유를 본인의 가치관과 연계하여 교육사항, 경험 및 경력 등 구체적인 사례를 들어 기술하여 주십시오.(최대 700자)		
+					<th style="text-align: center; width: 10%">글자 수</th>
+					<th>항목 1) 링크 컴퍼니에 3가지 인재상 중에 자신이 부합하다고 생각하는 인재상을 하나 선택하여<br> 그렇게 생각하는 이유를 본인의 가치관과 연계하여 교육사항, 경험 및 경력 등 구체적인 사례를 들어 기술하여 주십시오.(최대 700자)
 					</th>
-					
+
 				</tr>
 				<tr>
-					<th style=" text-align: center;">자</th>
+					<th style="text-align: center;">자</th>
 					<th><textarea class="input_assay1" rows="10" cols="100%" maxlength="700"></textarea></th>
-					
+
 				</tr>
-			
+
 			</table>
-		
+
 			<table border="1" class="table table-striped">
 				<tr>
-					<th style="text-align: center; width: 10%" >글자 수</th>
-					<th >항목 2) 다른 사람들과 함께 일을 했던 경험에 대해 설명하고, 목표를 달성하는 과정에서<br>
-						팀원들과 의견 차이를 보였던 사례와 갈등을 해결하기 위해 기울인 노력과 방법, 결과를 구체적으로 기술해 주십시오.(최대 700자)
+					<th style="text-align: center; width: 10%">글자 수</th>
+					<th>항목 2) 다른 사람들과 함께 일을 했던 경험에 대해 설명하고, 목표를 달성하는 과정에서<br> 팀원들과 의견 차이를 보였던 사례와 갈등을 해결하기 위해 기울인 노력과 방법, 결과를 구체적으로 기술해 주십시오.(최대 700자)
 					</th>
-					
+
 				</tr>
 				<tr>
-					<th style=" text-align: center;">자</th>
+					<th style="text-align: center;">자</th>
 					<th><textarea class="input_assay2" rows="10" cols="100%" maxlength="700"></textarea></th>
-					
+
 				</tr>
 
 
 
 
-			
+
 			</table>
-			
+
 			<table border="1" class="table table-striped">
 				<tr>
-					<th style="text-align: center; width: 10%" >글자 수</th>
-					<th >항목 3) 지금까지 가장 큰 성취 및 실패에 대하여 기술해 주십시오. (최대 700자)</th>
-					
+					<th style="text-align: center; width: 10%">글자 수</th>
+					<th>항목 3) 지금까지 가장 큰 성취 및 실패에 대하여 기술해 주십시오. (최대 700자)</th>
+
 				</tr>
 				<tr>
-					<th style=" text-align: center;">자</th>
+					<th style="text-align: center;">자</th>
 					<th><textarea class="input_assay3" rows="10" cols="100%" maxlength="700"></textarea></th>
-					
+
 				</tr>
 
 
 
 
-			
+
 			</table>
-			
+
 		</form>
 
 
 
 
 
-		<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary">임시저장</button>
+		<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">임시저장</button>
 		<button style="margin: auto; width: 40%;" type="button" class="btn btn-danger">최종제출</button>
 
 		<div class="row">
@@ -561,541 +562,580 @@
 
 
 	<script>
-		$(document)
-				.ready(
-						function() {
-
-							
-							certificateList(); //시작되면 무조건 실행되는 메소드 리스트
-							activationList();//시작되면 무조건 실행되는 메소드 리스트
-							careerList();//시작되면 무조건 실행되는 메소드 리스트
-							
-							
-							//자격증 삭제 버튼 클릭시
-							$(document)
-									.on(
-											"click",
-											".delete_certificate",
-											function() {
-
-												var certificateRegisterNo = $(
-														this).attr("value")
-												alert(certificateRegisterNo);
-												$
-														.ajax({
-															url : '/certificate/certificateDelete.do',
-															type : 'post',
-															data : {
-																"certificateRegisterNo" : certificateRegisterNo
-															},
-															success : function(
-																	result) {
-																if (result == "success") {
-																	alert("삭제되었습니다.");
-																	certificateList();
-																}
-															},
-															error : function(
-																	result) {
-																alert("에러!");
-															}
-														});
-
-											});
-
-							function certificateList() { //자격증 리스트 함수
-								var applicantNo = '${apdto.applicantNo}';
-								console.log(applicantNo);
-								$
-										.ajax({
-											url : '/certificate/certificateList.do',
-											type : 'post',
-											data : {
-												"applicantNo" : applicantNo
-
-											},
-											success : function(data) {
-												var outHtml = "";
-												$(".certificate_list").append(
-														outHtml);
-												$
-														.each(
-																data,
-																function(index,
-																		item) {
-
-																	outHtml += "<tr><td>"
-																			+ data[index].certificateName
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].certificateScore
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].certificateDate
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].certificateCode
-																			+ "</td>";
-																	outHtml += "<td><button type = \"button\" value="+data[index].certificateRegisterNo+" class=\"btn-danger delete_certificate\">삭제</button></td></tr>";
-
-																});
-
-												$('.certificate_list').empty();
-												$(".certificate_list").append(
-														outHtml);
-
-											},
-											error : function(data) {
-												alert("실패");
-											}
-
-										});
-
-							}
-
-
-							$(".add_certificate")
-									.click(
-											//자격증 추가 버튼 클릭 시
-											function() {
-												var radioVal = $(
-														'input[name="select_veteran"]:checked')
-														.val();
-
-												alert(radioVal);
-												var certificate_name = $
-														.trim($(
-																'.input_certificate_name')
-																.val());
-												var certificate_score = $
-														.trim($(
-																'.input_certificate_score')
-																.val());
-												var certificate_date = $
-														.trim($(
-																'.input_certificate_date')
-																.val());
-												var certificate_code = $
-														.trim($(
-																'.input_certificate_code')
-																.val());
-
-												var applicantNo = '${apdto.applicantNo}';
-
-												var no = '${noticeInfo.recruitNo }';
-
-												alert(certificate_name
-														+ certificate_score
-														+ certificate_date
-														+ certificate_code
-														+ applicantNo);
-												if (certificate_name == "") {
-													alert("자격증명을 입력하세요.");
-													return false;
-												} else {
-													if (certificate_score == "") {
-														alert("등급(점수)을 입력해주세요.");
-														return false;
-													} else {
-														if (certificate_date == "") {
-															alert("취득일(응시일)을 입력해주세요.");
-															return false;
-														} else {
-															if (certificate_code == "") {
-																alert("자격증 번호(수험번호)를 입력해주세요.");
-																return false;
-															}
-														}
-													}
-
-												}
-
-												console.log(certificate_name
-														+ no);
-												$
-														.ajax({
-															url : '/certificate/addCertificate.do',
-															type : 'post',
-															data : {
-																"applicantNo" : applicantNo,
-																"certificateName" : certificate_name,
-
-																"certificateScore" : certificate_score,
-																"certificateDate" : certificate_date,
-
-																"certificateCode" : certificate_code
-
-															},
-															success : function(
-																	result) {
-																if (result == 1) {
-
-																	$("#certificateForm")[0]
-																			.reset();
-
-																	certificateList();
-																} else {
-																	alert("삽입에러");
-																	console
-																			.log("삽입에러");
-																	return false;
-																}
-
-															},
-															error : function() {
-																alert("에러");
-																return false;
-															}
-
-														});//add_certificate ajax종료
-
-											}); // add_certificate 클릭 종료
-
-							//활동 삭제버튼 클릭시
-							$(document)
-									.on(
-											"click",
-											".delete_activation",
-											function() {
-
-												var activationRegisterNo = $(
-														this).attr("value")
-												alert(activationRegisterNo);
-												$
-														.ajax({
-															url : '/activation/activationDelete.do',
-															type : 'post',
-															data : {
-																"activationRegisterNo" : activationRegisterNo
-															},
-															success : function(
-																	result) {
-																if (result == "success") {
-																	alert("삭제되었습니다.");
-																	activationList();
-																}
-															},
-															error : function(
-																	result) {
-																alert("에러!");
-															}
-														});
-
-											});
-
-							function activationList() { //활동내용 list
-								var applicantNo = '${apdto.applicantNo}';
-								$
-										.ajax({
-											url : '/activation/activationList.do',
-											type : 'post',
-											data : {
-												"applicantNo" : applicantNo
-											},
-											success : function(data) {
-												var outHtml = "";
-												$(".activation_list").append(
-														outHtml);
-												$
-														.each(
-																data,
-																function(index,
-																		item) {
-
-																	outHtml += "<tr><td>"
-																			+ data[index].activationName
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].activationOrgan
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].activationKind
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].activationRole
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].activationStartDate
-																			+ "<br>~<br>"
-																			+ data[index].activationStartDate
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].activationContent
-																			+ "</td>";
-
-																	outHtml += "<td><button type = \"button\" value="+data[index].activationRegisterNo+" class=\"btn-danger delete_activation\">삭제</button></td></tr>";
-
-																});
-
-												$('.activation_list').empty();
-												$(".activation_list").append(
-														outHtml);
-											},
-											error : function() {
-												alert("에러");
-											}
-										});
-							}
-
-							$(".add_activation")
-									.click(
-											function() { //활동추가 버튼 클릭시
-
-												var activation_name = $
-														.trim($(
-																".input_activation_name")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var activation_kind = $
-														.trim($(
-																"#activation_kind option:selected")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var activation_content = $
-														.trim($(
-																".input_activation_content")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var activation_role = $
-														.trim($(
-																".input_activation_role")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var activation_start_date = $
-														.trim($(
-																".input_activation_start_date")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var activation_end_date = $
-														.trim($(
-																".input_activation_end_date")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var activation_organ = $
-														.trim($(
-																".input_activation_organ")
-																.val());
-												var applicantNo = '${apdto.applicantNo}';
-
-												if (activation_name == "") {
-													alert("활동명을 입력해주세요.");
-													return false;
-
-												} else {
-													if (activation_content == "") {
-														alert("내용을 입력해주세요.");
-														return false;
-													} else {
-														if (activation_role == "") {
-															alert("본인의 역할을 입력해주세요.");
-															return false;
-														} else {
-															if (activation_start_date == ""
-																	|| activation_end_date == "") {
-																alert("활동기간을 입력해주세요.");
-																return false;
-
-															} else {
-																if (activation_start_date > activation_end_date) {
-
-																	alert("시작기간이 종료기간보다 큽니다.");
-																	return false;
-																} else {
-																	if (activation_organ == "") {
-																		alert("기관명을 입력해주세요.");
-																		return false;
-																	}
-																}
-															}
-														}
-													}
-												}
-
-												alert(activation_name
-														+ activation_kind
-														+ activation_content);
-												$
-														.ajax({
-
-															url : '/activation/addActivation.do',
-															type : 'post',
-															data : {
-																"applicantNo" : applicantNo,
-																"activationName" : activation_name,
-																"activationKind" : activation_kind,
-																"activationContent" : activation_content,
-																"activationRole" : activation_role,
-																"activationStartDate" : activation_start_date,
-																"activationEndDate" : activation_end_date,
-																"activationOrgan" : activation_organ
-															},
-															success : function(
-																	result) {
-																if (result == 1) {
-
-																	alert("추가성공");
-																	$("#activationForm")[0]
-																			.reset();
-
-																	activationList();
-																} else {
-																	alert("에러!");
-																	return false;
-																}
-															},
-															error : function(
-																	result) {
-																alert("활동내용 추가 에러");
-																return false;
-															}
-
-														}); //ajax 종료
-
-											}); //버튼 클릭 종료
-
-							//경력 삭제버튼 클릭시
-							$(document)
-									.on(
-											"click",
-											".delete_career",
-											function() {
-
-												var careerRegisterNo = $(
-														this).attr("value")
-												alert(careerRegisterNo);
-												$
-														.ajax({
-															url : '/career/careerDelete.do',
-															type : 'post',
-															data : {
-																"careerRegisterNo" : careerRegisterNo
-															},
-															success : function(
-																	result) {
-																if (result == "success") {
-																	alert("삭제되었습니다.");
-																	careerList();
-																}
-															},
-															error : function(
-																	result) {
-																alert("에러!");
-															}
-														});
-
-											});
-
-							function careerList() { //경력내용 list
-								var applicantNo = '${apdto.applicantNo}';
-								$
-										.ajax({
-											url : '/career/careerList.do',
-											type : 'post',
-											data : {
-												"applicantNo" : applicantNo
-											},
-											success : function(data) {
-												var outHtml = "";
-												$(".career_list").append(
-														outHtml);
-												$
-														.each(
-																data,
-																function(index,
-																		item) {
-
-																	outHtml += "<tr><td>"
-																			+ data[index].careerName
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].careerRole
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].careerStartDate
-																			+ "<br>~<br>"
-																			+ data[index].careerEndDate
-																			+ "</td>";
-																	outHtml += "<td>"
-																			+ data[index].careerContent
-																			+ "</td>";
-
-																	outHtml += "<td><button type = \"button\" value="+data[index].careerRegisterNo+" class=\"btn-danger delete_career\">삭제</button></td></tr>";
-
-																});
-
-												$('.career_list').empty();
-												$(".career_list").append(
-														outHtml);
-											},
-											error : function() {
-												alert("에러");
-											}
-										});
-							}
-
-							$(".add_career")
-									.click(
-											function() { //경력 추가 버튼 클릭시
-
-												var career_name = $.trim($(
-														".input_career_name")
-														.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var career_role = $.trim($(
-														".input_career_role")
-														.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var career_content = $
-														.trim($(
-																".input_career_content")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-
-												var career_start_date = $
-														.trim($(
-																".input_career_start_date")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-												var career_end_date = $
-														.trim($(
-																".input_career_end_date")
-																.val()); //공백제거한 후 input class의 입력값을 받아온다.
-
-												var applicantNo = '${apdto.applicantNo}';
-
-												alert(career_name
-
-												+ career_content
-														+ career_start_date);
-												$
-														.ajax({
-
-															url : '/career/addCareer.do',
-															type : 'post',
-															data : {
-																"applicantNo" : applicantNo,
-																"careerName" : career_name,
-																"careerRole" : career_role,
-																"careerContent" : career_content,
-																"careerStartDate" : career_start_date,
-																"careerEndDate" : career_end_date,
-
-															},
-															success : function(
-																	result) {
-																if (result == 1) {
-
-																	alert("추가성공");
-																	$("#careerForm")[0]
-																			.reset();
-
-																	careerList();
-																} else {
-																	alert("에러!");
-																	return false;
-																}
-															},
-															error : function(
-																	result) {
-																alert("경력내용 추가 에러");
-																return false;
-															}
-
-														}); //ajax 종료
-
-											}); //버튼 클릭 종료
-
-						});//ready 종료
+		//ready function 시작
+		$(document).ready(function() {
+
+			certificateList(); //시작되면 무조건 실행되는 메소드 리스트
+			activationList();//시작되면 무조건 실행되는 메소드 리스트
+			careerList();//시작되면 무조건 실행되는 메소드 리스트
+			collegeList();//시작되면 무조건 실행되는 메소드 리스트
+
+			$(".input_college_major2").prop("disabled", true);
+			$(".select_college_double_majorKind").prop("disabled", true);
+			$(".select_college_double_majorKind").val("단일전공");
+
+			//임시저장 버튼을 누르면 실행되는 메소드
+			$(".save_temp").click(function() {
+				var applicantNo = '${apdto.applicantNo}';
+				var applicantMillitary = $(".select_applicant_millitary option:selected").val();
+				var partNo = $(".select_part option:selected").val();
+				var applicantVeteran = $('input[name="veteran"]:checked').val();
+				var applicantDisability = $(".select_disability option:selected").val();
+				var applicantJobProtect = $('input[name="job_pro"]:checked').val();
+				var applicantAssay1 = $('.input_assay1').val();
+				var applicantAssay2 = $('.input_assay2').val();
+				var applicantAssay3 = $('.input_assay3').val();
+				console.log(applicantAssay1);
+				console.log(applicantAssay2);
+				console.log(applicantAssay3);
+				
+				//ajax 작성 12.03
+				$.ajax({
+					
+				});
+				
+				alert("임시저장되었습니다. 수험번호" + applicantNo + applicantMillitary + partNo + applicantVeteran+applicantJobProtect+applicantDisability);
+				
+
+				return false;
+
+			});
+
+			$(".input_double_major").change(function() { //복수전공의 콤보박스가 변할 경우 발생하는 메소드
+				var st = this.checked;
+				if (st) {
+					//alert("체크");
+					$(".input_college_major2").val("");
+					$(".input_college_major2").prop("disabled", true);
+					$(".select_college_double_majorKind").val("단일전공");
+					$(".select_college_double_majorKind").prop("disabled", true);
+
+				} else {
+
+					//alert("비체크");
+					$(".input_college_major2").prop("disabled", false);
+					$(".input_college_major2").css("background", "none");
+					$(".select_college_double_majorKind").prop("disabled", false);
+
+				}
+
+			});
+
+			//대학교 삭제 버튼 클릭시
+			$(document).on("click", ".delete_college", function() {
+
+				var collegeRegisterNo = $(this).attr("value")
+				alert(collegeRegisterNo);
+				$.ajax({
+					url : '/college/collegeDelete.do',
+					type : 'post',
+					data : {
+						"collegeRegisterNo" : collegeRegisterNo
+					},
+					success : function(result) {
+						if (result == "success") {
+							alert("삭제되었습니다.");
+							collegeList();
+						}
+					},
+					error : function(result) {
+						alert("에러!");
+					}
+				});
+
+			});
+
+			function collegeList() { //대학교 리스트 구현 메소드
+				var applicantNo = '${apdto.applicantNo}';
+
+				$.ajax({
+					url : '/college/collegeList.do',
+					type : 'post',
+					data : {
+
+						"applicantNo" : applicantNo
+
+					},
+					success : function(data) {
+
+						var outHtml = "";
+						$(".college_list").append(outHtml);
+						$.each(data, function(index, item) {
+
+							console.log(data);
+							outHtml += "<tr><td>" + data[index].collegeName + "</td>";
+							outHtml += "<td>" + data[index].collegeMajor1 + "</td>";
+							outHtml += "<td>" + data[index].collegeMajor2 + "<br>" + data[index].collegeDoubleMajorKind + "</td>";
+							outHtml += "<td>" + data[index].collegeScore + "/" + data[index].collegeScoreMax + "</td>";
+							outHtml += "<td>" + data[index].collegeDegree + "</td>";
+							outHtml += "<td>" + data[index].collegeStartDate + " ~<br> " + data[index].collegeEndDate + "</td>";
+							outHtml += "<td>" + data[index].collegeTransfer + "</td>";
+							outHtml += "<td>" + data[index].collegeGraduate + "</td>";
+							outHtml += "<td><button type = \"button\" value="+data[index].collegeRegisterNo+" class=\"btn-danger delete_college\">삭제</button></td></tr>";
+
+						});
+
+						$('.college_list').empty();
+						$(".college_list").append(outHtml);
+
+					},
+					error : function(data) {
+						alert("학교 갱신 오류");
+					}
+				});
+
+			}
+
+			$(".add_college").click(function() { //대학교 추가 버튼을 클릭하였을 때 발생하는 메소드
+				var applicantNo = '${apdto.applicantNo}';
+
+				var collegeName = $.trim($('.input_college_name').val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var collegeTransfer = $.trim($('.input_college_transfer :checked').val());
+				var collegeDegree = $.trim($('.select_college_degree option:selected').val());
+				var collegeMajor1 = $.trim($('.input_college_major1').val());
+				var collegeMajor2 = $.trim($('.input_college_major2').val());
+				var collegeDoubleMajorKind = $.trim($('.select_college_double_majorKind option:selected').val());
+				var collegeScore = $.trim($('.input_college_score').val());
+				var collegeScoreMax = $.trim($('.select_college_scoreMax option:selected').val());
+				var collegeStartDate = $.trim($('.input_college_start_date').val());
+				var collegeEndDate = $.trim($('.input_college_end_date').val());
+				var collegeGraduate = $.trim($('.select_college_graduate option:selected').val());
+
+				var scorePattern = /^\d*[.]\d{2}$/;
+				//유효성 검사 추가
+				if (collegeName == "") {
+					alert("학교명을 입력해주세요.");
+					return false;
+				} else if (collegeMajor1 == "") {
+					alert("주전공을 입력해주세요.");
+					return false;
+				} else if (collegeScore == "") {
+					alert("학점을 입력해주세요.");
+					return false;
+				} else if (isNaN(collegeScore)) {
+					alert("학점은 숫자만 입력해주세요.");
+					return false;
+				} else if (collegeScore > collegeScoreMax) {
+					alert("만점보다 클 수 없습니다.");
+					return false;
+				} else if (!scorePattern.test(collegeScore)) {
+					alert("소수점 둘쨰자리까지만 입력 가능합니다.");
+					return false;
+				} else if (collegeStartDate == "" || collegeEndDate == "") {
+					alert("재학 기간을 입력해주세요.");
+					return false;
+				} else if (collegeStartDate > collegeEndDate) {
+					alert("시작기간이 종료기간보다 큽니다.");
+					return false;
+				} else if (collegeDoubleMajorKind == "복수전공" || collegeDoubleMajorKind == "부전공") {
+					if (collegeMajor2 == "") {
+						alert("제2 전공을 입력해주세요.");
+					}
+				}
+
+				$.ajax({
+					url : '/college/addCollege.do',
+					type : 'post',
+					data : {
+
+						"applicantNo" : applicantNo,
+						"collegeName" : collegeName,
+						"collegeTransfer" : collegeTransfer,
+						"collegeDegree" : collegeDegree,
+						"collegeMajor1" : collegeMajor1,
+						"collegeMajor2" : collegeMajor2,
+						"collegeDoubleMajorKind" : collegeDoubleMajorKind,
+						"collegeScore" : collegeScore,
+						"collegeScoreMax" : collegeScoreMax,
+						"collegeStartDate" : collegeStartDate,
+						"collegeEndDate" : collegeEndDate,
+						"collegeGraduate" : collegeGraduate
+
+					},
+					success : function(result) {
+						if (result == "success") {
+							alert("추가되었습니다.");
+							collegeList();
+						} else {
+							alert("삽입에 실패하였습니다.");
+						}
+					},
+					error : function(result) {
+						alert("에러 발생");
+					}
+
+				});
+
+				return false;
+
+			});
+
+			//자격증 삭제 버튼 클릭시
+			$(document).on("click", ".delete_certificate", function() {
+
+				var certificateRegisterNo = $(this).attr("value")
+
+				$.ajax({
+					url : '/certificate/certificateDelete.do',
+					type : 'post',
+					data : {
+						"certificateRegisterNo" : certificateRegisterNo
+					},
+					success : function(result) {
+						if (result == "success") {
+							alert("삭제되었습니다.");
+							certificateList();
+						}
+					},
+					error : function(result) {
+						alert("에러!");
+					}
+				});
+
+			});
+
+			function certificateList() { //자격증 리스트 함수
+				var applicantNo = '${apdto.applicantNo}';
+				console.log(applicantNo);
+				$.ajax({
+					url : '/certificate/certificateList.do',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo
+
+					},
+					success : function(data) {
+						var outHtml = "";
+						$(".certificate_list").append(outHtml);
+						$.each(data, function(index, item) {
+
+							outHtml += "<tr><td>" + data[index].certificateName + "</td>";
+							outHtml += "<td>" + data[index].certificateScore + "</td>";
+							outHtml += "<td>" + data[index].certificateDate + "</td>";
+							outHtml += "<td>" + data[index].certificateCode + "</td>";
+							outHtml += "<td><button type = \"button\" value="+data[index].certificateRegisterNo+" class=\"btn-danger delete_certificate\">삭제</button></td></tr>";
+
+						});
+
+						$('.certificate_list').empty();
+						$(".certificate_list").append(outHtml);
+
+					},
+					error : function(data) {
+						alert("실패");
+					}
+
+				});
+
+			}
+
+			$(".add_certificate").click(
+			//자격증 추가 버튼 클릭 시
+			function() {
+				var radioVal = $('input[name="select_veteran"]:checked').val();
+
+				var certificate_name = $.trim($('.input_certificate_name').val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var certificate_score = $.trim($('.input_certificate_score').val());
+				var certificate_date = $.trim($('.input_certificate_date').val());
+				var certificate_code = $.trim($('.input_certificate_code').val());
+
+				var applicantNo = '${apdto.applicantNo}';
+
+				var no = '${noticeInfo.recruitNo }';
+
+				if (certificate_name == "") {
+					alert("자격증명을 입력하세요.");
+					return false;
+				} else if (certificate_score == "") {
+					alert("등급(점수)을 입력해주세요.");
+					return false;
+				} else if (certificate_date == "") {
+					alert("취득일(응시일)을 입력해주세요.");
+					return false;
+				} else if (certificate_code == "") {
+					alert("자격증 번호(수험번호)를 입력해주세요.");
+					return false;
+				}
+
+				console.log(certificate_name + no);
+				$.ajax({
+					url : '/certificate/addCertificate.do',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo,
+						"certificateName" : certificate_name,
+
+						"certificateScore" : certificate_score,
+						"certificateDate" : certificate_date,
+
+						"certificateCode" : certificate_code
+
+					},
+					success : function(result) {
+						if (result == "success") {
+
+							$("#certificateForm")[0].reset();
+
+							certificateList();
+						} else {
+							alert("삽입에러");
+							console.log("삽입에러");
+							return false;
+						}
+
+					},
+					error : function() {
+						alert("에러");
+						return false;
+					}
+
+				});//add_certificate ajax종료
+
+			}); // add_certificate 클릭 종료
+
+			//활동 삭제버튼 클릭시
+			$(document).on("click", ".delete_activation", function() {
+
+				var activationRegisterNo = $(this).attr("value")
+				alert(activationRegisterNo);
+				$.ajax({
+					url : '/activation/activationDelete.do',
+					type : 'post',
+					data : {
+						"activationRegisterNo" : activationRegisterNo
+					},
+					success : function(result) {
+						if (result == "success") {
+							alert("삭제되었습니다.");
+							activationList();
+						}
+					},
+					error : function(result) {
+						alert("에러!");
+					}
+				});
+
+			});
+
+			function activationList() { //활동내용 list
+				var applicantNo = '${apdto.applicantNo}';
+				$.ajax({
+					url : '/activation/activationList.do',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo
+					},
+					success : function(data) {
+						var outHtml = "";
+						$(".activation_list").append(outHtml);
+						$.each(data, function(index, item) {
+
+							outHtml += "<tr><td>" + data[index].activationName + "</td>";
+							outHtml += "<td>" + data[index].activationOrgan + "</td>";
+							outHtml += "<td>" + data[index].activationKind + "</td>";
+							outHtml += "<td>" + data[index].activationRole + "</td>";
+							outHtml += "<td>" + data[index].activationStartDate + "<br>~<br>" + data[index].activationStartDate + "</td>";
+							outHtml += "<td>" + data[index].activationContent + "</td>";
+
+							outHtml += "<td><button type = \"button\" value="+data[index].activationRegisterNo+" class=\"btn-danger delete_activation\">삭제</button></td></tr>";
+
+						});
+
+						$('.activation_list').empty();
+						$(".activation_list").append(outHtml);
+					},
+					error : function() {
+						alert("에러");
+					}
+				});
+			}
+
+			$(".add_activation").click(function() { //활동추가 버튼 클릭시
+
+				var activation_name = $.trim($(".input_activation_name").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var activation_kind = $.trim($(".select_activation_kind option:selected").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var activation_content = $.trim($(".input_activation_content").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var activation_role = $.trim($(".input_activation_role").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var activation_start_date = $.trim($(".input_activation_start_date").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var activation_end_date = $.trim($(".input_activation_end_date").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var activation_organ = $.trim($(".input_activation_organ").val());
+				var applicantNo = '${apdto.applicantNo}';
+
+				if (activation_name == "") {
+					alert("활동명을 입력해주세요.");
+					return false;
+
+				} else if (activation_content == "") {
+					alert("내용을 입력해주세요.");
+					return false;
+				} else if (activation_role == "") {
+					alert("본인의 역할을 입력해주세요.");
+					return false;
+				} else if (activation_start_date == "" || activation_end_date == "") {
+					alert("활동기간을 입력해주세요.");
+					return false;
+				} else if (activation_start_date > activation_end_date) {
+					alert("시작기간이 종료기간보다 큽니다.");
+					return false;
+				} else if (activation_organ == "") {
+					alert("기관명을 입력해주세요.");
+					return false;
+				}
+
+				alert(activation_name + activation_kind + activation_content);
+				$.ajax({
+
+					url : '/activation/addActivation.do',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo,
+						"activationName" : activation_name,
+						"activationKind" : activation_kind,
+						"activationContent" : activation_content,
+						"activationRole" : activation_role,
+						"activationStartDate" : activation_start_date,
+						"activationEndDate" : activation_end_date,
+						"activationOrgan" : activation_organ
+					},
+					success : function(result) {
+						if (result == "success") {
+
+							alert("추가성공");
+							$("#activationForm")[0].reset();
+
+							activationList();
+						} else {
+							alert("에러!");
+							return false;
+						}
+					},
+					error : function(result) {
+						alert("활동내용 추가 에러");
+						return false;
+					}
+
+				}); //ajax 종료
+
+			}); //버튼 클릭 종료
+
+			//경력 삭제버튼 클릭시
+			$(document).on("click", ".delete_career", function() {
+
+				var careerRegisterNo = $(this).attr("value")
+				alert(careerRegisterNo);
+				$.ajax({
+					url : '/career/careerDelete.do',
+					type : 'post',
+					data : {
+						"careerRegisterNo" : careerRegisterNo
+					},
+					success : function(result) {
+						if (result == "success") {
+							alert("삭제되었습니다.");
+							careerList();
+						}
+					},
+					error : function(result) {
+						alert("에러!");
+					}
+				});
+
+			});
+
+			function careerList() { //경력내용 list
+				var applicantNo = '${apdto.applicantNo}';
+				$.ajax({
+					url : '/career/careerList.do',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo
+					},
+					success : function(data) {
+						var outHtml = "";
+						$(".career_list").append(outHtml);
+						$.each(data, function(index, item) {
+
+							outHtml += "<tr><td>" + data[index].careerName + "</td>";
+							outHtml += "<td>" + data[index].careerRole + "</td>";
+							outHtml += "<td>" + data[index].careerStartDate + "<br>~<br>" + data[index].careerEndDate + "</td>";
+							outHtml += "<td>" + data[index].careerContent + "</td>";
+
+							outHtml += "<td><button type = \"button\" value="+data[index].careerRegisterNo+" class=\"btn-danger delete_career\">삭제</button></td></tr>";
+
+						});
+
+						$('.career_list').empty();
+						$(".career_list").append(outHtml);
+					},
+					error : function() {
+						alert("에러");
+					}
+				});
+			}
+
+			$(".add_career").click(function() { //경력 추가 버튼 클릭시
+
+				var career_name = $.trim($(".input_career_name").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var career_role = $.trim($(".input_career_role").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var career_content = $.trim($(".input_career_content").val()); //공백제거한 후 input class의 입력값을 받아온다.
+
+				var career_start_date = $.trim($(".input_career_start_date").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var career_end_date = $.trim($(".input_career_end_date").val()); //공백제거한 후 input class의 입력값을 받아온다.
+
+				var applicantNo = '${apdto.applicantNo}';
+
+				if (career_name == "") {
+					alert("회사명을 입력해주세요.");
+					return false;
+				} else if (career_role == "") {
+					alert("직급을 입력해주세요.");
+					return false;
+
+				} else if (career_start_date == "" || career_end_date == "") {
+					alert("재직 기간을 입력해주세요.");
+					return false;
+				} else if (career_start_date > career_end_date) {
+					alert("시작기간이 종료기간보다 큽니다.");
+					return false;
+				} else if (career_content == "") {
+					alert("업무 내용을 입력해주세요.");
+				}
+
+				$.ajax({
+
+					url : '/career/addCareer.do',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo,
+						"careerName" : career_name,
+						"careerRole" : career_role,
+						"careerContent" : career_content,
+						"careerStartDate" : career_start_date,
+						"careerEndDate" : career_end_date,
+
+					},
+					success : function(result) {
+						if (result == "success") {
+
+							alert("추가성공");
+							$("#careerForm")[0].reset();
+
+							careerList();
+						} else {
+							alert("에러!");
+							return false;
+						}
+					},
+					error : function(result) {
+						alert("경력내용 추가 에러");
+						return false;
+					}
+
+				}); //ajax 종료
+
+			}); //버튼 클릭 종료
+
+		});//ready 종료
 	</script>
 
 

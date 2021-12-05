@@ -39,8 +39,13 @@ public class MemberController {
 	public String join(@RequestParam Map <String, Object> map, Model model) throws Exception {
 
 
-	
+	try {
 		service.join(map);
+	} catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+		
 
 		return "redirect:/";
 	}

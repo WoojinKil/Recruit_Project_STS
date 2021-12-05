@@ -152,7 +152,7 @@ public class ApplyController {
 		logger.info("odtos complete" + odtos);
 		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
 		logger.info("adtos complete" + adtos);
-		
+		ApplicantDto apdto = apcntservice.viewApplicantNo(memberId, recruitNo);
 		model.addAttribute("noticeInfo", rdto);
 		model.addAttribute("applicant", mdto);
 		model.addAttribute("type", tdto);
@@ -160,6 +160,7 @@ public class ApplyController {
 		model.addAttribute("wdtos", wdtos);
 		model.addAttribute("odtos", odtos);
 		model.addAttribute("adtos",adtos);
+		model.addAttribute("apdto",apdto);
 		
 		
 		return "/apply/applyform";

@@ -78,25 +78,7 @@
 		<%@ include file="../footer.jsp"%>
 	</footer>
 	<script>
-/* 	
-$(document).ready(function(){
-			
-			$('.btn_delete').on("click",function(){
-				/* var no = '${adtos[0].recruitNo}'; 
-				var no = $(this).attr('id').value;
-				console.log(no);
-	        	var con_test = confirm("지원중인 이력서를 삭제하시겠습니까?");
-	        	if(con_test == true){
-	        		window.location.href = "/myApply/deleteApply?recruitNo="+no;
-	        	}
-	        	else if(con_test == false){
-	        	    return false;
-	        	}
-			});
-			
-		});
-	
-*/
+
 function deleteApply(recruitNo){
     var answer=confirm("지원중인 이력서를 삭제하시겠습니까?"+recruitNo);
     
