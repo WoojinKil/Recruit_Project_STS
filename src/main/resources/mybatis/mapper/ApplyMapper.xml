@@ -167,5 +167,23 @@
  
  </insert> 
  
+  <!-- 임시저장을 누르면 값들을 전부 update한다. -->
+ <update id="applicantSaveTemp">
+ 	UPDATE 
+ 	ta_recruit_applicant
+ 	SET
+ 	applicantMillitary = #{applicantMillitary}
+ 	, applyNo = #{applyNo}
+ 	, applicantVeteran = #{applicantVeteran}
+ 	, applicantDisability = #{applicantDisability}
+ 	, applicantJobProtect = #{applicantJobProtect}
+ 	, applicantAssay1 = #{applicantAssay1}
+  	, applicantAssay2 = #{applicantAssay2}
+ 	, applicantAssay3 = #{applicantAssay3} 
+ 	WHERE 
+ 	applicantNo = #{applicantNo}
+ 
+ 
+ </update>
 
   </mapper>

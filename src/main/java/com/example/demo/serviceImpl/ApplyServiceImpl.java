@@ -1,6 +1,7 @@
 package com.example.demo.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,19 +81,12 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 
-	@Override
-	public void addCertificate(int applicantNo) throws Exception {
-		// TODO Auto-generated method stub
-		mapper.addCertificate(applicantNo);
-		
-	}
 
 
 	@Override
-	public ArrayList<CertificateDto> certificateList(int applicantNo) throws Exception {
+	public void applicantSaveTemp(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.certificateList(applicantNo);
-		
+		mapper.applicantSaveTemp(map);
 	}
 
 

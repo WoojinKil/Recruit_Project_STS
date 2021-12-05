@@ -18,6 +18,7 @@
 	</nav>
 
 	<div class="container">
+
 		<form id="apply_form" method="post">
 			<div class="container">
 				<strong>인적사항</strong>
@@ -50,8 +51,8 @@
 							<div>
 
 
-								<select class="select_part" style="width: 100%">
-
+								<select class="select_applyNo" style="width: 100%">
+									<option value="">직무를 선택해주세요</option>
 									<c:forEach var="adtos" items="${adtos }" varStatus="status">
 										<option value="${adtos.applyNo }">${parts[status.index].partName }-${wdtos[status.index].workName }-${odtos[status.index].objectName }</option>
 
@@ -74,7 +75,7 @@
 
 						</select></td>
 						<th align="center">보훈 대상</th>
-						<td><label> 대상 </label> <input type="radio" name="veteran" class="select_veteran" value="대상" /><label>비대상</label> <input type="radio" name="veteran" class="select_veteran" value="비대상" checked="checked" /></td>
+						<td><label> 대상 </label> <input type="radio" name="veteran" class="select_veteran" value="대상" /><label>비대상</label> <input type="radio" name="veteran" class="select_veteran" value="비대상" /></td>
 
 					</tr>
 
@@ -569,35 +570,63 @@
 			activationList();//시작되면 무조건 실행되는 메소드 리스트
 			careerList();//시작되면 무조건 실행되는 메소드 리스트
 			collegeList();//시작되면 무조건 실행되는 메소드 리스트
-
+			$('.select_applyNo').val('${apdto.applyNo}').change();
+			$('.select_veteran').val('${apdto.applicantVeteran}').change();
+			
 			$(".input_college_major2").prop("disabled", true);
 			$(".select_college_double_majorKind").prop("disabled", true);
 			$(".select_college_double_majorKind").val("단일전공");
 
 			//임시저장 버튼을 누르면 실행되는 메소드
 			$(".save_temp").click(function() {
+				
 				var applicantNo = '${apdto.applicantNo}';
 				var applicantMillitary = $(".select_applicant_millitary option:selected").val();
-				var partNo = $(".select_part option:selected").val();
+				var applyNo = $(".select_applyNo option:selected").val();
 				var applicantVeteran = $('input[name="veteran"]:checked').val();
 				var applicantDisability = $(".select_disability option:selected").val();
 				var applicantJobProtect = $('input[name="job_pro"]:checked').val();
 				var applicantAssay1 = $('.input_assay1').val();
 				var applicantAssay2 = $('.input_assay2').val();
 				var applicantAssay3 = $('.input_assay3').val();
+				console.log(applicantVeteran);
 				console.log(applicantAssay1);
 				console.log(applicantAssay2);
 				console.log(applicantAssay3);
 				
+				alert("임시저장되었습니다. 수험번호" + applicantNo + "군필"+applicantMillitary + "지원번호 "+ applyNo +"보훈여부"+ applicantVeteran +"취업보호여부"+applicantJobProtect + "장애여부" +applicantDisability);
+				alert("자소서1내용 = " + applicantAssay1 + "자소서2내용 = " + applicantAssay2 + "자소서3 = " + applicantAssay3);
+			
 				//ajax 작성 12.03
 				$.ajax({
-					
+					url: '/apply/applicantSaveTemp',
+					type : 'post',
+					data : {
+						"applicantNo" : applicantNo,
+						"applicantMillitary" : applicantMillitary,
+						"applyNo" : applyNo,
+						"applicantVeteran" : applicantVeteran,
+						"applicantDisability" : applicantDisability,
+						"applicantJobProtect" : applicantJobProtect,
+						"applicantAssay1" :applicantAssay1,
+						"applicantAssay2" :applicantAssay2,
+						"applicantAssay3" :applicantAssay3
+						
+						
+					},
+					success : function(result){
+						if(result == 'success'){
+							alert("임시저장 되었습니다. 마감 기한 내에 반드시 최종제출 버튼은 눌러야 최종제출 됩니다.");
+						}else{
+							alert("임시저장 실패");
+						}					
+					},
+					error : function(result) {
+						alert("문제가 발생하였습니다.");
+						
+					}
 				});
-				
-				alert("임시저장되었습니다. 수험번호" + applicantNo + applicantMillitary + partNo + applicantVeteran+applicantJobProtect+applicantDisability);
-				
 
-				return false;
 
 			});
 

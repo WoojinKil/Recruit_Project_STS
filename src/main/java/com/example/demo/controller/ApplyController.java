@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dto.ApplicantDto;
 import com.example.demo.dto.ApplyDto;
@@ -224,7 +226,23 @@ public class ApplyController {
 		
 	}
     
-//수정해야할꺼	
+//수정해야할꺼
+	@PostMapping("/applicantSaveTemp")
+	@ResponseBody
+	public String applicantSaveTemp(@RequestParam Map<String, Object> map) throws Exception{
+		logger.info("try to save temp");
+		try {
+			aservice.applicantSaveTemp(map);
+			String result="success";
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			e.printStackTrace();
+			String result = "fail";
+			return result;
+		}
+	}
 
 	
 }

@@ -8,7 +8,14 @@ public class ApplicantDto {
 	private String applicantId;
 	private int recruitNo;
 	private int applyNo;
-	private ArrayList<CertificateDto> certificates;
+	private String applicantMillitary;
+	private String applicantVeteran;
+	private String applicantDisability;
+	private String applicantJobProtect;
+	private String applicantAssay1;
+	private String applicantAssay2;
+	private String applicantAssay3;
+	
 	private int finalApplyChecked;
 	private Date applyDate;
 	
@@ -37,12 +44,7 @@ public class ApplicantDto {
 		this.applyNo = applyNo;
 	}
 	
-	public ArrayList<CertificateDto> getCertificates() {
-		return certificates;
-	}
-	public void setCertificates(ArrayList<CertificateDto> certificates) {
-		this.certificates = certificates;
-	}
+
 	public int getFinalApplyChecked() {
 		return finalApplyChecked;
 	}
@@ -55,12 +57,59 @@ public class ApplicantDto {
 	public void setApplyDate(Date applyDate) {
 		this.applyDate = applyDate;
 	}
+	public String getApplicantMillitary() {
+		return applicantMillitary;
+	}
+	public void setApplicantMillitary(String applicantMillitary) {
+		this.applicantMillitary = applicantMillitary;
+	}
+	public String getApplicantVeteran() {
+		return applicantVeteran;
+	}
+	public void setApplicantVeteran(String applicantVeteran) {
+		this.applicantVeteran = applicantVeteran;
+	}
+	public String getApplicantDisability() {
+		return applicantDisability;
+	}
+	public void setApplicantDisability(String applicantDisability) {
+		this.applicantDisability = applicantDisability;
+	}
+	public String getApplicantJobProtect() {
+		return applicantJobProtect;
+	}
+	public void setApplicantJobProtect(String applicantJobProtect) {
+		this.applicantJobProtect = applicantJobProtect;
+	}
+	public String getApplicantAssay1() {
+		return applicantAssay1;
+	}
+	public void setApplicantAssay1(String applicantAssay1) {
+		this.applicantAssay1 = applicantAssay1;
+	}
+	public String getApplicantAssay2() {
+		return applicantAssay2;
+	}
+	public void setApplicantAssay2(String applicantAssay2) {
+		this.applicantAssay2 = applicantAssay2;
+	}
+	public String getApplicantAssay3() {
+		return applicantAssay3;
+	}
+	public void setApplicantAssay3(String applicantAssay3) {
+		this.applicantAssay3 = applicantAssay3;
+	}
 	@Override
 	public String toString() {
 		return "ApplicantDto [applicantNo=" + applicantNo + ", applicantId=" + applicantId + ", recruitNo=" + recruitNo
-				+ ", applyNo=" + applyNo + ", finalApplyChecked=" + finalApplyChecked + ", applyDate=" + applyDate
-				+ "]";
+				+ ", applyNo=" + applyNo + ", applicantMillitary=" + applicantMillitary + ", applicantVeteran="
+				+ applicantVeteran + ", applicantDisability=" + applicantDisability + ", applicantJobProtect="
+				+ applicantJobProtect + ", applicantAssay1=" + applicantAssay1 + ", applicantAssay2=" + applicantAssay2
+				+ ", applicantAssay3=" + applicantAssay3 + ", finalApplyChecked=" + finalApplyChecked + ", applyDate="
+				+ applyDate + "]";
 	}
+
+	
 	
 	
 	
