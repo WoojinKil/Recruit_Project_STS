@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -36,11 +37,6 @@ public interface ApplyMapper {
 	//로그인한 회원이 지원하기 버튼을 누르면 지원자의 정보가 삽입된다.
 	public void applicantInsert(int recruitNo, String memberId) throws Exception;
 	
-	
-	//비동기로 자격증을 추가버튼을 누를때마다 삽입된다.
-	public void addCertificate(int applicantNo) throws Exception;
-	
-	//비동기로 자젹증 리스트를 보여준다.
-	public ArrayList<CertificateDto> certificateList(int applicantNo) throws Exception;
-	
+	//임시저장을 누르면 지원자가 입력한 내용이 update된다.
+	public void applicantSaveTemp(Map<String, Object> map) throws Exception;
 }
