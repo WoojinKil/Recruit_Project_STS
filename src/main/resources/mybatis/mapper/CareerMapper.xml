@@ -9,6 +9,8 @@
 		careerRegisterNo
 		,applicantNo
 		, careerName
+		, careerContract
+		, careerPart
 		, careerRole
 		, careerStartDate
 		, careerEndDate
@@ -19,6 +21,8 @@
 		(SELECT IFNULL(MAX(careerRegisterNo),1) FROM ta_recruit_career C)+1
 		, #{applicantNo}
 		, #{careerName}
+		, #{careerContract}
+		, #{careerPart}
 		, #{careerRole}
 		, #{careerStartDate}
 		, #{careerEndDate}

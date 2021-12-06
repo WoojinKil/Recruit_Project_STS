@@ -90,6 +90,13 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 
+	@Override
+	public void finalApply(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.finalApply(map);
+	}
+
+
 
 
 	

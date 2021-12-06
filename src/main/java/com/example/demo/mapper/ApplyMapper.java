@@ -39,4 +39,7 @@ public interface ApplyMapper {
 	
 	//임시저장을 누르면 지원자가 입력한 내용이 update된다.
 	public void applicantSaveTemp(Map<String, Object> map) throws Exception;
+	
+	//최종제출을 누르면 지원자가 입력한 내용이 업데이트되고 finalApplyChecked가 1이된다.
+	public void finalApply(Map<String, Object> map) throws Exception;
 }

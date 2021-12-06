@@ -5,7 +5,7 @@ public class CollegeDto {
 	private int collegeRegisterNo;
 	private int applicantNo;
 	private String collegeName;
-	private String collegeTransfer;
+	private String collegeEnter;
 	private String collegeDegree;
 	private String collegeMajor1;
 	private String collegeDoubleMajorKind;
@@ -34,11 +34,11 @@ public class CollegeDto {
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
 	}
-	public String getCollegeTransfer() {
-		return collegeTransfer;
+	public String getCollegeEnter() {
+		return collegeEnter;
 	}
-	public void setCollegeTransfer(String collegeTransfer) {
-		this.collegeTransfer = collegeTransfer;
+	public void setCollegeEnter(String collegeEnter) {
+		this.collegeEnter = collegeEnter;
 	}
 	public String getCollegeDegree() {
 		return collegeDegree;
@@ -97,7 +97,7 @@ public class CollegeDto {
 	@Override
 	public String toString() {
 		return "CollegeDto [collegeRegisterNo=" + collegeRegisterNo + ", applicantNo=" + applicantNo + ", collegeName="
-				+ collegeName + ", collegeTransfer=" + collegeTransfer + ", collegeDegree=" + collegeDegree
+				+ collegeName + ", collegeTransfer=" + collegeEnter + ", collegeDegree=" + collegeDegree
 				+ ", collegeMajor1=" + collegeMajor1 + ", collegeDoubleMajorKind=" + collegeDoubleMajorKind
 				+ ", collegeMajor2=" + collegeMajor2 + ", collegeScore=" + collegeScore + ", collegeScoreMax="
 				+ collegeScoreMax + ", collegeStartDate=" + collegeStartDate + ", collegeEndDate=" + collegeEndDate

@@ -5,6 +5,8 @@ public class CareerDto {
 	private int careerRegisterNo;
 	private int applicantNo;
 	private String careerName;
+	private String careerContract;
+	private String careerPart;
 	private String careerRole;
 	private String careerStartDate;
 	private String careerEndDate;
@@ -29,6 +31,20 @@ public class CareerDto {
 	}
 	public void setCareerName(String careerName) {
 		this.careerName = careerName;
+	}
+	
+	
+	public String getCareerContract() {
+		return careerContract;
+	}
+	public void setCareerContract(String careerContract) {
+		this.careerContract = careerContract;
+	}
+	public String getCareerPart() {
+		return careerPart;
+	}
+	public void setCareerPart(String careerPart) {
+		this.careerPart = careerPart;
 	}
 	public String getCareerRole() {
 		return careerRole;

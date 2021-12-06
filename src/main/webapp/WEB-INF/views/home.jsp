@@ -27,8 +27,8 @@
 		<a href="./">지원안내</a><br>
 		<ol>
 			<li><a href="/recruitnavigate/recruitnotice">채용공고</a></li>
-			<li><a href="recruit_bbs">QnA</a></li>
-			<li><a href="/recruitnavigate/recruitnotice">공지사항</a></li>
+			
+			<li><a href="/bbs/bbsList">공지사항</a></li>
 		</ol>
 		<a href="./">나의 채용</a><br>
 		<ol>

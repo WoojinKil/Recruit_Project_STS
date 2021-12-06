@@ -24,5 +24,7 @@ public interface ApplyService {
 
 	public void applicantSaveTemp(Map<String, Object>map) throws Exception;
 	
+	public void finalApply(Map<String, Object> map) throws Exception;
+	
 	
 }

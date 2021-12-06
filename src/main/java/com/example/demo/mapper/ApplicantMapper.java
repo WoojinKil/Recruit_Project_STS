@@ -8,6 +8,6 @@ import com.example.demo.dto.ApplicantDto;
 @Repository
 public interface ApplicantMapper {
 
-	public ApplicantDto viewApplicantNo(String memberId, int recruitNo) throws Exception;
+	public ApplicantDto viewApplicant(String memberId, int recruitNo) throws Exception;
 	
 }

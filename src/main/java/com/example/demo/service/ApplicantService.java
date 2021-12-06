@@ -4,5 +4,5 @@ import com.example.demo.dto.ApplicantDto;
 
 public interface ApplicantService {
 
-	public ApplicantDto viewApplicantNo(String memberId, int recruitNo) throws Exception;
+	public ApplicantDto viewApplicant(String memberId, int recruitNo) throws Exception;
 }

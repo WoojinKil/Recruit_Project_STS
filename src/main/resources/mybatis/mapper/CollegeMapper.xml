@@ -11,7 +11,7 @@
  		collegeRegisterNo
  		, applicantNo
  		, collegeName
- 		, collegeTransfer
+ 		, collegeEnter
  		, collegeDegree
  		, collegeMajor1
  		, collegeDoubleMajorKind
@@ -27,7 +27,7 @@
  		(SELECT IFNULL(MAX(collegeRegisterNo),1) FROM ta_recruit_college C)+1
  		, #{applicantNo}
  		, #{collegeName}
- 		, #{collegeTransfer}
+ 		, #{collegeEnter}
  		, #{collegeDegree}
  		, #{collegeMajor1}
  		, #{collegeDoubleMajorKind}

@@ -63,8 +63,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDto memberView(String memberId) throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println("멤버조회 시스템 들어옴");
+		
 		return mapper.memberView(memberId);
+	}
+
+
+
+
+
+	@Override
+	public MemberDto memberFindPass(MemberDto member) throws Exception {
+		// TODO Auto-generated method stub
+		
+		
+		return mapper.memberFindPass(member);
 	}
 
 

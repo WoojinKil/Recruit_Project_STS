@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dto.MemberDto;
@@ -113,8 +114,28 @@ public class MemberController {
     }
     
 
+    @RequestMapping("/findpassform")
+    public String findPassForm() {
+    	return "/member/findpassform";
+    }
 
 
+    @RequestMapping("/findPass")
+    public String findPass(MemberDto member, Model model) throws Exception {
+    	
+    	
+    	logger.info(member.toString());
+    	MemberDto member1 = service.memberFindPass(member);
+    	if(member1 == null) {
+    		return "redirect:/member/findpassform";
+    	}
+    	model.addAttribute("member",member1);
+    	
+    	
+    	return "/member/viewpassform";
+    	
+    }
+    
 
 }
 

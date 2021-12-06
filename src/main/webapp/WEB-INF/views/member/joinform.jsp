@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입 화면 샘플 - Bootstrap</title>
+<title>회원가입</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous">
 	
 </script>
@@ -48,7 +48,7 @@
 							<span>
 								<span class="final_memberBirth_ck"><a id="essentionalred">양식에 맞게 생년월일을 입력해주세요.</a></span>
 							</span>
-							<input type="text" class="form-control input_memberBirth" name="memberBirth" placeholder="19951102" value="">
+							<input type="date" class="form-control input_memberBirth" name="memberBirth" >
 						</div>
 					</div>
 
@@ -359,7 +359,7 @@
 			var birth = $('.input_memberBirth').val();
 
 			/* 생년월일의 유효성검사 */
-			if (birth == "" || isNaN(birth) || birth.length != 8) {
+			if (birth == "" ){
 
 				$('.final_memberBirth_ck').css('display', 'inline-block');
 				birthCheck = false; //비어있으면 "정확한 생년월일을 입력해주세요"

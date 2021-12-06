@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ApplicantMapper">
-	<select id="viewApplicantNo" resultType="com.example.demo.dto.ApplicantDto">
+	<select id="viewApplicant" resultType="com.example.demo.dto.ApplicantDto">
 		select * 
 		from ta_recruit_applicant 
 		where 

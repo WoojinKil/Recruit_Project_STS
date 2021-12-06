@@ -6,7 +6,7 @@
 	<select id="myApplyTitleList" resultType="com.example.demo.dto.RecruitNoticeDto">
 	
 	SELECT 
-	ta_recruit_notice.recruitNo,ta_recruit_notice.recruitName 
+	distinct ta_recruit_notice.recruitNo,ta_recruit_notice.recruitName 
 	FROM 
 	ta_recruit_applicant,ta_recruit_notice 
 	where ta_recruit_applicant.applicantId= #{memberId}
@@ -41,7 +41,7 @@
 	
 	</select>
 	
-	
+	<!-- 현재 이력서를 삭제하는 delete문 -->
 	<delete id="myDeleteApply">
 		delete from ta_recruit_applicant  where applicantId= #{memberId} and recruitNo =#{recruitNo}
 	

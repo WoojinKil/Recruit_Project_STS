@@ -13,4 +13,6 @@ public interface MemberMapper {
 	public int idCheck(String memberId);
 	public MemberDto memberLogin(MemberDto dto);
 	public MemberDto memberView(String memberId);
+	public MemberDto memberFindPass(MemberDto dto);
+	
 }

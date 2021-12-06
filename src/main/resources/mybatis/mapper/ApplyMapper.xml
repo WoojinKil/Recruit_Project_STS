@@ -76,7 +76,7 @@
 		,ta_recruit_part
 
 		where
-		ta_recruit_apply.recruitNo =2
+		ta_recruit_apply.recruitNo = #{recruitNo}
 		and ta_recruit_part.partNo=ta_recruit_apply.partNo
   	
  
@@ -185,5 +185,28 @@
  
  
  </update>
+ 
+   <!-- 최종제출을 누르면 값들을 전부 update되고 finalApplyCheckedrk가 0에서 1이 된다. -->
+ <update id="finalApply">
+ 	UPDATE 
+ 	ta_recruit_applicant
+ 	SET
+ 	applicantMillitary = #{applicantMillitary}
+ 	, applyNo = #{applyNo}
+ 	, applicantVeteran = #{applicantVeteran}
+ 	, applicantDisability = #{applicantDisability}
+ 	, applicantJobProtect = #{applicantJobProtect}
+ 	, applicantAssay1 = #{applicantAssay1}
+  	, applicantAssay2 = #{applicantAssay2}
+ 	, applicantAssay3 = #{applicantAssay3} 
+ 	, finalApplyChecked = 1
+ 	WHERE 
+ 	applicantNo = #{applicantNo}
+ 
+ 
+ </update>
+ 
+ 
+ 
 
   </mapper>

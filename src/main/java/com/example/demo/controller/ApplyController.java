@@ -154,7 +154,7 @@ public class ApplyController {
 		logger.info("odtos complete" + odtos);
 		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
 		logger.info("adtos complete" + adtos);
-		ApplicantDto apdto = apcntservice.viewApplicantNo(memberId, recruitNo);
+		ApplicantDto apdto = apcntservice.viewApplicant(memberId, recruitNo);
 		model.addAttribute("noticeInfo", rdto);
 		model.addAttribute("applicant", mdto);
 		model.addAttribute("type", tdto);
@@ -209,7 +209,7 @@ public class ApplyController {
 		logger.info("odtos complete" + odtos);
 		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
 		logger.info("adtos complete" + adtos);
-		ApplicantDto apdto = apcntservice.viewApplicantNo(memberId, recruitNo);
+		ApplicantDto apdto = apcntservice.viewApplicant(memberId, recruitNo);
 		logger.info("apdto complete" + apdto);
 		model.addAttribute("noticeInfo", rdto);
 		model.addAttribute("applicant", mdto);
@@ -227,7 +227,7 @@ public class ApplyController {
 	}
     
 //수정해야할꺼
-	@PostMapping("/applicantSaveTemp")
+	@PostMapping("/applicantSaveTemp.do")
 	@ResponseBody
 	public String applicantSaveTemp(@RequestParam Map<String, Object> map) throws Exception{
 		logger.info("try to save temp");
@@ -244,5 +244,29 @@ public class ApplyController {
 		}
 	}
 
+	
+	@PostMapping("/finalApply.do")
+	@ResponseBody
+	public String finalApply(@RequestParam Map<String, Object> map) throws Exception{
+		
+		try {
+			aservice.finalApply(map);
+			String result = "success";
+			return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+			return null;
+		}
+		
+		
+	}
+	@RequestMapping("/applyresult")
+	public String applyResult(@RequestParam int applicantNo, Model model) throws Exception{
+		model.addAttribute("applicantNo",applicantNo);
+		
+		return "/apply/applyresult";
+	}
 	
 }

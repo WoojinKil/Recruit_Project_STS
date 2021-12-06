@@ -13,9 +13,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 	ApplicantMapper mapper;
 	
 	@Override
-	public ApplicantDto viewApplicantNo(String memberId, int recruitNo) throws Exception {
+	public ApplicantDto viewApplicant(String memberId, int recruitNo) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.viewApplicantNo(memberId, recruitNo);
+		return mapper.viewApplicant(memberId, recruitNo);
 		
 	}
 

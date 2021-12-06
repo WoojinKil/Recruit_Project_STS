@@ -6,6 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>입사지원 페이지</title>
+
+<% 
+
+response.setHeader("Cache-Control","no-store"); 
+
+response.setHeader("Pragma","no-cache"); 
+
+response.setDateHeader("Expires",0); 
+
+if (request.getProtocol().equals("HTTP/1.1"))
+
+        response.setHeader("Cache-Control", "no-cache");
+
+%> 
+
 </head>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
@@ -19,6 +34,9 @@
 
 	<div class="container">
 
+
+
+		<!-- 인적사항 form -->
 		<form id="apply_form" method="post">
 			<div class="container">
 				<strong>인적사항</strong>
@@ -75,7 +93,12 @@
 
 						</select></td>
 						<th align="center">보훈 대상</th>
-						<td><label> 대상 </label> <input type="radio" name="veteran" class="select_veteran" value="대상" /><label>비대상</label> <input type="radio" name="veteran" class="select_veteran" value="비대상" /></td>
+						<td><select class="select_veteran">
+								<option value="비대상">비대상</option>
+								<option value="대상">대상</option>
+
+
+						</select></td>
 
 					</tr>
 
@@ -90,7 +113,12 @@
 
 						</select></td>
 						<th align="center">취업 보호 대상</th>
-						<td><label> 대상 <input type="radio"  name="job_pro" class="select_job_pro" value="대상" /></label> <label>비대상</label> <input type="radio" name="job_pro" class="select_job_pro" value="비대상" checked="checked" /></td>
+						<td><select class="select_job_pro">
+								<option value="비대상">비대상</option>
+								<option value="대상">대상</option>
+
+
+						</select></td>
 
 					</tr>
 
@@ -133,7 +161,7 @@
 
 
 
-		<!-- 대학교(2,3,4년제) / 대학원 form -->
+<!-- 대학교(2,3,4년제) / 대학원 form -->
 		<form method="post" id=collegeForm>
 			<div class="container">
 				<strong>대학교/대학원 정보(2, 3년제 포함)</strong>
@@ -152,7 +180,7 @@
 
 					<tr>
 						<th align="center">대학명</th>
-						<td><input name="college_name" style="width: 50%" class="input_college_name" type="text"> 편입 여부 <label>Y</label><input name="college_transfer" type="radio" class="input_college_transfer" value="Y"> <label>N</label><input name="college_transfer" type="radio" class="input_college_transfer" value="N" checked="checked"></td>
+						<td><input name="college_name" style="width: 50%" class="input_college_name" type="text"></td>
 						<th align="center">학위</th>
 						<td><select class="select_college_degree" style="width: 50%">
 
@@ -179,21 +207,25 @@
 						<th style="width: 10%" align="center">학점<br></th>
 						<td><input style="width: 100px" name="college_score" class="input_college_score" type="text" step="0.01" maxlength="5"> / <select class="select_college_scoreMax">
 								<option value="4.5">4.5점</option>
+								<option value="4.3">4.3점</option>
 								<option value="4.0">4.0점</option>
 								<option value="100">100점</option>
 
 
-						</select> <br>
-						<span style="font-size: 1em; color: red">소수 둘째 자리에서 반올림</span></td>
+						</select> <br> <span style="font-size: 1em; color: red">소수 둘째 자리에서 반올림</span></td>
 					</tr>
 
 
 					<tr>
 						<th align="center">재학 기간</th>
-						<td><input name="college_start_date" class="input_college_start_date" type="month"> ~ <input name="college_end_date" class="input_college_end_date" type="month"></td>
+						<td colspan="4"><select class=select_college_enter>
+								<option value="입학">입학</option>
+								<option value="편입학">편입학</option>
+								<option value="재입학">재입학</option>
+								<option value="기타">기타</option>
 
-						<th align="center">졸업여부</th>
-						<td><select class=select_college_graduate>
+
+						</select> <input name="college_start_date" class="input_college_start_date" type="month"> ~ <input name="college_end_date" class="input_college_end_date" type="month"> <select class=select_college_graduate>
 								<option value="졸업">졸업</option>
 								<option value="졸업예정">졸업예정</option>
 								<option value="수료">수료</option>
@@ -218,8 +250,8 @@
 										<th style="background-color: #eeeeee; text-align: center;">다중전공</th>
 										<th style="background-color: #eeeeee; text-align: center;">학점</th>
 										<th style="background-color: #eeeeee; text-align: center;">학위</th>
+										<th style="background-color: #eeeeee; text-align: center;">입학</th>
 										<th style="background-color: #eeeeee; text-align: center;">재학기간</th>
-										<th style="background-color: #eeeeee; text-align: center;">편입</th>
 										<th style="background-color: #eeeeee; text-align: center;">재적</th>
 
 										<th style="background-color: #eeeeee; text-align: center;">삭제</th>
@@ -247,16 +279,11 @@
 
 		</form>
 
-
-
-
-
-
-
-
-
-
-		<!-- 자격증 form -->
+		
+		
+		
+		
+<!-- 자격증 form -->
 		<form method="post" id=certificateForm>
 			<div class="container">
 				<strong>자격증, 어학 정보</strong>
@@ -415,7 +442,7 @@
 		<!-- 경력 사항 -->
 		<form method="post" id=careerForm>
 			<div class="container">
-				<strong>경력 사항</strong>
+				<strong>경력 사항(아르바이트 제외)</strong>
 			</div>
 
 			<table border="1" class="table table-striped" height="100" style="text-align: center;">
@@ -432,11 +459,22 @@
 					<tr>
 						<th align="center">회사명</th>
 						<td><input name="career_name" style="width: 50%" class="input_career_name" type="text"></td>
+						<th align="center">계약형태</th>
+						<td><select class="select_career_contract">
+								<option value="정규직">정규직</option>
+								<option value="계약직">계약직</option>
+								<option value="기타">기타</option>
+						</select></td>
+
+					</tr>
+
+					<tr>
+						<th align="center">사업부</th>
+						<td><input name="career_part" style="width: 50%" class="input_career_part" type="text"></td>
 						<th align="center">직급</th>
 						<td><input name="career_role" style="width: 50%" class="input_career_role" type="text"></td>
 
 					</tr>
-
 					<tr>
 						<th align="center">근무 기간</th>
 						<td><input name="career_start_date" class="input_career_start_date" type="month"> ~ <input name="career_end_date" class="input_career_end_date" type="month"></td>
@@ -454,6 +492,8 @@
 									<tr>
 
 										<th style="background-color: #eeeeee; text-align: center;">회사명</th>
+										<th style="background-color: #eeeeee; text-align: center;">계약</th>
+										<th style="background-color: #eeeeee; text-align: center;">사업부</th>
 										<th style="background-color: #eeeeee; text-align: center;">직급</th>
 										<th style="background-color: #eeeeee; text-align: center;">근무기간</th>
 										<th style="background-color: #eeeeee; text-align: center;">업무내용</th>
@@ -496,7 +536,7 @@
 				</tr>
 				<tr>
 					<th style="text-align: center;">자</th>
-					<th><textarea class="input_assay1" rows="10" cols="100%" maxlength="700"></textarea></th>
+					<th><textarea class="input_assay1" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay1 }</textarea></th>
 
 				</tr>
 
@@ -511,7 +551,7 @@
 				</tr>
 				<tr>
 					<th style="text-align: center;">자</th>
-					<th><textarea class="input_assay2" rows="10" cols="100%" maxlength="700"></textarea></th>
+					<th><textarea class="input_assay2" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay2 }</textarea></th>
 
 				</tr>
 
@@ -529,7 +569,7 @@
 				</tr>
 				<tr>
 					<th style="text-align: center;">자</th>
-					<th><textarea class="input_assay3" rows="10" cols="100%" maxlength="700"></textarea></th>
+					<th><textarea class="input_assay3" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay3 }</textarea></th>
 
 				</tr>
 
@@ -544,10 +584,16 @@
 
 
 
-
+	
 		<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">임시저장</button>
-		<button style="margin: auto; width: 40%;" type="button" class="btn btn-danger">최종제출</button>
-
+		
+		 <c:if test="${apdto.finalApplyChecked == 0 }">
+			<button style="margin: auto; width: 40%;" type="button" class="btn btn-danger finalApply" >최종제출</button>
+	
+		</c:if>
+		
+	
+	
 		<div class="row">
 
 			<a href="/recruitnavigate/recruitnotice" class="btn btn-primary">목록</a>
@@ -563,6 +609,7 @@
 
 
 	<script>
+
 		//ready function 시작
 		$(document).ready(function() {
 
@@ -571,35 +618,106 @@
 			careerList();//시작되면 무조건 실행되는 메소드 리스트
 			collegeList();//시작되면 무조건 실행되는 메소드 리스트
 			$('.select_applyNo').val('${apdto.applyNo}').change();
-			$('.select_veteran').val('${apdto.applicantVeteran}').change();
-			
+			$(".select_veteran").val('${apdto.applicantVeteran}').change();
+			$(".select_job_pro").val('${apdto.applicantJobProtect}').change();
+			$(".select_applicant_millitary").val('${apdto.applicantMillitary}').change();
+
 			$(".input_college_major2").prop("disabled", true);
 			$(".select_college_double_majorKind").prop("disabled", true);
 			$(".select_college_double_majorKind").val("단일전공");
 
-			//임시저장 버튼을 누르면 실행되는 메소드
-			$(".save_temp").click(function() {
-				
+			
+			
+			
+			//최종제출 버튼을 누르면 실행되는 메소드
+			$(".finalApply").click(function(){
+			
+
 				var applicantNo = '${apdto.applicantNo}';
 				var applicantMillitary = $(".select_applicant_millitary option:selected").val();
 				var applyNo = $(".select_applyNo option:selected").val();
-				var applicantVeteran = $('input[name="veteran"]:checked').val();
+				var applicantVeteran = $('.select_veteran option:selected').val();
 				var applicantDisability = $(".select_disability option:selected").val();
-				var applicantJobProtect = $('input[name="job_pro"]:checked').val();
+				var applicantJobProtect = $('.select_job_pro option:selected').val();
 				var applicantAssay1 = $('.input_assay1').val();
 				var applicantAssay2 = $('.input_assay2').val();
 				var applicantAssay3 = $('.input_assay3').val();
-				console.log(applicantVeteran);
+				console.log("보훈대상" + applicantVeteran);
+				console.log("취업보호" + applicantJobProtect);
+
 				console.log(applicantAssay1);
 				console.log(applicantAssay2);
 				console.log(applicantAssay3);
+	        	var con_test = confirm("최종지원을 하시겠습니까?");
+	        	if(con_test == true){
+					//ajax 작성 12.03
+					$.ajax({
+						url : '/apply/finalApply.do',
+						type : 'post',
+						data : {
+							"applicantNo" : applicantNo,
+							"applicantMillitary" : applicantMillitary,
+							"applyNo" : applyNo,
+							"applicantVeteran" : applicantVeteran,
+							"applicantDisability" : applicantDisability,
+							"applicantJobProtect" : applicantJobProtect,
+							"applicantAssay1" : applicantAssay1,
+							"applicantAssay2" : applicantAssay2,
+							"applicantAssay3" : applicantAssay3
+
+						},
+						success : function(result) {
+							if (result == 'success') {
+								alert("최종제출 되었습니다. 마감 시간 전까지 수정 및 삭제가 가능합니다.");
+								window.location.href = "/apply/applyresult?applicantNo="+applicantNo;								
+							} else {
+								alert("최종제출 실패");
+							}
+						},
+						error : function(result) {
+							alert("문제가 발생하였습니다.");
+
+						}
+					}); //ajax종료
+	        		
+	        		
+	        		
+	        	}
+	        	else if(con_test == false){
+	        	    return false;
+	        	}
+
 				
-				alert("임시저장되었습니다. 수험번호" + applicantNo + "군필"+applicantMillitary + "지원번호 "+ applyNo +"보훈여부"+ applicantVeteran +"취업보호여부"+applicantJobProtect + "장애여부" +applicantDisability);
-				alert("자소서1내용 = " + applicantAssay1 + "자소서2내용 = " + applicantAssay2 + "자소서3 = " + applicantAssay3);
+				
+				
+			});
 			
+			
+			//임시저장 버튼을 누르면 실행되는 메소드
+			$(".save_temp").click(function() {
+
+				var applicantNo = '${apdto.applicantNo}';
+				var applicantMillitary = $(".select_applicant_millitary option:selected").val();
+				var applyNo = $(".select_applyNo option:selected").val();
+				var applicantVeteran = $('.select_veteran option:selected').val();
+				var applicantDisability = $(".select_disability option:selected").val();
+				var applicantJobProtect = $('.select_job_pro option:selected').val();
+				var applicantAssay1 = $('.input_assay1').val();
+				var applicantAssay2 = $('.input_assay2').val();
+				var applicantAssay3 = $('.input_assay3').val();
+				console.log("보훈대상" + applicantVeteran);
+				console.log("취업보호" + applicantJobProtect);
+
+				console.log(applicantAssay1);
+				console.log(applicantAssay2);
+				console.log(applicantAssay3);
+
+				alert("임시저장되었습니다. 수험번호" + applicantNo + "군필" + applicantMillitary + "지원번호 " + applyNo + "보훈여부" + applicantVeteran + "취업보호여부" + applicantJobProtect + "장애여부" + applicantDisability);
+				alert("자소서1내용 = " + applicantAssay1 + "자소서2내용 = " + applicantAssay2 + "자소서3 = " + applicantAssay3);
+
 				//ajax 작성 12.03
 				$.ajax({
-					url: '/apply/applicantSaveTemp',
+					url : '/apply/applicantSaveTemp.do',
 					type : 'post',
 					data : {
 						"applicantNo" : applicantNo,
@@ -608,25 +726,23 @@
 						"applicantVeteran" : applicantVeteran,
 						"applicantDisability" : applicantDisability,
 						"applicantJobProtect" : applicantJobProtect,
-						"applicantAssay1" :applicantAssay1,
-						"applicantAssay2" :applicantAssay2,
-						"applicantAssay3" :applicantAssay3
-						
-						
+						"applicantAssay1" : applicantAssay1,
+						"applicantAssay2" : applicantAssay2,
+						"applicantAssay3" : applicantAssay3
+
 					},
-					success : function(result){
-						if(result == 'success'){
+					success : function(result) {
+						if (result == 'success') {
 							alert("임시저장 되었습니다. 마감 기한 내에 반드시 최종제출 버튼은 눌러야 최종제출 됩니다.");
-						}else{
+						} else {
 							alert("임시저장 실패");
-						}					
+						}
 					},
 					error : function(result) {
 						alert("문제가 발생하였습니다.");
-						
+
 					}
 				});
-
 
 			});
 
@@ -697,8 +813,10 @@
 							outHtml += "<td>" + data[index].collegeMajor2 + "<br>" + data[index].collegeDoubleMajorKind + "</td>";
 							outHtml += "<td>" + data[index].collegeScore + "/" + data[index].collegeScoreMax + "</td>";
 							outHtml += "<td>" + data[index].collegeDegree + "</td>";
+							outHtml += "<td>" + data[index].collegeEnter + "</td>";
+
 							outHtml += "<td>" + data[index].collegeStartDate + " ~<br> " + data[index].collegeEndDate + "</td>";
-							outHtml += "<td>" + data[index].collegeTransfer + "</td>";
+
 							outHtml += "<td>" + data[index].collegeGraduate + "</td>";
 							outHtml += "<td><button type = \"button\" value="+data[index].collegeRegisterNo+" class=\"btn-danger delete_college\">삭제</button></td></tr>";
 
@@ -719,7 +837,7 @@
 				var applicantNo = '${apdto.applicantNo}';
 
 				var collegeName = $.trim($('.input_college_name').val()); //공백제거한 후 input class의 입력값을 받아온다.
-				var collegeTransfer = $.trim($('.input_college_transfer :checked').val());
+				var collegeEnter = $.trim($('.select_college_enter option:selected').val());
 				var collegeDegree = $.trim($('.select_college_degree option:selected').val());
 				var collegeMajor1 = $.trim($('.input_college_major1').val());
 				var collegeMajor2 = $.trim($('.input_college_major2').val());
@@ -769,7 +887,7 @@
 
 						"applicantNo" : applicantNo,
 						"collegeName" : collegeName,
-						"collegeTransfer" : collegeTransfer,
+						"collegeEnter" : collegeEnter,
 						"collegeDegree" : collegeDegree,
 						"collegeMajor1" : collegeMajor1,
 						"collegeMajor2" : collegeMajor2,
@@ -861,8 +979,7 @@
 			$(".add_certificate").click(
 			//자격증 추가 버튼 클릭 시
 			function() {
-				var radioVal = $('input[name="select_veteran"]:checked').val();
-
+				
 				var certificate_name = $.trim($('.input_certificate_name').val()); //공백제거한 후 input class의 입력값을 받아온다.
 				var certificate_score = $.trim($('.input_certificate_score').val());
 				var certificate_date = $.trim($('.input_certificate_date').val());
@@ -1085,6 +1202,8 @@
 						$.each(data, function(index, item) {
 
 							outHtml += "<tr><td>" + data[index].careerName + "</td>";
+							outHtml += "<td>" + data[index].careerContract + "</td>";
+							outHtml += "<td>" + data[index].careerPart + "</td>";
 							outHtml += "<td>" + data[index].careerRole + "</td>";
 							outHtml += "<td>" + data[index].careerStartDate + "<br>~<br>" + data[index].careerEndDate + "</td>";
 							outHtml += "<td>" + data[index].careerContent + "</td>";
@@ -1105,6 +1224,9 @@
 			$(".add_career").click(function() { //경력 추가 버튼 클릭시
 
 				var career_name = $.trim($(".input_career_name").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var career_part = $.trim($(".input_career_part").val()); //공백제거한 후 input class의 입력값을 받아온다.
+				var career_contract = $.trim($(".select_career_contract option:selected").val()); //공백제거한 후 select class의 입력값을 받아온다.
+
 				var career_role = $.trim($(".input_career_role").val()); //공백제거한 후 input class의 입력값을 받아온다.
 				var career_content = $.trim($(".input_career_content").val()); //공백제거한 후 input class의 입력값을 받아온다.
 
@@ -1137,6 +1259,8 @@
 					data : {
 						"applicantNo" : applicantNo,
 						"careerName" : career_name,
+						"careerContract" : career_contract,
+						"careerPart" : career_part,
 						"careerRole" : career_role,
 						"careerContent" : career_content,
 						"careerStartDate" : career_start_date,

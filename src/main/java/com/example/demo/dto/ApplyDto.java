@@ -7,6 +7,7 @@ public class ApplyDto {
 	private String partNo;
 	private String objectNo;
 	private String workNo;
+	private String applyContent;
 	
 	public int getApplyNo() {
 		return applyNo;
@@ -38,7 +39,15 @@ public class ApplyDto {
 	public void setWorkNo(String workNo) {
 		this.workNo = workNo;
 	}
+	
+	
 
+	public String getApplyContent() {
+		return applyContent;
+	}
+	public void setApplyContent(String applyContent) {
+		this.applyContent = applyContent;
+	}
 	@Override
 	public String toString() {
 		return "ApplyDto [applyNo=" + applyNo + ", recruitNo=" + recruitNo + ", partNo=" + partNo + ", objectNo="

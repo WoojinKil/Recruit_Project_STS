@@ -8,8 +8,35 @@ public class MemberDto {
 	private String memberPw;
 	private String memberPwConfirm;
 	private String memberRoot;
-	private String memberPhoneNumber;
+	private String memberPhoneNumber1;
+	private String memberPhoneNumber2;
+	private String memberPhoneNumber3;
 	private int memberIsAdmin;
+
+	
+	public String getMemberPhoneNumber1() {
+		return memberPhoneNumber1;
+	}
+
+	public void setMemberPhoneNumber1(String memberPhoneNumber1) {
+		this.memberPhoneNumber1 = memberPhoneNumber1;
+	}
+
+	public String getMemberPhoneNumber2() {
+		return memberPhoneNumber2;
+	}
+
+	public void setMemberPhoneNumber2(String memberPhoneNumber2) {
+		this.memberPhoneNumber2 = memberPhoneNumber2;
+	}
+
+	public String getMemberPhoneNumber3() {
+		return memberPhoneNumber3;
+	}
+
+	public void setMemberPhoneNumber3(String memberPhoneNumber3) {
+		this.memberPhoneNumber3 = memberPhoneNumber3;
+	}
 
 	public String getMemberPw() {
 		return memberPw;
@@ -35,13 +62,6 @@ public class MemberDto {
 		this.memberRoot = memberRoot;
 	}
 
-	public String getMemberPhoneNumber() {
-		return memberPhoneNumber;
-	}
-
-	public void setMemberPhoneNumber(String memberPhoneNumber) {
-		this.memberPhoneNumber = memberPhoneNumber;
-	}
 
 	public String getMemberName() {
 		return memberName;
@@ -75,12 +95,7 @@ public class MemberDto {
 		this.memberIsAdmin = memberIsAdmin;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "MemberDto [memberName=" + memberName + ", memberBirth=" + memberBirth + ", memberId=" + memberId
-//				+ ", memberPw=" + memberPw + ", memberPwConfirm=" + memberPwConfirm + ", memberRoot=" + memberRoot
-//				+ ", memberPhoneNumber=" + memberPhoneNumber + "]";
-//	}
+
 
 	
 

@@ -67,5 +67,27 @@
 		MEMBERID = #{memberId} 
 	
 	</select>
+	
+	<select id ="memberFindPass" resultType="com.example.demo.dto.MemberDto">
+		SELECT
+		*
+		FROM
+		TA_RECRUIT_MEMBER
+		WHERE
+		MEMBERID = #{memberId}
+		AND
+		MEMBERNAME = #{memberName}
+		AND
+		MEMBERBIRTH = #{memberBirth}
+		AND
+		MEMBERPHONENUMBER1 = #{memberPhoneNumber1}
+		AND
+		MEMBERPHONENUMBER2 = #{memberPhoneNumber2}
+		AND
+		MEMBERPHONENUMBER3 = #{memberPhoneNumber3}
+		
+	
+	</select>
+		
 
 </mapper>

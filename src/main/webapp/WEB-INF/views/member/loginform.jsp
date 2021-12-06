@@ -81,10 +81,10 @@ body {
 				</div>
 				<div class="row">
 					<div class="col-md-3 mb-4">
-						<button class="btn btn-primary btn-lg btn-block" onclick="location.href='member/joinform'" >회원가입</button>
+						<button class="btn btn-primary btn-lg btn-block" onclick="location.href='/member/joinform'" >회원가입</button>
 					</div>
 					<div class="col-md-3 mb-4">
-						<button class="btn btn-secondary btn-lg btn-info" onclick="location.href='/joinform'" >비밀번호 찾기</button>
+						<button class="btn btn-secondary btn-lg btn-info" onclick="location.href='/member/findpassform'" >비밀번호 찾기</button>
 	
 					</div>
 				
