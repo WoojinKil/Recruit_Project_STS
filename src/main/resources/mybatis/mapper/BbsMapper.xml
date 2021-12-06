@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.BbsMapper">
+
+<!-- 공지사항 전체 보기 -->
+	<select id="bbsList" resultType="com.example.demo.dto.BbsDto">
+
+		SELECT *
+		FROM TA_RECRUIT_BBS
+
+	</select>
+<!-- 공지사항 상세보기 -->
+	<select id="bbsView" resultType="com.example.demo.dto.BbsDto">
+		SELECT *
+		FROM TA_RECRUIT_BBS
+		WHERE BBSNO = #{bbsNo};
+	
+	
+	</select>
+
+	
+</mapper>
