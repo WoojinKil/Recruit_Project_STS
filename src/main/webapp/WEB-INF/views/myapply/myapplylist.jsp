@@ -1,7 +1,10 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,6 +40,7 @@
 						
 						<th style="background-color: #eeeeee; text-align: center;">채용유형</th>
 						<th style="background-color: #eeeeee; text-align: center;">공고명</th>
+						<th style="background-color: #eeeeee; text-align: center;">현재시간/마감시간</th>
 						
 						<th style="background-color: #eeeeee; text-align: center;">진행상태</th>
 						<th style="background-color: #eeeeee; text-align: center;">삭제/수정</th>
@@ -48,18 +52,51 @@
 					<tr>
 						
 						<td>${tdtos[status.index].typeName }</td>
-						<td>${rdtos.recruitName } ==== ${adtos[status.index].recruitNo}
+						<td>${rdtos.recruitName }
 						</td>
 						
+						<td>
+						<% Date now=  new Date(); 
+						SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						
+						%>
+					
 
+							<fmt:parseDate var="now" value="<%= sf.format(now) %>" pattern="yyyy-MM-dd HH:mm:ss" />
+							<fmt:parseDate var="recruitEndDateTime" value="${rdtos.recruitEndDateTime }" pattern="yyyy-MM-dd HH:mm:ss" />
+
+							 <c:if test= "${now > recruitEndDateTime}">
+								마감시간이 지났습니다.
+								
+							</c:if> 
+							
+						</td>
 
 						<td>
- 							<c:if test="${adtos[status.index].finalApplyChecked ==0 }">미제출</c:if>
-							<c:if test="${adtos[status.index].finalApplyChecked ==1 }">제출완료</c:if> 
+						
+							 <c:if test= "${now > recruitEndDateTime}">
+								심사 중
+								
+							</c:if> 
+							
+							<c:if test= "${now < recruitEndDateTime}">
+								<c:if test="${adtos[status.index].finalApplyChecked ==0 }">미제출</c:if>
+								<c:if test="${adtos[status.index].finalApplyChecked ==1 }">제출완료</c:if>
+							 
+							</c:if> 
+							
+ 							
 						</td>
 						<td>
-							<button onclick = "deleteApply(${adtos[status.index].recruitNo})" class="btn-danger">삭제</button>
-							<button onclick= "updateApplyForm(${adtos[status.index].recruitNo})"class="btn-secondary btn_update">수정</button>
+						
+							<c:if test= "${now < recruitEndDateTime}">
+								<button onclick = "deleteApply(${adtos[status.index].recruitNo})" class="btn-danger">삭제</button>
+								<button onclick= "updateApplyForm(${adtos[status.index].recruitNo})"class="btn-secondary btn_update">수정</button>
+							</c:if> 
+							 <c:if test= "${now > recruitEndDateTime}">
+								수정/삭제 불가
+								
+							</c:if> 
 						</td>
 					</tr>
 					
@@ -78,6 +115,7 @@
 		<%@ include file="../footer.jsp"%>
 	</footer>
 	<script>
+
 
 function deleteApply(recruitNo){
     var answer=confirm("지원중인 이력서를 삭제하시겠습니까?"+recruitNo);

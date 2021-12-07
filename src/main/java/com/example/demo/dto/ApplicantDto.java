@@ -1,6 +1,7 @@
 package com.example.demo.dto;
 
 import java.sql.Date;
+import java.time.Year;
 import java.util.ArrayList;
 
 public class ApplicantDto {
@@ -12,6 +13,13 @@ public class ApplicantDto {
 	private String applicantVeteran;
 	private String applicantDisability;
 	private String applicantJobProtect;
+	
+	private String applicantHighSchoolName;
+ 	private int applicantHighSchoolGraduateYear; 
+ 	private String applicantHighSchoolGraduateState;
+	
+	
+	
 	private String applicantAssay1;
 	private String applicantAssay2;
 	private String applicantAssay3;
@@ -80,6 +88,29 @@ public class ApplicantDto {
 	}
 	public void setApplicantJobProtect(String applicantJobProtect) {
 		this.applicantJobProtect = applicantJobProtect;
+	}
+	
+	
+	
+	
+	
+	public String getApplicantHighSchoolName() {
+		return applicantHighSchoolName;
+	}
+	public void setApplicantHighSchoolName(String applicantHighSchoolName) {
+		this.applicantHighSchoolName = applicantHighSchoolName;
+	}
+	public int getApplicantHighSchoolGraduateYear() {
+		return applicantHighSchoolGraduateYear;
+	}
+	public void setApplicantHighSchoolGraduateYear(int applicantHighSchoolGraduateYear) {
+		this.applicantHighSchoolGraduateYear = applicantHighSchoolGraduateYear;
+	}
+	public String getApplicantHighSchoolGraduateState() {
+		return applicantHighSchoolGraduateState;
+	}
+	public void setApplicantHighSchoolGraduateState(String applicantHighSchoolGraduateState) {
+		this.applicantHighSchoolGraduateState = applicantHighSchoolGraduateState;
 	}
 	public String getApplicantAssay1() {
 		return applicantAssay1;

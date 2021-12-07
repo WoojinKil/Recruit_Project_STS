@@ -142,6 +142,7 @@ public class ApplyController {
 		logger.info("tdto complete" + tdto);
 		
 
+		//버튼은 누르는 순간 insert가 된다. 새로고침을 해도 된다.(문제)
 		aservice.applicantInsert(recruitNo, memberId);
 		
 		

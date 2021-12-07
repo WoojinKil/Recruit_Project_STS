@@ -1,6 +1,8 @@
 package com.example.demo.dto;
 
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 public class RecruitNoticeDto {
 
@@ -9,8 +11,8 @@ public class RecruitNoticeDto {
 	private String recruitObject; //채용 대상( 신입, 경력 혹은 null)
 	private String recruitName; //채용공고 이름
 	private String recruitScale; //채용 규모 (000명, 혹은 null)
-	private Date recruitStartDateTime; //채용 시작일
-	private Date recruitEndDateTime; //채용 마감일
+	private Timestamp recruitStartDateTime; //채용 시작일
+	private Timestamp recruitEndDateTime; //채용 마감일
 	private int recruitHit; //공고 조회수
 	private String recruitContent; //공고 내용
 	private Date recruitWriteDate; //
@@ -53,16 +55,16 @@ public class RecruitNoticeDto {
 	public void setRecruitScale(String recruitScale) {
 		this.recruitScale = recruitScale;
 	}
-	public Date getRecruitStartDateTime() {
+	public Timestamp getRecruitStartDateTime() {
 		return recruitStartDateTime;
 	}
-	public void setRecruitStartDateTime(Date recruitStartDateTime) {
+	public void setRecruitStartDateTime(Timestamp recruitStartDateTime) {
 		this.recruitStartDateTime = recruitStartDateTime;
 	}
-	public Date getRecruitEndDateTime() {
+	public Timestamp getRecruitEndDateTime() {
 		return recruitEndDateTime;
 	}
-	public void setRecruitEndDateTime(Date recruitEndDateTime) {
+	public void setRecruitEndDateTime(Timestamp recruitEndDateTime) {
 		this.recruitEndDateTime = recruitEndDateTime;
 	}
 	public String getRecruitContent() {

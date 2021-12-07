@@ -18,6 +18,7 @@ import com.example.demo.dto.MemberDto;
 import com.example.demo.dto.ObjectDto;
 import com.example.demo.dto.PartDto;
 import com.example.demo.dto.RecruitNoticeDto;
+import com.example.demo.dto.TypeDto;
 import com.example.demo.dto.WorkDto;
 import com.example.demo.service.ApplyService;
 import com.example.demo.service.RecruitNoticeService;
@@ -38,9 +39,10 @@ public class RecruitNoticeController {
 	public String recruitNoticeForm(Model model) throws Exception {
 	
 		ArrayList<RecruitNoticeDto> array =  (ArrayList<RecruitNoticeDto>)rservice.noticeList();
+		ArrayList<TypeDto> typeList = rservice.typeList();
 		
 		model.addAttribute("noticeArray", array);
-	
+		model.addAttribute("typeList",typeList);
 		logger.info("goto recruitNoticeForm");
 		return "/recruitnavigate/recruitnoticeform";
 	

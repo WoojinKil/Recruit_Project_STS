@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.dto.RecruitNoticeDto;
+import com.example.demo.dto.TypeDto;
 @Mapper
 @Repository
 public interface RecruitNoticeMapper {
@@ -16,4 +17,7 @@ public interface RecruitNoticeMapper {
 	public RecruitNoticeDto recruitNoticeView(int recruitNo) throws Exception;
 	//조회수 증가
 	public void recruitNoticeHitUp(int recruitNo) throws Exception;
+	//채용공고 유형 리스트(수시/공채)
+	public ArrayList<TypeDto> typeList() throws Exception;
+	
 }

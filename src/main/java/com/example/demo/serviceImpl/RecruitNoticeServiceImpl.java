@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.RecruitNoticeDto;
+import com.example.demo.dto.TypeDto;
 import com.example.demo.mapper.RecruitNoticeMapper;
 import com.example.demo.service.RecruitNoticeService;
 
@@ -36,6 +37,15 @@ public class RecruitNoticeServiceImpl implements RecruitNoticeService {
 	public void recruitNoticeHitUp(int recruitNo) throws Exception {
 		// TODO Auto-generated method stub
 		mapper.recruitNoticeHitUp(recruitNo);
+	}
+	
+	//채용공고 유형 리스트 보기(수시/공채)
+	@Override
+	public ArrayList<TypeDto> typeList() throws Exception {
+		// TODO Auto-generated method stub
+		
+		return mapper.typeList();
+		
 	}
 	
 	

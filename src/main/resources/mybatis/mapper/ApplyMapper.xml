@@ -147,6 +147,7 @@
   <!-- 지원하기를 누르면 생성하는 레코드, 받아오는 값은 기본으로 memberId와 recruitNo-->
  <insert id="applicantInsert">
  	insert 
+ 	IGNORE
 	ta_recruit_applicant(
 	applicantNo
 	,applicantId
@@ -179,8 +180,11 @@
  	, applicantJobProtect = #{applicantJobProtect}
  	, applicantAssay1 = #{applicantAssay1}
   	, applicantAssay2 = #{applicantAssay2}
- 	, applicantAssay3 = #{applicantAssay3} 
- 	WHERE 
+ 	, applicantAssay3 = #{applicantAssay3}
+ 	, applicantHighSchoolName = #{applicantHighSchoolName}
+ 	, applicantHighSchoolGraduateYear = #{applicantHighSchoolGraduateYear}
+ 	, applicantHighSchoolGraduateState = #{applicantHighSchoolGraduateState} 
+ 	WHERE
  	applicantNo = #{applicantNo}
  
  
@@ -196,6 +200,9 @@
  	, applicantVeteran = #{applicantVeteran}
  	, applicantDisability = #{applicantDisability}
  	, applicantJobProtect = #{applicantJobProtect}
+ 	, applicantHighSchoolName = #{applicantHighSchoolName}
+ 	, applicantHighSchoolGraduateYear = #{applicantHighSchoolGraduateYear}
+ 	, applicantHighSchoolGraduateState = #{applicantHighSchoolGraduateState}
  	, applicantAssay1 = #{applicantAssay1}
   	, applicantAssay2 = #{applicantAssay2}
  	, applicantAssay3 = #{applicantAssay3} 

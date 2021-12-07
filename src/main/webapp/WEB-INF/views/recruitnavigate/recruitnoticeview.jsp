@@ -1,6 +1,9 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="com.example.demo.dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -73,21 +76,28 @@
 										</c:forEach>
 
 									</tbody>
-								</table>
-								
-								
-								
-								<c:if test="${member.memberIsAdmin != 1 }">
-									<input type="button" class="btn btn-primary goto_apply_button" value="지원하기" />
-								</c:if> <c:if test="${applyCheckedResult == 1 }">
-									<div style="color: 'red'" class="apply_warn">지원 중인 이력서가 존재합니다.</div>
-								</c:if>
-
+								</table> <%
+ Date now = new Date();
+ SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+ %> 
+ 
+ 									<fmt:parseDate var="now" value="<%=sf.format(now)%>" pattern="yyyy-MM-dd HH:mm:ss" />
+  									<fmt:parseDate var="recruitEndDateTime" value="${NoticeView.recruitEndDateTime }" pattern="yyyy-MM-dd HH:mm:ss" />
+  									<fmt:parseDate var="recruitStartDateTime" value="${NoticeView.recruitStartDateTime }" pattern="yyyy-MM-dd HH:mm:ss" />
+  									 <c:if test="${member.memberIsAdmin != 1 && now < recruitEndDateTime && now >= recruitStartDateTime}">
+  									 
+										<input type="button" class="btn btn-primary goto_apply_button" value="지원하기" />
+											<c:if test="${applyCheckedResult == 1 }">
+												<div style="color: 'red'" class="apply_warn">지원 중인 이력서가 존재합니다.</div>
+											</c:if>
+					
+									</c:if>
+	
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				${member.memberId} <a href="/recruitnavigate/recruitnotice" class="btn btn-primary">목록</a>
+				<a href="/recruitnavigate/recruitnotice" class="btn btn-primary">목록</a>
 
 			</div>
 
@@ -105,17 +115,14 @@
 
 
 	<script>
-
-		$(document).ready(function(){
-
+		$(document).ready(function() {
 
 			var no = $('.notice_no').text();
-			
+
 			console.log(no);
-			$(".goto_apply_button").click(function(){
-				
-				if('<%=(session.getAttribute("member"))%>
-		' == 'null') {
+			$(".goto_apply_button").click(function() {
+
+				if ('${member.memberId}' == '') {
 
 					alert("로그인 하세요");
 

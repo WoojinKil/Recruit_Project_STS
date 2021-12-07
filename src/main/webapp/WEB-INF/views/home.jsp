@@ -41,11 +41,10 @@
 			</c:if>
 		
 			<c:if test ="${member != null}"> <!-- 로그인 했으면 -->
-				<li><a href="apply">지원하기</a></li>
+				<li><a href="/recruitnavigate/recruitnotice">지원하기</a></li>
 				<li><a href="/member/logout.do">로그아웃</a></li> <!-- 로그아웃 하는 행위 -->
 				<li><a href="/myApply/myApplyList">나의 지원 이력</a></li>
-				<li><a href="my_inform">마이페이지</a></li>
-
+				
 			
 			</c:if>
 			

@@ -5,6 +5,7 @@ public class CollegeDto {
 	private int collegeRegisterNo;
 	private int applicantNo;
 	private String collegeName;
+	private String collegeLocation;
 	private String collegeEnter;
 	private String collegeDegree;
 	private String collegeMajor1;
@@ -33,6 +34,13 @@ public class CollegeDto {
 	}
 	public void setCollegeName(String collegeName) {
 		this.collegeName = collegeName;
+	}
+	
+	public String getCollegeLocation() {
+		return collegeLocation;
+	}
+	public void setCollegeLocation(String collegeLocation) {
+		this.collegeLocation = collegeLocation;
 	}
 	public String getCollegeEnter() {
 		return collegeEnter;

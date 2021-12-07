@@ -28,7 +28,7 @@
 		$.ajax({ 
 			type : 'GET',
 			dataType : 'json', 
-			url : "www.career.go.kr/cnet/openapi/getOpenApi?apiKey=fc5c54a9bd9d8f4f00a35dbdb5bd356a&svcType=api&svcCode=SCHOOL&contentType=xml&gubun=elem_list" +"&searchSchulNm="+word, 
+			url : 'www.career.go.kr/cnet/openapi/getOpenApi?apiKey=fc5c54a9bd9d8f4f00a35dbdb5bd356a&svcType=api&svcCode=SCHOOL&contentType=json&gubun=elem_list&searchSchulNm='+word, 
 					error : function(err) 
 					{ 
 						console.log("실행중 오류가 발생하였습니다."); }, 

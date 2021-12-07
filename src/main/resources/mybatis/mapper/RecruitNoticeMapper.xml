@@ -3,8 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.RecruitNoticeMapper">
+	
 	<select id="noticeList" resultType="com.example.demo.dto.RecruitNoticeDto">
-		select distinct(ta_recruit_apply.recruitNo),recruitName, ta_recruit_notice.recruitHit  from `ta_recruit_apply`, `ta_recruit_notice` where ta_recruit_notice.recruitNo = ta_recruit_apply.recruitNo order by ta_recruit_notice.recruitNo DESC;
+	
+		select distinct(ta_recruit_apply.recruitNo),recruitName, ta_recruit_notice.recruitHit, recruitScale, typeNo  from `ta_recruit_apply`, `ta_recruit_notice` where ta_recruit_notice.recruitNo = ta_recruit_apply.recruitNo order by ta_recruit_notice.recruitNo DESC;
+	
+	
+	
+	</select>
+	
+	<!-- 리스트에 뿌려진 공고의 유형 (수시/공채)의 리스트를 불러온다.  -->
+	<select id="typeList" resultType = "com.example.demo.dto.TypeDto">
+		 SELECT 
+  		TA_RECRUIT_TYPE.TYPENO
+  		,TA_RECRUIT_TYPE.TYPENAME
+   		,TA_RECRUIT_NOTICE.RECRUITNAME
+  		FROM 
+  		TA_RECRUIT_TYPE, 
+  		TA_RECRUIT_NOTICE 
+  		WHERE 
+
+        TA_RECRUIT_NOTICE.TYPENO = TA_RECRUIT_TYPE.TYPENO;
 	
 	
 	

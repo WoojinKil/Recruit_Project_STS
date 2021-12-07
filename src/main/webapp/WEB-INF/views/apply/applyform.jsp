@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -7,19 +9,7 @@
 <meta charset="UTF-8">
 <title>입사지원 페이지</title>
 
-<% 
 
-response.setHeader("Cache-Control","no-store"); 
-
-response.setHeader("Pragma","no-cache"); 
-
-response.setDateHeader("Expires",0); 
-
-if (request.getProtocol().equals("HTTP/1.1"))
-
-        response.setHeader("Cache-Control", "no-cache");
-
-%> 
 
 </head>
 <body>
@@ -85,6 +75,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 					<tr>
 						<th align="center">병역사항</th>
 						<td><select class="select_applicant_millitary">
+								<option value="">선택해주세요</option>
 								<option value="만기제대">만기제대(소집해제)</option>
 								<option value="복무 중">복무중</option>
 								<option value="면제">면제</option>
@@ -94,6 +85,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						</select></td>
 						<th align="center">보훈 대상</th>
 						<td><select class="select_veteran">
+								<option value="">선택해주세요</option>
 								<option value="비대상">비대상</option>
 								<option value="대상">대상</option>
 
@@ -132,18 +124,34 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 		</form>
 
-		<!-- 학교 입력 폼(임시) -->
+		<!-- 학교 입력 폼(고등학교) -->
 		<form>
-			<div class="container">학력정보</div>
+			<div class="container">
+			
+			<strong>고등학교 정보</strong>
+			</div>
 			<table border="1" class="table table-striped" style="text-align: center;">
 
-				<tr>
-					<th align="center">고등학교 입력</th>
+				<colgroup>
+					<col width="130px" />
 
-					<td colspan="3">
+				</colgroup>
+				<tr>
+					<th align="center">최종 고등학교 입력</th>
+
+					<td colspan="6">
 						<div>
-							<button type="button" class="btn btn-info">학교 찾기</button>
-							<input type="text" name="school" placeholder="학교를 입력해주세요." required="required" readonly="readonly">
+							
+							<input type="text" class="input_highschool_name" style="width:40%" placeholder="검정고시일 경우 '대입검정고시'라고 작성해주세요." value="${apdto.applicantHighSchoolName }">
+							<input type="text" placeholder="졸업년도(합격년도)" maxlength="4" value="${apdto.applicantHighSchoolGraduateYear }">
+							재적
+						<select class=select_highschool_graduate>
+								<option value="졸업">졸업(합격)</option>
+								<option value="졸업예정">졸업예정</option>
+								<option value="재학 중">재학 중</option>
+
+						</select>							
+							
 						</div>
 
 					</td>
@@ -179,8 +187,33 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				<tbody>
 
 					<tr>
-						<th align="center">대학명</th>
-						<td><input name="college_name" style="width: 50%" class="input_college_name" type="text"></td>
+						<th align="center">대학/대학원명</th>
+						<td>
+							<input name="college_name" style="width: 50%" class="input_college_name" type="text">
+							소재지:
+							<select class="select_college_location">
+								<option value="서울">서울</option>
+								<option value="경기">경기</option>
+								<option value="인천">인천</option>
+								<option value="대전">대전</option>
+								<option value="대구">대구</option>
+								<option value="부산">부산</option>
+								<option value="울산">울산</option>
+								<option value="광주">광주</option>
+								<option value="충남">충남</option>
+								<option value="충북">충북</option>
+								<option value="경남">경남</option>
+								<option value="경북">경북</option>
+								<option value="전남">전남</option>
+								<option value="전북">전북</option>
+								<option value="강원">강원</option>
+								<option value="제주">제주</option>
+								<option value="기타/해외">기타/해외</option>
+								
+								
+							
+							</select>
+						</td>
 						<th align="center">학위</th>
 						<td><select class="select_college_degree" style="width: 50%">
 
@@ -245,6 +278,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 									<tr>
 
 										<th style="background-color: #eeeeee; text-align: center;">학교</th>
+										<th style="background-color: #eeeeee; text-align: center;">소재</th>
 										<th style="background-color: #eeeeee; text-align: center;">주전공</th>
 
 										<th style="background-color: #eeeeee; text-align: center;">다중전공</th>
@@ -529,13 +563,18 @@ if (request.getProtocol().equals("HTTP/1.1"))
 			</div>
 			<table border="1" class="table table-striped">
 				<tr>
-					<th style="text-align: center; width: 10%">글자 수</th>
+					<th style="text-align: center; width: 15%">글자 수</th>
 					<th>항목 1) 링크 컴퍼니에 3가지 인재상 중에 자신이 부합하다고 생각하는 인재상을 하나 선택하여<br> 그렇게 생각하는 이유를 본인의 가치관과 연계하여 교육사항, 경험 및 경력 등 구체적인 사례를 들어 기술하여 주십시오.(최대 700자)
 					</th>
 
 				</tr>
 				<tr>
-					<th style="text-align: center;">자</th>
+					
+				
+					<th style="text-align: center;">
+					
+						<span style="color:#aaa;" id="assay1_counter"></span>
+					</th>
 					<th><textarea class="input_assay1" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay1 }</textarea></th>
 
 				</tr>
@@ -544,13 +583,18 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 			<table border="1" class="table table-striped">
 				<tr>
-					<th style="text-align: center; width: 10%">글자 수</th>
+					<th style="text-align: center; width: 15%">글자 수</th>
 					<th>항목 2) 다른 사람들과 함께 일을 했던 경험에 대해 설명하고, 목표를 달성하는 과정에서<br> 팀원들과 의견 차이를 보였던 사례와 갈등을 해결하기 위해 기울인 노력과 방법, 결과를 구체적으로 기술해 주십시오.(최대 700자)
 					</th>
 
 				</tr>
 				<tr>
-					<th style="text-align: center;">자</th>
+					<th style="text-align: center;">
+					
+						<span style="color:#aaa;" id="assay2_counter"></span>
+
+					
+					</th>
 					<th><textarea class="input_assay2" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay2 }</textarea></th>
 
 				</tr>
@@ -563,12 +607,14 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 			<table border="1" class="table table-striped">
 				<tr>
-					<th style="text-align: center; width: 10%">글자 수</th>
+					<th style="text-align: center; width: 15%">글자 수</th>
 					<th>항목 3) 지금까지 가장 큰 성취 및 실패에 대하여 기술해 주십시오. (최대 700자)</th>
 
 				</tr>
 				<tr>
-					<th style="text-align: center;">자</th>
+					<th style="text-align: center;">
+						<span style="color:#aaa;" id="assay3_counter"></span>
+					</th>
 					<th><textarea class="input_assay3" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay3 }</textarea></th>
 
 				</tr>
@@ -608,37 +654,140 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	</footer>
 
 
+						<% Date now=  new Date(); 
+						SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						
+						%>
+					
+
+							<fmt:parseDate var="now" value="<%= sf.format(now) %>" pattern="yyyy-MM-dd HH:mm:ss" />
+							<fmt:parseDate var="recruitEndDateTime" value="${noticeInfo.recruitEndDateTime }" pattern="yyyy-MM-dd HH:mm:ss" />
+
+							<%--  <c:if test= "${now > recruitEndDateTime}">
+								마감시간이 지났습니다.
+								
+							</c:if>  --%>
+
+
+
+
 	<script>
 
 		//ready function 시작
 		$(document).ready(function() {
 
+			var now = '${now}';
+			var recruitEndDateTime = '${recruitEndDateTime}'
+				console.log(now);
+			
+			console.log(recruitEndDateTime);
+			if(now > recruitEndDateTime ){
+				alert("제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
+				window.location.href = "/";
+				return false;
+			}
 			certificateList(); //시작되면 무조건 실행되는 메소드 리스트
 			activationList();//시작되면 무조건 실행되는 메소드 리스트
 			careerList();//시작되면 무조건 실행되는 메소드 리스트
 			collegeList();//시작되면 무조건 실행되는 메소드 리스트
+			
+			//임시저장된 값으로 선택된다.
 			$('.select_applyNo').val('${apdto.applyNo}').change();
+
 			$(".select_veteran").val('${apdto.applicantVeteran}').change();
 			$(".select_job_pro").val('${apdto.applicantJobProtect}').change();
 			$(".select_applicant_millitary").val('${apdto.applicantMillitary}').change();
-
+			
+			$(".select_highschool_graduate").val('${apdto.applicantHighSchoolGraduateState}').change();
 			$(".input_college_major2").prop("disabled", true);
 			$(".select_college_double_majorKind").prop("disabled", true);
 			$(".select_college_double_majorKind").val("단일전공");
+			$('#assay1_counter').html("("+$('.input_assay1').val().length+" / <br>최대 700자)");
+			$('#assay2_counter').html("("+$('.input_assay2').val().length+" / <br>최대 700자)");
+			$('#assay3_counter').html("("+$('.input_assay3').val().length+" / <br>최대 700자)");
+			
+			
+			//자기소개서 항목의 내용이 변할 때 발동되는 메소드
+			$('.input_assay1').keyup(function (e){
+			    var content = $(this).val();
+			    $('#assay1_counter').html("("+content.length+" /<br> 최대 700자)");    //글자수 실시간 카운팅
+
+			    if (content.length > 700){
+			        alert("최대 700자까지 입력 가능합니다.");
+			        $(this).val(content.substring(0, 700));
+			        $('#assay1_counter').html("(700 / 최대 700자)");
+			    }
+			});
 
 			
+			//자기소개서 항목의 내용이 변할 때 발동되는 메소드
+			$('.input_assay2').keyup(function (e){
+			    var content = $(this).val();
+			    $('#assay2_counter').html("("+content.length+" /<br> 최대 700자)");    //글자수 실시간 카운팅
+
+			    if (content.length > 700){
+			        alert("최대 700자까지 입력 가능합니다.");
+			        $(this).val(content.substring(0, 700));
+			        $('#assay2_counter').html("(700 / 최대 700자)");
+			    }
+			});
 			
+			//자기소개서 항목의 내용이 변할 때 발동되는 메소드
+			$('.input_assay3').keyup(function (e){
+			    var content = $(this).val();
+			    $('#assay3_counter').html("("+content.length+" /<br> 최대 700자)");    //글자수 실시간 카운팅
+
+			    if (content.length > 700){
+			        alert("최대 700자까지 입력 가능합니다.");
+			        $(this).val(content.substring(0, 700));
+			        $('#assay3_counter').html("(700 / 최대 700자)");
+			    }
+			});
+
 			
 			//최종제출 버튼을 누르면 실행되는 메소드
 			$(".finalApply").click(function(){
 			
-
+				
+				var now = new Date;
+				var yyyy= now.getFullYear();
+				var MM = now.getMonth();
+				var dd = now.getDate();
+				var hh = now.getHours();
+				var mm = now.getMinutes();
+				var ss = now.getSeconds();
+				console.log(yyyy);
+				console.log(MM);
+				console.log(dd);
+				console.log(hh);
+				console.log(mm);
+				console.log(ss);
+				nowFmt = yyyy+"-"+MM+"-"+dd+"- "+ hh+":"+mm + ":" + ss; 
+				var recruitEndDateTime = '${recruitEndDateTime}'
+					console.log(nowFmt);
+				
+				console.log(recruitEndDateTime);
+				
+				if(nowFmt > recruitEndDateTime ){
+					alert("제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
+					window.location.href = "/";
+					return false;
+					
+				}
+				
 				var applicantNo = '${apdto.applicantNo}';
 				var applicantMillitary = $(".select_applicant_millitary option:selected").val();
 				var applyNo = $(".select_applyNo option:selected").val();
 				var applicantVeteran = $('.select_veteran option:selected').val();
 				var applicantDisability = $(".select_disability option:selected").val();
 				var applicantJobProtect = $('.select_job_pro option:selected').val();
+				
+				
+				var applicantHighSchoolName = $(".input_highschool_name").val();
+				var applicantHighSchoolGraduateYear = $(".input_highschool_year").val();
+				var applicantHighSchoolGraduateState = $(".select_highschool_graduate option:selected").val();
+				
+				
 				var applicantAssay1 = $('.input_assay1').val();
 				var applicantAssay2 = $('.input_assay2').val();
 				var applicantAssay3 = $('.input_assay3').val();
@@ -648,7 +797,31 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				console.log(applicantAssay1);
 				console.log(applicantAssay2);
 				console.log(applicantAssay3);
+				
+
+	        	if(applicantMillitary == ""){
+	        		alert("병역사항을 입력해주세요.");
+	        		return false;
+	        		
+	        	}else if(applyNo == ""){
+	        		alert("직무를 선택해주세요.");
+	        		return false;
+	        		
+	        	}else if(applicantVeteran == ""){
+	        		alert("보훈 대상 여부를 체크해 주세요.");
+	        		return false;
+	        		
+	        	
+	        	}else if(applicantJobProtect ==""){
+	        		alert("취업 보호 대상자 여부를 선택해주세요.");
+	        		return false;
+	        		
+	        	}			
+				
+				
 	        	var con_test = confirm("최종지원을 하시겠습니까?");
+	        	
+
 	        	if(con_test == true){
 					//ajax 작성 12.03
 					$.ajax({
@@ -661,6 +834,13 @@ if (request.getProtocol().equals("HTTP/1.1"))
 							"applicantVeteran" : applicantVeteran,
 							"applicantDisability" : applicantDisability,
 							"applicantJobProtect" : applicantJobProtect,
+							
+
+							"applicantHighSchoolName" : applicantHighSchoolName,
+							"applicantHighSchoolGraduateYear" : applicantHighSchoolGraduateYear,
+							"applicantHighSchoolGraduateState" : applicantHighSchoolGraduateState,
+							
+							
 							"applicantAssay1" : applicantAssay1,
 							"applicantAssay2" : applicantAssay2,
 							"applicantAssay3" : applicantAssay3
@@ -683,7 +863,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 	        		
 	        		
 	        	}
-	        	else if(con_test == false){
+	        	else{
 	        	    return false;
 	        	}
 
@@ -702,6 +882,12 @@ if (request.getProtocol().equals("HTTP/1.1"))
 				var applicantVeteran = $('.select_veteran option:selected').val();
 				var applicantDisability = $(".select_disability option:selected").val();
 				var applicantJobProtect = $('.select_job_pro option:selected').val();
+				
+				var applicantHighSchoolName = $(".input_highschool_name").val();
+				var applicantHighSchoolGraduateYear = $(".input_highschool_year").val();
+				var applicantHighSchoolGraduateState = $(".select_highschool_graduate option:selected").val();
+				
+				
 				var applicantAssay1 = $('.input_assay1').val();
 				var applicantAssay2 = $('.input_assay2').val();
 				var applicantAssay3 = $('.input_assay3').val();
@@ -726,6 +912,11 @@ if (request.getProtocol().equals("HTTP/1.1"))
 						"applicantVeteran" : applicantVeteran,
 						"applicantDisability" : applicantDisability,
 						"applicantJobProtect" : applicantJobProtect,
+						
+						"applicantHighSchoolName" : applicantHighSchoolName,
+						"applicantHighSchoolGraduateYear" : applicantHighSchoolGraduateYear,
+						"applicantHighSchoolGraduateState" : applicantHighSchoolGraduateState,
+						
 						"applicantAssay1" : applicantAssay1,
 						"applicantAssay2" : applicantAssay2,
 						"applicantAssay3" : applicantAssay3
@@ -809,6 +1000,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 							console.log(data);
 							outHtml += "<tr><td>" + data[index].collegeName + "</td>";
+							outHtml += "<td>" + data[index].collegeLocation + "</td>";
 							outHtml += "<td>" + data[index].collegeMajor1 + "</td>";
 							outHtml += "<td>" + data[index].collegeMajor2 + "<br>" + data[index].collegeDoubleMajorKind + "</td>";
 							outHtml += "<td>" + data[index].collegeScore + "/" + data[index].collegeScoreMax + "</td>";
@@ -838,6 +1030,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 				var collegeName = $.trim($('.input_college_name').val()); //공백제거한 후 input class의 입력값을 받아온다.
 				var collegeEnter = $.trim($('.select_college_enter option:selected').val());
+				var collegeLocation = $.trim($('.select_college_location option:selected').val());
 				var collegeDegree = $.trim($('.select_college_degree option:selected').val());
 				var collegeMajor1 = $.trim($('.input_college_major1').val());
 				var collegeMajor2 = $.trim($('.input_college_major2').val());
@@ -887,6 +1080,7 @@ if (request.getProtocol().equals("HTTP/1.1"))
 
 						"applicantNo" : applicantNo,
 						"collegeName" : collegeName,
+						"collegeLocation" : collegeLocation,
 						"collegeEnter" : collegeEnter,
 						"collegeDegree" : collegeDegree,
 						"collegeMajor1" : collegeMajor1,

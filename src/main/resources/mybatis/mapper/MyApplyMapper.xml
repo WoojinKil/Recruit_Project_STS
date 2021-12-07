@@ -6,7 +6,7 @@
 	<select id="myApplyTitleList" resultType="com.example.demo.dto.RecruitNoticeDto">
 	
 	SELECT 
-	distinct ta_recruit_notice.recruitNo,ta_recruit_notice.recruitName 
+	distinct ta_recruit_notice.recruitNo,ta_recruit_notice.recruitName,ta_recruit_notice.recruitEndDateTime
 	FROM 
 	ta_recruit_applicant,ta_recruit_notice 
 	where ta_recruit_applicant.applicantId= #{memberId}

@@ -11,6 +11,7 @@
  		collegeRegisterNo
  		, applicantNo
  		, collegeName
+ 		, collegeLocation
  		, collegeEnter
  		, collegeDegree
  		, collegeMajor1
@@ -27,6 +28,7 @@
  		(SELECT IFNULL(MAX(collegeRegisterNo),1) FROM ta_recruit_college C)+1
  		, #{applicantNo}
  		, #{collegeName}
+ 		, #{collegeLocation}
  		, #{collegeEnter}
  		, #{collegeDegree}
  		, #{collegeMajor1}

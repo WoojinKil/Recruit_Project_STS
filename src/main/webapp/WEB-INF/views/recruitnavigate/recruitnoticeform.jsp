@@ -42,10 +42,10 @@
 				</thead>
 				<tbody>
 				
-					<c:forEach items ="${noticeArray}" var="noticeArray">
+					<c:forEach items ="${noticeArray}" var="noticeArray" varStatus="status">
 					<tr>
 						<td>${noticeArray.recruitNo}</td>
-						<td>${noticeArray.typeNo }</td>
+						<td>${typeList[status.index].typeName }</td>
 						<td><a href="/recruitnavigate/recruitnoticeview?recruitNo=${noticeArray.recruitNo}">${noticeArray.recruitName }</a></td>
 						<td>${noticeArray.recruitScale }</td>
 						<td>${noticeArray.recruitHit}</td>
