@@ -17,9 +17,22 @@
 
 			<!-- 만약 세션이 존재하면, 로그인이 되어있으면 나타나는 태그 -->
 			<c:if test="${member != null }">
-				<a class="navbar-brand" href="/">입사지원</a>
+				
+				
+				
+				<c:if test="${member.memberIsAdmin == 0 }">
+					
+					<a href="/myApply/myApplyList">나의 지원 이력</a>
+					<a class="navbar-brand" href="/">입사지원</a>
+				</c:if>
+				<c:if test="${member.memberIsAdmin == 1 }">
+					
+					<a class="navbar-brand" href="http://localhost:8080/pandora3/bo">관리자페이지</a>
+				
+				</c:if>
+				
 				<a class="navbar-brand" href="/member/logout.do">로그아웃</a>
-				<a class="navbar-brand" href="/myApply/myApplyList">지원 내역</a>
+				
 
 				&nbsp;
 				&nbsp;

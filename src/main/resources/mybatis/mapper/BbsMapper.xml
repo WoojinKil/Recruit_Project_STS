@@ -20,5 +20,9 @@
 	
 	</select>
 
+	<update id="bbsHitUp">
+		UPDATE TA_RECRUIT_BBS SET BBSHIT = BBSHIT + 1 WHERE BBSNO = #{bbsNo}
 	
+	
+	</update>
 </mapper>

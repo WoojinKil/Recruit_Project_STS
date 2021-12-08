@@ -41,7 +41,7 @@
 						</tr>
 						<tr>
 							<th align="center">제목</th>
-							<td colspan="3">${NoticeView.recruitName}</td>
+							<td colspan="3"  style="text-align: left">${NoticeView.recruitName}</td>
 						</tr>
 						<tr>
 							<th align="center">유형</th>

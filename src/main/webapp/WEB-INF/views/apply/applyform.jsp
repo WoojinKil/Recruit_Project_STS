@@ -660,7 +660,7 @@
 						%>
 					
 
-							<fmt:parseDate var="now" value="<%= sf.format(now) %>" pattern="yyyy-MM-dd HH:mm:ss" />
+							<fmt:parseDate var="now" value="<%= sf.format(new Date()) %>" pattern="yyyy-MM-dd HH:mm:ss" />
 							<fmt:parseDate var="recruitEndDateTime" value="${noticeInfo.recruitEndDateTime }" pattern="yyyy-MM-dd HH:mm:ss" />
 
 							<%--  <c:if test= "${now > recruitEndDateTime}">
@@ -677,15 +677,25 @@
 		$(document).ready(function() {
 
 			var now = '${now}';
-			var recruitEndDateTime = '${recruitEndDateTime}'
-				console.log(now);
+			var recruitEndDateTime = '${noticeInfo.recruitEndDateTime}'
+	/* 		var nowyyyy= now.getFullYear();
+			var nowMM = now.getMonth()+1;
+			var nowdd = now.getDate();
+			var nowhh = now.getHours();
+			var nowmm = now.getMinutes();
+			var nowss = now.getSeconds();
+			var nowFmt = nowyyyy+"-"+nowMM+"-"+nowdd+" "+ nowhh+":"+nowmm + ":" + nowss; 
+			 */
+			console.log(now);
+			console.log(recruitEndDateTime);
+			console.log(now>recruitEndDateTime);
 			
 			console.log(recruitEndDateTime);
-			if(now > recruitEndDateTime ){
-				alert("제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
+  			if(now > recruitEndDateTime ){
+				alert("새로고침 제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
 				window.location.href = "/";
 				return false;
-			}
+			}  
 			certificateList(); //시작되면 무조건 실행되는 메소드 리스트
 			activationList();//시작되면 무조건 실행되는 메소드 리스트
 			careerList();//시작되면 무조건 실행되는 메소드 리스트
@@ -750,30 +760,25 @@
 			
 				
 				var now = new Date;
-				var yyyy= now.getFullYear();
-				var MM = now.getMonth();
-				var dd = now.getDate();
-				var hh = now.getHours();
-				var mm = now.getMinutes();
-				var ss = now.getSeconds();
-				console.log(yyyy);
-				console.log(MM);
-				console.log(dd);
-				console.log(hh);
-				console.log(mm);
-				console.log(ss);
-				nowFmt = yyyy+"-"+MM+"-"+dd+"- "+ hh+":"+mm + ":" + ss; 
-				var recruitEndDateTime = '${recruitEndDateTime}'
-					console.log(nowFmt);
+				var recruitEndDateTime = '${noticeInfo.recruitEndDateTime}';
+				//var recruitEndDateTime1 = '${noticeInfo.recruitEndDateTime}';
+				var nowyyyy= now.getFullYear();
+				var nowMM = now.getMonth()+1;
+				var nowdd = now.getDate();
+				var nowhh = now.getHours();
+				var nowmm = now.getMinutes();
+				var nowss = now.getSeconds();
+			
 				
-				console.log(recruitEndDateTime);
+				nowFmt = nowyyyy+"-"+nowMM+"-"+nowdd+" "+ nowhh+":"+nowmm + ":" + nowss; 
+				 
+				console.log("현재시간 new Date"+now);
+				console.log("현재시간 패턴화"+nowFmt);
 				
-				if(nowFmt > recruitEndDateTime ){
-					alert("제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
-					window.location.href = "/";
-					return false;
-					
-				}
+				console.log("마감시간"+recruitEndDateTime);
+				console.log("마감시간 원래"+'${noticeInfo.recruitEndDateTime}'); 
+				
+				
 				
 				var applicantNo = '${apdto.applicantNo}';
 				var applicantMillitary = $(".select_applicant_millitary option:selected").val();
@@ -791,15 +796,15 @@
 				var applicantAssay1 = $('.input_assay1').val();
 				var applicantAssay2 = $('.input_assay2').val();
 				var applicantAssay3 = $('.input_assay3').val();
-				console.log("보훈대상" + applicantVeteran);
-				console.log("취업보호" + applicantJobProtect);
-
-				console.log(applicantAssay1);
-				console.log(applicantAssay2);
-				console.log(applicantAssay3);
+			
 				
 
-	        	if(applicantMillitary == ""){
+ 				if(nowFmt > recruitEndDateTime ){
+					alert("제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
+					window.location.href = "/";
+					return false;
+					
+				}else if(applicantMillitary == ""){
 	        		alert("병역사항을 입력해주세요.");
 	        		return false;
 	        		
@@ -821,9 +826,11 @@
 				
 	        	var con_test = confirm("최종지원을 하시겠습니까?");
 	        	
-
-	        	if(con_test == true){
+					if(con_test == true){
 					//ajax 작성 12.03
+					
+
+					
 					$.ajax({
 						url : '/apply/finalApply.do',
 						type : 'post',

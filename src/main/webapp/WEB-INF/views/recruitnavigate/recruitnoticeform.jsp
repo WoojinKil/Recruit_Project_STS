@@ -46,7 +46,7 @@
 					<tr>
 						<td>${noticeArray.recruitNo}</td>
 						<td>${typeList[status.index].typeName }</td>
-						<td><a href="/recruitnavigate/recruitnoticeview?recruitNo=${noticeArray.recruitNo}">${noticeArray.recruitName }</a></td>
+						<td style="text-align: left"><a href="/recruitnavigate/recruitnoticeview?recruitNo=${noticeArray.recruitNo}">${noticeArray.recruitName }</a></td>
 						<td>${noticeArray.recruitScale }</td>
 						<td>${noticeArray.recruitHit}</td>
 					</tr>

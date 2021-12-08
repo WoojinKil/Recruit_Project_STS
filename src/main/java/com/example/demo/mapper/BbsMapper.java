@@ -12,6 +12,7 @@ import com.example.demo.dto.BbsDto;
 public interface BbsMapper {
 	public ArrayList<BbsDto> bbsList() throws Exception;
 	public BbsDto bbsView(int bbsNo) throws Exception;
+	public void bbsHitUp(int bbsNo) throws Exception;
 	
 	
 }

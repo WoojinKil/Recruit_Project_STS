@@ -26,5 +26,10 @@ public class BbsServiceImpl implements BbsService {
 		return mapper.bbsView(bbsNo);
 		
 	}
+	@Override
+	public void bbsHitUp(int bbsNo) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.bbsHitUp(bbsNo);
+	}
 
 }

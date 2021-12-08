@@ -41,7 +41,7 @@
 					<tr>
 						<td>${bbsArray.bbsNo}</td>
 						
-						<td><a href="/bbs/bbsView?bbsNo=${bbsArray.bbsNo}">${bbsArray.bbsTitle }</a></td>
+						<td  style="text-align: left"><a href="/bbs/bbsView?bbsNo=${bbsArray.bbsNo}" >${bbsArray.bbsTitle }</a></td>
 						<td>${bbsArray.bbsWriteDate }</td>
 						<td>${bbsArray.bbsHit}</td>
 					</tr>

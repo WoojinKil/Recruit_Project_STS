@@ -34,20 +34,20 @@
 					<tr>
 						<td>${bbs.bbsNo}</td>
 						
-						<td>${bbs.bbsTitle }</td>
+						<td  style="text-align: left">${bbs.bbsTitle }</td>
 						<td>${bbs.bbsWriteDate }</td>
 						<td>${bbs.bbsHit}</td>
 					</tr>
 					<tr>
 					
-						<td colspan ="4"><div>${bbs.bbsContent }</div></td>
+						<td colspan ="4"  style="text-align: left"><div>${bbs.bbsContent }</div></td>
 					</tr>
 					
 					
 				
 				</tbody>
 			</table>
-			
+			<a href="bbsList" class="btn btn-primary">목록</a>
 			
 			<c:if test= "${member.memberIsAdmin == 1}">
 			

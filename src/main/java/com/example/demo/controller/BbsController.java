@@ -34,6 +34,7 @@ public class BbsController {
 	public String bbsView(@RequestParam int bbsNo, Model model) throws Exception{
 		
 		logger.info("공지사항 번호 출력"+bbsNo);
+		bservice.bbsHitUp(bbsNo);
 		BbsDto bdto = bservice.bbsView(bbsNo);
 		
 		model.addAttribute("bbs",bdto);

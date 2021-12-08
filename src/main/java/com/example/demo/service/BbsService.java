@@ -8,5 +8,6 @@ public interface BbsService {
 
 	public ArrayList<BbsDto> bbsList() throws Exception;
 	public BbsDto bbsView(int bbsNo) throws Exception;
+	public void bbsHitUp(int bbsNo) throws Exception;
 	
 }

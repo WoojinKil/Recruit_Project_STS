@@ -40,7 +40,7 @@
 						
 						<th style="background-color: #eeeeee; text-align: center;">채용유형</th>
 						<th style="background-color: #eeeeee; text-align: center;">공고명</th>
-						<th style="background-color: #eeeeee; text-align: center;">현재시간/마감시간</th>
+						<th style="background-color: #eeeeee; text-align: center;">마감시간</th>
 						
 						<th style="background-color: #eeeeee; text-align: center;">진행상태</th>
 						<th style="background-color: #eeeeee; text-align: center;">삭제/수정</th>
@@ -52,7 +52,7 @@
 					<tr>
 						
 						<td>${tdtos[status.index].typeName }</td>
-						<td>${rdtos.recruitName }
+						<td style="text-align: left">${rdtos.recruitName }
 						</td>
 						
 						<td>
@@ -69,13 +69,18 @@
 								마감시간이 지났습니다.
 								
 							</c:if> 
-							
+							 <c:if test= "${now < recruitEndDateTime}">
+								${rdtos.recruitEndDateTime}
+								
+							</c:if> 
 						</td>
 
 						<td>
 						
 							 <c:if test= "${now > recruitEndDateTime}">
-								심사 중
+								<c:if test="${adtos[status.index].finalApplyChecked ==0 }">미제출</c:if>
+								<c:if test="${adtos[status.index].finalApplyChecked ==1 }">심사 중</c:if>								
+								
 								
 							</c:if> 
 							
@@ -94,6 +99,7 @@
 								<button onclick= "updateApplyForm(${adtos[status.index].recruitNo})"class="btn-secondary btn_update">수정</button>
 							</c:if> 
 							 <c:if test= "${now > recruitEndDateTime}">
+								
 								수정/삭제 불가
 								
 							</c:if> 
