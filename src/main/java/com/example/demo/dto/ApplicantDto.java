@@ -15,7 +15,7 @@ public class ApplicantDto {
 	private String applicantJobProtect;
 	
 	private String applicantHighSchoolName;
- 	private int applicantHighSchoolGraduateYear; 
+ 	private Integer applicantHighSchoolGraduateYear; 
  	private String applicantHighSchoolGraduateState;
 	
 	
@@ -26,7 +26,15 @@ public class ApplicantDto {
 	
 	private int finalApplyChecked;
 	private Date applyDate;
+	private Date finalyApplyDate;
 	
+	
+	public Date getFinalyApplyDate() {
+		return finalyApplyDate;
+	}
+	public void setFinalyApplyDate(Date finalyApplyDate) {
+		this.finalyApplyDate = finalyApplyDate;
+	}
 	public int getApplicantNo() {
 		return applicantNo;
 	}
@@ -100,10 +108,10 @@ public class ApplicantDto {
 	public void setApplicantHighSchoolName(String applicantHighSchoolName) {
 		this.applicantHighSchoolName = applicantHighSchoolName;
 	}
-	public int getApplicantHighSchoolGraduateYear() {
+	public Integer getApplicantHighSchoolGraduateYear() {
 		return applicantHighSchoolGraduateYear;
 	}
-	public void setApplicantHighSchoolGraduateYear(int applicantHighSchoolGraduateYear) {
+	public void setApplicantHighSchoolGraduateYear(Integer applicantHighSchoolGraduateYear) {
 		this.applicantHighSchoolGraduateYear = applicantHighSchoolGraduateYear;
 	}
 	public String getApplicantHighSchoolGraduateState() {

@@ -676,26 +676,26 @@
 		//ready function 시작
 		$(document).ready(function() {
 
-			var now = '${now}';
-			var recruitEndDateTime = '${noticeInfo.recruitEndDateTime}'
-	/* 		var nowyyyy= now.getFullYear();
+			var now = new Date;
+			var recruitEndDateTime = '${recruitEndDateTime}'
+	 		var nowyyyy= now.getFullYear();
 			var nowMM = now.getMonth()+1;
 			var nowdd = now.getDate();
 			var nowhh = now.getHours();
 			var nowmm = now.getMinutes();
 			var nowss = now.getSeconds();
 			var nowFmt = nowyyyy+"-"+nowMM+"-"+nowdd+" "+ nowhh+":"+nowmm + ":" + nowss; 
-			 */
-			console.log(now);
+			
+			console.log(nowFmt);
 			console.log(recruitEndDateTime);
 			console.log(now>recruitEndDateTime);
 			
 			console.log(recruitEndDateTime);
-  			if(now > recruitEndDateTime ){
-				alert("새로고침 제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
+  			 if(nowFmt > recruitEndDateTime ){
+				alert("제출기한이 초과되었습니다. 메인화면으로 돌아갑니다.");
 				window.location.href = "/";
 				return false;
-			}  
+			} 
 			certificateList(); //시작되면 무조건 실행되는 메소드 리스트
 			activationList();//시작되면 무조건 실행되는 메소드 리스트
 			careerList();//시작되면 무조건 실행되는 메소드 리스트

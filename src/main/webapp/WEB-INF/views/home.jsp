@@ -50,7 +50,7 @@
 				</c:if>
 				<c:if test="${member.memberIsAdmin == 1 }">
 					
-					<li><a href="/http://localhost:8080/pandora3/bo">관리자페이지</a></li>
+					<li><a href="http://localhost:8080/pandora3/bo">관리자페이지</a></li>
 				
 				</c:if>
 				

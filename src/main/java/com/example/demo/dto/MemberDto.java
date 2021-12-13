@@ -11,9 +11,19 @@ public class MemberDto {
 	private String memberPhoneNumber1;
 	private String memberPhoneNumber2;
 	private String memberPhoneNumber3;
+	private String memberRegDate;
+	
 	private int memberIsAdmin;
 
 	
+	public String getMemberRegDate() {
+		return memberRegDate;
+	}
+
+	public void setMemberRegDate(String memberRegDate) {
+		this.memberRegDate = memberRegDate;
+	}
+
 	public String getMemberPhoneNumber1() {
 		return memberPhoneNumber1;
 	}
