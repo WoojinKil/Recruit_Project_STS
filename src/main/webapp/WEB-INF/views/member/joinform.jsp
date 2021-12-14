@@ -93,8 +93,8 @@
 					<div class="row">
 						<div class="col-md-3 mb-3">
 							<label for="root">가입 경로</label>
-							<select	class="custom-select d-block w-100" name="memberRoot">
-								<option value="회사 홈페이지 방문">회사 홈페이지 방문</option>
+							<select	class="custom-select d-block w-100 select_memberRoot" name="memberRoot">
+								<option value="회사 홈페이지 방문" selected="selected">회사 홈페이지 방문</option>
 								<option value="인터넷 검색">인터넷 검색</option>
 								<option value="구인 사이트">구인 사이트</option>
 								<option value="지인">지인</option>
@@ -175,15 +175,17 @@
 				var phone1 = $('.input_memberPhoneNumber1').val();
 				var phone2 = $('.input_memberPhoneNumber2').val();
 				var phone3 = $('.input_memberPhoneNumber3').val();
-
+				var root = $('.select_memberRoot option:selected').val();
+				console.log(root);
 				
 				//최종 유효성 검사
 				//전부 true가 되지 않으면 회원가입 되지 않는다.
 				if (idCheck && pwCheck && pwckCheck && pwckcorCheck && nameCheck && birthCheck && phoneNumberCheck) {
 
 					$("#join_form").attr("action", "/member/join");
+					alert("회원가입이 완료되었습니다.");
 					$("#join_form").submit();
-
+					
 				} else {
 					alert("입력되지 않는 항목이 있습니다.");
 					return false;
@@ -271,29 +273,32 @@
 			/* 비밀번호 확인 유효성 검사 */
 			if (pwck == "") {
 				$('.final_memberPwConfirm_ck').css('display', 'inline-block');
+				$('.input_memberPw_re1').css('display', 'none');
+				$('.input_memberPw_re2').css('display', 'none');
 				pwckCheck = false;
 				console.log("비밀번호확인" + pwck + pwckCheck);
 			} else {
+				if (pw == pwck) {
+					$('.input_memberPw_re1').css('display', 'inline-block');
+					$('.input_memberPw_re2').css('display', 'none');
+
+					pwckcorCheck = true;
+					console.log("일치여부" + pwckcorCheck);
+
+				} else {
+					$('.input_memberPw_re1').css('display', 'none');
+					$('.input_memberPw_re2').css('display', 'inline-block');
+
+					pwckcorCheck = false;
+					console.log("일치여부" + pwckcorCheck);
+
+				}
 				$('.final_memberPwConfirm_ck').css('display', 'none');
 				pwckCheck = true;
 				console.log("비밀번호확인" + pwck + pwckCheck);
 			}
 
-			if (pw == pwck) {
-				$('.input_memberPw_re1').css('display', 'inline-block');
-				$('.input_memberPw_re2').css('display', 'none');
 
-				pwckcorCheck = true;
-				console.log("일치여부" + pwckcorCheck);
-
-			} else {
-				$('.input_memberPw_re1').css('display', 'none');
-				$('.input_memberPw_re2').css('display', 'block');
-
-				pwckcorCheck = false;
-				console.log("일치여부" + pwckcorCheck);
-
-			}
 			console.log("아이디체크" + idCheck + "비번체크" + pwCheck + "비번확인체크" + pwckCheck + "비번일치체크" + pwckcorCheck + "이름체크" + nameCheck + "생일 체크" + birthCheck + "전화 체크" + phoneNumberCheck);
 		});
 
@@ -311,26 +316,28 @@
 				pwCheck = false;
 				console.log("비밀번호" + pw + pwCheck);
 			} else {
+				if (pw == pwck) {
+					$('.input_memberPw_re1').css('display', 'inline-block');
+					$('.input_memberPw_re2').css('display', 'none');
+
+					pwckcorCheck = true;
+					console.log("일치여부" + pwckcorCheck);
+
+				} else {
+					$('.input_memberPw_re1').css('display', 'none');
+					$('.input_memberPw_re2').css('display', 'inline-block');
+
+					pwckcorCheck = false;
+					console.log("일치여부" + pwckcorCheck);
+
+				}
+				
 				$('.final_memberPw_ck').css('display', 'none');
 				pwCheck = true;
 				console.log("비밀번호" + pw + pwCheck);
 
 			}
-			if (pw == pwck) {
-				$('.input_memberPw_re1').css('display', 'inline-block');
-				$('.input_memberPw_re2').css('display', 'none');
 
-				pwckcorCheck = true;
-				console.log("일치여부" + pwckcorCheck);
-
-			} else {
-				$('.input_memberPw_re1').css('display', 'none');
-				$('.input_memberPw_re2').css('display', 'inline-block');
-
-				pwckcorCheck = false;
-				console.log("일치여부" + pwckcorCheck);
-
-			}
 			console.log("아이디체크" + idCheck + "비번체크" + pwCheck + "비번확인체크" + pwckCheck + "비번일치체크" + pwckcorCheck + "이름체크" + nameCheck + "생일 체크" + birthCheck + "전화 체크" + phoneNumberCheck);
 		});
 

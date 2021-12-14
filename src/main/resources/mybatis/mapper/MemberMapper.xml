@@ -17,6 +17,7 @@
 		, MEMBERPHONENUMBER2
 		, MEMBERPHONENUMBER3
 		, MEMBERISADMIN
+		, MEMBERREGDATE
 		)
 		VALUES(
 		#{memberName}
@@ -28,7 +29,8 @@
 		, #{memberPhoneNumber1}
 		, #{memberPhoneNumber2}
 		, #{memberPhoneNumber3}
-		,0
+		, 0
+		, SYSDATE()
 
 		)
 	</insert>

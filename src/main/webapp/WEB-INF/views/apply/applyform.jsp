@@ -575,7 +575,7 @@
 					
 						<span style="color:#aaa;" id="assay1_counter"></span>
 					</th>
-					<th><textarea class="input_assay1" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay1 }</textarea></th>
+					<th><textarea class="input_assay1" style="resize:none;" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay1 }</textarea></th>
 
 				</tr>
 
@@ -595,7 +595,7 @@
 
 					
 					</th>
-					<th><textarea class="input_assay2" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay2 }</textarea></th>
+					<th><textarea class="input_assay2" style="resize:none;" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay2 }</textarea></th>
 
 				</tr>
 
@@ -615,7 +615,7 @@
 					<th style="text-align: center;">
 						<span style="color:#aaa;" id="assay3_counter"></span>
 					</th>
-					<th><textarea class="input_assay3" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay3 }</textarea></th>
+					<th><textarea class="input_assay3" style="resize:none;" rows="10" cols="100%" maxlength="700">${apdto.applicantAssay3 }</textarea></th>
 
 				</tr>
 

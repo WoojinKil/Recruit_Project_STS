@@ -17,10 +17,17 @@ public class RecruitNoticeDto {
 	private String recruitContent; //공고 내용
 	private Date recruitWriteDate; //
 	private Date recruitUpdateDate;
+	private String recruitFileName;
 	
 	
 	
 	
+	public String getRecruitFileName() {
+		return recruitFileName;
+	}
+	public void setRecruitFileName(String recruitFileName) {
+		this.recruitFileName = recruitFileName;
+	}
 	public int getRecruitHit() {
 		return recruitHit;
 	}

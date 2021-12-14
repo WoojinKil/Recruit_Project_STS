@@ -23,7 +23,7 @@
 	<div class="container">
 		<form id="view_form" method="post">
 			<div class="row">
-				<table border="1" class="table table-striped" style="text-align: center;">
+				<table border="1" class="table table-bordered" style="text-align: center;">
 
 					<colgroup>
 						<col width="130px" />
@@ -50,15 +50,15 @@
 							<td>${NoticeView.recruitWriteDate }</td>
 						</tr>
 						<tr>
-							<td colspan="4" height="200px">내용 or 이미지 <br> <img src="/resources/images/${NoticeView.recruitFileName}" style="width: 80%"><br>
-
-								<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+							<td colspan="4" height="200px"><div align="left">${NoticeView.recruitContent }</div> 
+							<div>
+									<table class="table" style="text-align: center; border: 1px solid #dddddd">
 									<thead>
 										<tr>
-											<th style="background-color: #eeeeee; text-align: center;">사업부</th>
-											<th style="background-color: #eeeeee; text-align: center;">대상</th>
-											<th style="background-color: #eeeeee; text-align: center;">직무</th>
-											<th style="background-color: #eeeeee; text-align: center;">상세 내용</th>
+											<th style="background-color: white; text-align: center;">사업부</th>
+											<th style="background-color: white; text-align: center;">대상</th>
+											<th style="background-color: white; text-align: center;">직무</th>
+											<th style="background-color: white; text-align: center;">상세 내용</th>
 
 										</tr>
 									</thead>
@@ -69,14 +69,18 @@
 												<td>${parts[status.index].partName }</td>
 												<td>${odtos[status.index].objectName }</td>
 												<td>${wdtos[status.index].workName }</td>
-												<td style="text-align: left;">${adtos.applyContent}</td>
+												<td style="text-align: left;"><textarea rows="10" cols="100%" style="border: none;resize:none;" readonly="readonly">${adtos.applyContent}</textarea></td>
+												
 											</tr>
 
 
 										</c:forEach>
 
 									</tbody>
-								</table> <%
+								</table> 
+							
+							</div>
+<%
  Date now = new Date();
  SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
  %> 

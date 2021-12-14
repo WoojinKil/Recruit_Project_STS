@@ -47,11 +47,11 @@
 
  
 /* 비밀번호 확인 일치 유효성검사 */
-.input_memberPw_re1{
+.input_memberPw_re1{   /* 일치합니다. */
         color : green;
         display : none;    
 }
-.input_memberPw_re2{
+.input_memberPw_re2{  /* 일치하지 않습니다. */
         color : red;
         display : none;    
 }   
