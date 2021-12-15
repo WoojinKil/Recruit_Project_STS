@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
-
+//에러페이지controller
 @Controller
 public class WebErrorController implements ErrorController {
 
@@ -26,7 +26,7 @@ public class WebErrorController implements ErrorController {
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error/404error";
             } else {
-                return "error/error";
+                return "error/500error";
             }
         }
 

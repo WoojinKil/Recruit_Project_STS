@@ -229,12 +229,14 @@
 
 					<tr>
 						<th align="center">학과</th>
-						<td><input name="college_major1" style="width: 30%" class="input_college_major1" type="text" placeholder="주전공"> <input name="college_major2" style="width: 30%" class="input_college_major2" type="text" placeholder="복수전공/부전공"> 단일전공<input type="checkbox" class="input_double_major" checked="checked"> <select class="select_college_double_majorKind">
-
-								<option value="복수전공" selected="selected">복수전공</option>
+						<td><input name="college_major1" style="width: 30%" class="input_college_major1" type="text" placeholder="주전공">
+						 <input name="college_major2" style="width: 30%" class="input_college_major2" type="text" placeholder="복수전공/부전공">
+						 <select class="select_college_double_majorKind">
+								<option value="단일전공" selected="selected">단일전공</option>
+								<option value="복수전공">복수전공</option>
 								<option value="부전공">부전공</option>
 								<option value="기타">기타</option>
-
+								
 
 						</select></td>
 						<th style="width: 10%" align="center">학점<br></th>
@@ -710,8 +712,7 @@
 			
 			$(".select_highschool_graduate").val('${apdto.applicantHighSchoolGraduateState}').change();
 			$(".input_college_major2").prop("disabled", true);
-			$(".select_college_double_majorKind").prop("disabled", true);
-			$(".select_college_double_majorKind").val("단일전공");
+
 			$('#assay1_counter').html("("+$('.input_assay1').val().length+" / <br>최대 700자)");
 			$('#assay2_counter').html("("+$('.input_assay2').val().length+" / <br>최대 700자)");
 			$('#assay3_counter').html("("+$('.input_assay3').val().length+" / <br>최대 700자)");
@@ -943,24 +944,26 @@
 				});
 
 			});
-
-			$(".input_double_major").change(function() { //복수전공의 콤보박스가 변할 경우 발생하는 메소드
-				var st = this.checked;
-				if (st) {
-					//alert("체크");
-					$(".input_college_major2").val("");
+			
+			
+			//복수전공의 select박스가 변할 경우 발생하는 메소드
+			
+			$(".select_college_double_majorKind").change(function() {
+				var val = $(".select_college_double_majorKind option:selected").val();
+				
+				if(val == "단일전공"){
+					
 					$(".input_college_major2").prop("disabled", true);
-					$(".select_college_double_majorKind").val("단일전공");
-					$(".select_college_double_majorKind").prop("disabled", true);
+				
+
 
 				} else {
 
-					//alert("비체크");
+					
 					$(".input_college_major2").prop("disabled", false);
-					$(".input_college_major2").css("background", "none");
-					$(".select_college_double_majorKind").prop("disabled", false);
+					
 
-				}
+				} 
 
 			});
 
@@ -1009,7 +1012,7 @@
 							outHtml += "<tr><td>" + data[index].collegeName + "</td>";
 							outHtml += "<td>" + data[index].collegeLocation + "</td>";
 							outHtml += "<td>" + data[index].collegeMajor1 + "</td>";
-							outHtml += "<td>" + data[index].collegeMajor2 + "<br>" + data[index].collegeDoubleMajorKind + "</td>";
+							outHtml += "<td>" + data[index].collegeMajor2  + data[index].collegeDoubleMajorKind + "</td>";
 							outHtml += "<td>" + data[index].collegeScore + "/" + data[index].collegeScoreMax + "</td>";
 							outHtml += "<td>" + data[index].collegeDegree + "</td>";
 							outHtml += "<td>" + data[index].collegeEnter + "</td>";

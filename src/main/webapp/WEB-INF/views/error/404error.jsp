@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>페이지 에러</title>
+<title>404페이지 에러</title>
 </head>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
