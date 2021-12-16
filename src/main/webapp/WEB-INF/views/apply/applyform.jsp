@@ -1106,6 +1106,7 @@
 					success : function(result) {
 						if (result == "success") {
 							alert("추가되었습니다.");
+							$("#collegeForm")[0].reset();
 							collegeList();
 						} else {
 							alert("삽입에 실패하였습니다.");

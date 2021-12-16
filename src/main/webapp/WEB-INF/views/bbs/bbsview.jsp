@@ -38,9 +38,9 @@
 						<td>${bbs.bbsWriteDate }</td>
 						<td>${bbs.bbsHit}</td>
 					</tr>
-					<tr>
+					<tr style="height:500px">
 					
-						<td colspan ="4"  style="text-align: left"><div>${bbs.bbsContent }</div></td>
+						<td colspan ="4"  style="text-align: left"><div><textarea style="resize:none;width:100%; border:none" rows="20" cols="100%" readonly="readonly">${bbs.bbsContent }</textarea></div></td>
 					</tr>
 					
 					
