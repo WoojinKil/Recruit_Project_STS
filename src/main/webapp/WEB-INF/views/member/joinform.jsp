@@ -75,7 +75,7 @@
 						<span>
 							<span class="final_memberPw_ck"><a id="essentionalred">비밀번호를 입력해주세요.</a></span>
 						</span>
-						<input type="password" class="form-control input_memberPw"	maxlength="12" name="memberPw" placeholder="특수문자 조합  8자 이상, 12자 이하">
+						<input type="password" class="form-control input_memberPw"	maxlength="12" name="memberPw" placeholder="8자 이상, 12자 이하">
 
 					</div>
 					
@@ -85,7 +85,7 @@
 						<span class="final_memberPwConfirm_ck"><a id="essentionalred">비밀번호 확인을 입력해주세요.</a></span>
 						<span class="input_memberPw_re1">비밀번호가 일치합니다.</span>
 						<span class="input_memberPw_re2">비밀번호가 일치하지 않습니다.</span>
-						<input type="password" class="form-control input_memberPwConfirm" maxlength="12" name="memberPwConfirm"	placeholder="특수문자 조합  8자 이상, 12자 이하">
+						<input type="password" class="form-control input_memberPwConfirm" maxlength="12" name="memberPwConfirm"	placeholder="8자 이상, 12자 이하">
 					</div>
 
 
@@ -218,7 +218,7 @@
 						$('.input_memberId_re1').css('display', 'inline-block'); //사용가능한 아이디
 
 						//이메일 정규표현식
-						var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+						var idform = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 
 						/* 아이디 유효성검사 */
 						if (memberId == "") {
@@ -229,7 +229,7 @@
 							idCheck = false; 
 						} else {
 							$('.final_memberId_ck').css('display', 'none');
-							if (form.test(memberId) == false) { //정규식에 맞지 않으면 if문 실행
+							if (idform.test(memberId) == false) { //정규식에 맞지 않으면 if문 실행
 								$('.input_memberId_re1').css('display', 'none');
 								$('.input_memberId_re2').css('display', 'none');
 								$('.final_memberId_ck').css('display', 'inline-block'); //형식에 맞게 아이디를 입력해주세요.
@@ -268,10 +268,10 @@
 			var pw = $('.input_memberPw').val();
 			var pwck = $('.input_memberPwConfirm').val();
 
-			
+			var pwform = /^[A-Za-z0-9]{8,12}$/;
 
 			/* 비밀번호 확인 유효성 검사 */
-			if (pwck == "") {
+			if (pwck == "" || pwform.test(pwck) == false) {
 				$('.final_memberPwConfirm_ck').css('display', 'inline-block');
 				$('.input_memberPw_re1').css('display', 'none');
 				$('.input_memberPw_re2').css('display', 'none');
@@ -308,10 +308,10 @@
 
 			var pw = $('.input_memberPw').val();
 			var pwck = $('.input_memberPwConfirm').val();
-
+			var pwform = /^[A-Za-z0-9]{8,12}$/;
 			//$('.final_memberPw_ck').css('display', 'none');
 			/* 비밀번호 유효성 검사 */
-			if (pw == "" || pw.length < 8) {
+			if (pw == "" || pw.length < 8 || pwform.test(pw) == false) {
 				$('.final_memberPw_ck').css('display', 'inline-block');
 				pwCheck = false;
 				console.log("비밀번호" + pw + pwCheck);

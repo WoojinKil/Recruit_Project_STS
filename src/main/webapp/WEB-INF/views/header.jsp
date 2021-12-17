@@ -5,34 +5,82 @@
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        
+        
+         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> 
+ </head> 
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <nav class="navbar navbar-expand  navbar-dark bg-primary">
 	<div class="container">
 
 		<div class="navbar-header">
 
-			<a class="navbar-brand" href="/">HOME</a> <a class="navbar-brand" href="/">지원 안내</a>
+			<a class="navbar-brand" href="/">HOME</a>
+			
+	
 
-
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회사소개</button>
+				<div class="dropdown-menu">
+					
+					<a class="dropdown-item" href="/talent">인재상</a> 
+					<a class="dropdown-item" href="/process">인사제도</a> 
+				
+				</div>
+			</div>
+			
+			
+			
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">지원 안내</button>
+				<div class="dropdown-menu">
+					
+					<a class="dropdown-item" href="/recruitnavigate/recruitnotice">입사지원</a> 
+					<a class="dropdown-item" href="/bbs/bbsList">공지사항</a> 
+				
+				</div>
+			</div>
+			
+			
+			
 			<!-- 만약 세션이 존재하면, 로그인이 되어있으면 나타나는 태그 -->
 			<c:if test="${member != null }">
 				
 				
 				
 				<c:if test="${member.memberIsAdmin == 0 }">
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">my apply</button>
+					<div class="dropdown-menu">
 					
-					<a href="/myApply/myApplyList">나의 지원 이력</a>
-					<a class="navbar-brand" href="/">입사지원</a>
+						<a class="dropdown-item" href="/myApply/myApplyList">나의 지원 이력</a> 
+						<a class="dropdown-item" href="/member/logout.do">로그아웃</a> 
+						
+				
+					</div>
+					</div>
+				
+					
 				</c:if>
 				<c:if test="${member.memberIsAdmin == 1 }">
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">admin</button>
+					<div class="dropdown-menu">
 					
-					<a class="navbar-brand" href="http://localhost:8080/pandora3/bo">관리자페이지</a>
+						<a class="dropdown-item" href="http://localhost:8080/pandora3/bo">관리자페이지</a> 
+						<a class="dropdown-item" href="/member/logout.do">로그아웃</a> 
+						
+				
+					</div>
+					</div>
+				
+				
 				
 				</c:if>
 				
-				<a class="navbar-brand" href="/member/logout.do">로그아웃</a>
-				
+
 
 				&nbsp;
 				&nbsp;
@@ -49,7 +97,7 @@
 
 		<c:if test="${member == null }">
 			<a class="navbar-brand" href="/member/loginform">로그인</a>
-		
+			<a class="navbar-brand" href="/member/joinform">회원가입</a>
 		</c:if>
 		
 

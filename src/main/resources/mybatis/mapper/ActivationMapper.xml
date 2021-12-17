@@ -18,7 +18,7 @@
 		)
 		values
 		(
-		(SELECT IFNULL(MAX(activationRegisterNo),1) FROM ta_recruit_activation A)+1
+		(SELECT IFNULL(MAX(activationRegisterNo),0) FROM ta_recruit_activation A)+1
 		, #{applicantNo}
 		, #{activationName}
 		, #{activationKind}

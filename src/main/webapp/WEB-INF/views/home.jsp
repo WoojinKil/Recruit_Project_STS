@@ -15,6 +15,7 @@
 	<header><%@ include file="header.jsp"%></header>
 
 	<div class="container">
+		
 		<a href="./">HOME</a><br> <a href="./">회사소개</a>
 		<ol>
 
@@ -41,19 +42,19 @@
 			</c:if>
 		
 			<c:if test ="${member != null}"> <!-- 로그인 했으면 -->
-				<li><a href="/recruitnavigate/recruitnotice">지원하기</a></li>
-				<li><a href="/member/logout.do">로그아웃</a></li> <!-- 로그아웃 하는 행위 -->
+				
+				
 				<c:if test="${member.memberIsAdmin == 0 }">
 					
 					<li><a href="/myApply/myApplyList">나의 지원 이력</a></li>
-				
+					<li><a href="/recruitnavigate/recruitnotice">지원하기</a></li>
 				</c:if>
 				<c:if test="${member.memberIsAdmin == 1 }">
 					
 					<li><a href="http://localhost:8080/pandora3/bo">관리자페이지</a></li>
 				
 				</c:if>
-				
+				<li><a href="/member/logout.do">로그아웃</a></li> <!-- 로그아웃 하는 행위 -->
 			
 			</c:if>
 			

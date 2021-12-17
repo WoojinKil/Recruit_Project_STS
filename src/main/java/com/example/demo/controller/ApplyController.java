@@ -140,10 +140,13 @@ public class ApplyController {
 		
 		TypeDto tdto = aservice.typeView(recruitNo);
 		logger.info("tdto complete" + tdto);
-		
-
+		 int app_ck = aservice.applyChecked(recruitNo, memberId);
+		 logger.info("app_ck " + app_ck);
+		if(app_ck == 0) {
+			aservice.applicantInsert(recruitNo, memberId);
+				
+		}
 		//버튼은 누르는 순간 insert가 된다. 새로고침을 해도 된다.(문제)
-		aservice.applicantInsert(recruitNo, memberId);
 		
 		
 		// 콤보박스를 누르면 사업부-직무-전형대상 순으로 뜬다.

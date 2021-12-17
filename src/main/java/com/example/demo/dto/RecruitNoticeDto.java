@@ -11,12 +11,12 @@ public class RecruitNoticeDto {
 
 	private String recruitName; //채용공고 이름
 	private String recruitScale; //채용 규모 (000명, 혹은 null)
-	private Timestamp recruitStartDateTime; //채용 시작일
+	private String recruitStartDateTime; //채용 시작일
 	private String recruitEndDateTime; //채용 마감일
 	private int recruitHit; //공고 조회수
 	private String recruitContent; //공고 내용
-	private Date recruitWriteDate; //
-	private Date recruitUpdateDate;
+	private String recruitWriteDate; //
+	private String recruitUpdateDate;
 	private String recruitFileName;
 	
 	
@@ -60,10 +60,10 @@ public class RecruitNoticeDto {
 	public void setRecruitScale(String recruitScale) {
 		this.recruitScale = recruitScale;
 	}
-	public Timestamp getRecruitStartDateTime() {
+	public String getRecruitStartDateTime() {
 		return recruitStartDateTime;
 	}
-	public void setRecruitStartDateTime(Timestamp recruitStartDateTime) {
+	public void setRecruitStartDateTime(String recruitStartDateTime) {
 		this.recruitStartDateTime = recruitStartDateTime;
 	}
 	public String getRecruitEndDateTime() {
@@ -78,16 +78,16 @@ public class RecruitNoticeDto {
 	public void setRecruitContent(String recruitContent) {
 		this.recruitContent = recruitContent;
 	}
-	public Date getRecruitWriteDate() {
+	public String getRecruitWriteDate() {
 		return recruitWriteDate;
 	}
-	public void setRecruitWriteDate(Date recruitWriteDate) {
+	public void setRecruitWriteDate(String recruitWriteDate) {
 		this.recruitWriteDate = recruitWriteDate;
 	}
-	public Date getRecruitUpdateDate() {
+	public String getRecruitUpdateDate() {
 		return recruitUpdateDate;
 	}
-	public void setRecruitUpdateDate(Date recruitUpdateDate) {
+	public void setRecruitUpdateDate(String recruitUpdateDate) {
 		this.recruitUpdateDate = recruitUpdateDate;
 	}
 

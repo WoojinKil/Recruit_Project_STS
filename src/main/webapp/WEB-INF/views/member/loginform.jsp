@@ -56,14 +56,12 @@ body {
 
 					<div class="mb-3">
 						<label for="id">이메일아이디</label> <input type="text"
-							class="form-control input_memberId " name="memberId" placeholder="you@example.com"
-							>
+							class="form-control input_memberId " name="memberId">
 
 					</div>
 					<div class="mb-3">
 						<label for="password">비밀번호</label> <input type="password"
-							class="form-control input_memberPw" name="memberPw"
-							placeholder="특수문자 조합  8자 이상, 12자 이하" >
+							class="form-control input_memberPw" name="memberPw">
 	
 					</div>
 

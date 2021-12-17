@@ -16,7 +16,7 @@
 		)
 		values
 		(
-		(SELECT IFNULL(MAX(certificateRegisterNo),1) FROM ta_recruit_certificate C)+1
+		(SELECT IFNULL(MAX(certificateRegisterNo),0) FROM ta_recruit_certificate C)+1
 		, #{applicantNo}
 		, #{certificateName}
 		, #{certificateScore}

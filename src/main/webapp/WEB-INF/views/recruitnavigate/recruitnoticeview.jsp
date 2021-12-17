@@ -44,10 +44,10 @@
 							<td colspan="3"  style="text-align: left">${NoticeView.recruitName}</td>
 						</tr>
 						<tr>
-							<th align="center">유형</th>
-							<td>${NoticeView.typeNo }</td>
-							<th align="center">게시 일자</th>
-							<td>${NoticeView.recruitWriteDate }</td>
+							<th align="center">시작 시간</th>
+							<td>${NoticeView.recruitStartDateTime }</td>
+							<th align="center">마감 시간</th>
+							<td>${NoticeView.recruitEndDateTime }</td>
 						</tr>
 						<tr>
 							<td colspan="4" height="200px"><div align="left">${NoticeView.recruitContent }</div> 

@@ -8,7 +8,7 @@ public class BbsDto {
 	private int bbsNo;
 	private String bbsTitle;
 	private String bbsContent;
-	private Date bbsWriteDate;
+	private String bbsWriteDate;
 	private int bbsHit;
 	public int getBbsNo() {
 		return bbsNo;
@@ -28,10 +28,10 @@ public class BbsDto {
 	public void setBbsContent(String bbsContent) {
 		this.bbsContent = bbsContent;
 	}
-	public Date getBbsWriteDate() {
+	public String getBbsWriteDate() {
 		return bbsWriteDate;
 	}
-	public void setBbsWriteDate(Date bbsWriteDate) {
+	public void setBbsWriteDate(String bbsWriteDate) {
 		this.bbsWriteDate = bbsWriteDate;
 	}
 	public int getBbsHit() {

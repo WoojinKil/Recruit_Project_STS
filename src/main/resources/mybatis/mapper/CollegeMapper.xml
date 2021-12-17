@@ -25,7 +25,7 @@
  		
  		) values
  		(
- 		(SELECT IFNULL(MAX(collegeRegisterNo),1) FROM ta_recruit_college C)+1
+ 		(SELECT IFNULL(MAX(collegeRegisterNo),0) FROM ta_recruit_college C)+1
  		, #{applicantNo}
  		, #{collegeName}
  		, #{collegeLocation}

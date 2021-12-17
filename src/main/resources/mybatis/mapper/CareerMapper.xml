@@ -18,7 +18,7 @@
 		)
 		values
 		(
-		(SELECT IFNULL(MAX(careerRegisterNo),1) FROM ta_recruit_career C)+1
+		(SELECT IFNULL(MAX(careerRegisterNo),0) FROM ta_recruit_career C)+1
 		, #{applicantNo}
 		, #{careerName}
 		, #{careerContract}

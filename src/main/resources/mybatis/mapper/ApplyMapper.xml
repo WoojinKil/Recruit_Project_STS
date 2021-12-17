@@ -137,7 +137,7 @@
   		ta_recruit_applicant
   		, ta_recruit_notice 
   		where
-		ta_recruit_notice.recruitNo = #{recruitNo}
+			ta_recruit_notice.recruitNo = #{recruitNo}
   	 	and ta_recruit_applicant.recruitNo = ta_recruit_notice.recruitNo
   	 	and ta_recruit_applicant.applicantId= #{memberId};
   	
@@ -146,19 +146,20 @@
   
   <!-- 지원하기를 누르면 생성하는 레코드, 받아오는 값은 기본으로 memberId와 recruitNo-->
  <insert id="applicantInsert">
+ 
  	insert 
- 	IGNORE
-	ta_recruit_applicant(
-	applicantNo
-	,applicantId
-	,recruitNo
-	,finalApplyChecked
-	)
+ 		IGNORE
+			ta_recruit_applicant(
+							applicantNo
+							,applicantId
+							,recruitNo
+							,finalApplyChecked
+			)
 	values(
-	(SELECT IFNULL(MAX(applicantNo),1) FROM ta_recruit_applicant B)+1
-	,#{memberId}
-	,#{recruitNo}
-	,0
+		(SELECT IFNULL(MAX(applicantNo),0) FROM ta_recruit_applicant B)+1
+		,#{memberId}
+		,#{recruitNo}
+		,0
 	
 	)
 	

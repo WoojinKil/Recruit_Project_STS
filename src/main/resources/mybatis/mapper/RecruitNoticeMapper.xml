@@ -6,7 +6,12 @@
 	
 	<select id="noticeList" resultType="com.example.demo.dto.RecruitNoticeDto">
 	
-		select distinct(ta_recruit_apply.recruitNo),recruitName, ta_recruit_notice.recruitHit, recruitScale, typeNo  from `ta_recruit_apply`, `ta_recruit_notice` where ta_recruit_notice.recruitNo = ta_recruit_apply.recruitNo order by ta_recruit_notice.recruitNo DESC;
+		select 
+		distinct(ta_recruit_apply.recruitNo),recruitName, ta_recruit_notice.recruitHit, recruitScale, typeNo  
+		from `ta_recruit_apply`, `ta_recruit_notice` 
+		where 
+		ta_recruit_notice.recruitNo = ta_recruit_apply.recruitNo 
+		order by ta_recruit_notice.recruitNo DESC;
 	
 	
 	
