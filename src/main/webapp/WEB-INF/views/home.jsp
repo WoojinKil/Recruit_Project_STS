@@ -51,7 +51,7 @@
 				</c:if>
 				<c:if test="${member.memberIsAdmin == 1 }">
 					
-					<li><a href="http://localhost:8080/pandora3/bo">관리자페이지</a></li>
+					<li><a href="http://localhost:8081/pandora3/bo">관리자페이지</a></li>
 				
 				</c:if>
 				<li><a href="/member/logout.do">로그아웃</a></li> <!-- 로그아웃 하는 행위 -->
