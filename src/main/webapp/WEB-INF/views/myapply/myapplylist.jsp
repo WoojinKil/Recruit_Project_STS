@@ -51,7 +51,7 @@
 					<c:forEach items ="${rdtos}" var="rdtos" varStatus="status">
 					<tr>
 						
-						<td>${tdtos[status.index].typeName }</td>
+						<td>${rdtos.typeName }</td>
 						<td style="text-align: left">${rdtos.recruitName }
 						</td>
 						

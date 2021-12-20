@@ -16,8 +16,7 @@ import com.example.demo.dto.WorkDto;
 @Repository
 public interface ApplyMapper {
 
-	//각 채용공고의 채용유형 불러오기
-	public TypeDto typeView(int recruitNo)throws Exception;
+
 	
 	//각 채용을 하는 사업부 불러오기
 	public ArrayList<PartDto> partView(int recruitNo)throws Exception;

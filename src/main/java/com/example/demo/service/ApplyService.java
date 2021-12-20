@@ -13,7 +13,7 @@ import com.example.demo.dto.WorkDto;
 
 public interface ApplyService {
 
-	public TypeDto typeView(int recruitNo) throws Exception;
+	
 	public ArrayList<PartDto> partView(int recruitNo)throws Exception;
 	public ArrayList<WorkDto> workView(int recruitNo)throws Exception;
 	public ArrayList<ApplyDto> applyView(int recruitNo) throws Exception;

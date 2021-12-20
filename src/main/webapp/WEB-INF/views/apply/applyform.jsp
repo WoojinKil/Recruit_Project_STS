@@ -52,7 +52,7 @@
 					</tr>
 					<tr>
 						<th align="center">유형</th>
-						<td>${type.typeName }</td>
+						<td>${noticeInfo.typeName }</td>
 						<th align="center">직무 선택</th>
 						<td colspan="4">
 							<div>
@@ -631,10 +631,12 @@
 
 
 
-	
-		<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">임시저장</button>
+		<c:if test="${apdto.finalApplyChecked == 1 }">
+			<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">수정</button>
+		</c:if>
+		<c:if test="${apdto.finalApplyChecked == 0 }">
+			<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">저장</button>
 		
-		 <c:if test="${apdto.finalApplyChecked == 0 }">
 			<button style="margin: auto; width: 40%;" type="button" class="btn btn-danger finalApply" >최종제출</button>
 	
 		</c:if>
@@ -880,7 +882,7 @@
 			});
 			
 			
-			//임시저장 버튼을 누르면 실행되는 메소드
+			//저장 버튼을 누르면 실행되는 메소드
 			$(".save_temp").click(function() {
 
 				var applicantNo = '${apdto.applicantNo}';
@@ -905,10 +907,7 @@
 				console.log(applicantAssay2);
 				console.log(applicantAssay3);
 
-				alert("임시저장되었습니다. 수험번호" + applicantNo + "군필" + applicantMillitary + "지원번호 " + applyNo + "보훈여부" + applicantVeteran + "취업보호여부" + applicantJobProtect + "장애여부" + applicantDisability);
-				alert("자소서1내용 = " + applicantAssay1 + "자소서2내용 = " + applicantAssay2 + "자소서3 = " + applicantAssay3);
-
-				//ajax 작성 12.03
+				//ajax
 				$.ajax({
 					url : '/apply/applicantSaveTemp.do',
 					type : 'post',
@@ -931,7 +930,7 @@
 					},
 					success : function(result) {
 						if (result == 'success') {
-							alert("임시저장 되었습니다. 마감 기한 내에 반드시 최종제출 버튼은 눌러야 최종제출 됩니다.");
+							alert("저장 되었습니다. 마감 기한 내에 반드시 최종제출 버튼은 눌러야 최종제출 됩니다.");
 						} else {
 							alert("임시저장 실패");
 						}

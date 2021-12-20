@@ -3,44 +3,44 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.example.demo.mapper.CollegeMapper">
- 		<insert id = "addCollege"> 
- 		
- 		insert
- 		into ta_recruit_college
- 		(
- 		collegeRegisterNo
- 		, applicantNo
- 		, collegeName
- 		, collegeLocation
- 		, collegeEnter
- 		, collegeDegree
- 		, collegeMajor1
- 		, collegeDoubleMajorKind
- 		, collegeMajor2
- 		, collegeScore
- 		, collegeScoreMax
- 		, collegeStartDate
- 		, collegeEndDate
- 		, collegeGraduate
- 		
- 		) values
- 		(
- 		(SELECT IFNULL(MAX(collegeRegisterNo),0) FROM ta_recruit_college C)+1
- 		, #{applicantNo}
- 		, #{collegeName}
- 		, #{collegeLocation}
- 		, #{collegeEnter}
- 		, #{collegeDegree}
- 		, #{collegeMajor1}
- 		, #{collegeDoubleMajorKind}
- 		, #{collegeMajor2}
- 		, #{collegeScore}
- 		, #{collegeScoreMax}
- 		, #{collegeStartDate}
- 		, #{collegeEndDate}
- 		, #{collegeGraduate}
- 		
- 		);
+ 		<insert id = "addCollege">
+
+	INSERT
+	INTO TA_RECRUIT_COLLEGE
+	(
+	COLLEGEREGISTERNO
+	, APPLICANTNO
+	, COLLEGENAME
+	, COLLEGELOCATION
+	, COLLEGEENTER
+	, COLLEGEDEGREE
+	, COLLEGEMAJOR1
+	, COLLEGEDOUBLEMAJORKIND
+	, COLLEGEMAJOR2
+	, COLLEGESCORE
+	, COLLEGESCOREMAX
+	, COLLEGESTARTDATE
+	, COLLEGEENDDATE
+	, COLLEGEGRADUATE
+
+	) VALUES
+	(
+	(SELECT IFNULL(MAX(COLLEGEREGISTERNO),0) FROM TA_RECRUIT_COLLEGE C)+1
+	, #{applicantNo}
+	, #{collegeName}
+	, #{collegeLocation}
+	, #{collegeEnter}
+	, #{collegeDegree}
+	, #{collegeMajor1}
+	, #{collegeDoubleMajorKind}
+	, #{collegeMajor2}
+	, #{collegeScore}
+	, #{collegeScoreMax}
+	, #{collegeStartDate}
+	, #{collegeEndDate}
+	, #{collegeGraduate}
+
+	);
  		
  		
  		
@@ -49,18 +49,18 @@
  		</insert> 
   
   		<select id ="collegeList" resultType= "com.example.demo.dto.CollegeDto">
-  			select * from
-  			ta_recruit_college
-  			where 
-  			applicantNo = #{applicantNo};
+	SELECT * FROM
+	TA_RECRUIT_COLLEGE
+	WHERE
+	APPLICANTNO = #{APPLICANTNO};
   		</select>
   
   
   
   		<delete id="collegeDelete">
-  			delete from ta_recruit_college
-  			where 
-  			collegeRegisterNo = #{collegeRegisterNo};
+	DELETE FROM TA_RECRUIT_COLLEGE
+	WHERE
+	COLLEGEREGISTERNO = #{COLLEGEREGISTERNO};
   		
   		
   		</delete>

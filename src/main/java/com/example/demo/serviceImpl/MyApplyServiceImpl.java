@@ -23,11 +23,6 @@ public class MyApplyServiceImpl implements MyApplyService {
 		return mapper.myApplyTitleList(memberId);
 	}
 
-	@Override
-	public ArrayList<TypeDto> myApplyTypeList(String memberId) throws Exception {
-		// TODO Auto-generated method stub
-		return mapper.myApplyTypeList(memberId);
-	}
 
 	@Override
 	public ArrayList<ApplicantDto> myFinalApplyCheckedList(String memberId) throws Exception {

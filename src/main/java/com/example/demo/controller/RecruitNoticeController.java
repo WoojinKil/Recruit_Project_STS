@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,19 +37,34 @@ public class RecruitNoticeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RecruitNoticeController.class);
 
+	
+	//채용공고 페이지로 들어가기 위한 controller
 	@RequestMapping("/recruitnotice")
+
 	public String recruitNoticeForm(Model model) throws Exception {
 
-		ArrayList<RecruitNoticeDto> array = (ArrayList<RecruitNoticeDto>) rservice.noticeList();
-		ArrayList<TypeDto> typeList = rservice.typeList();
-
-		model.addAttribute("noticeArray", array);
-		model.addAttribute("typeList", typeList);
-		logger.info("goto recruitNoticeForm");
+		/*
+		 * ArrayList<RecruitNoticeDto> array = (ArrayList<RecruitNoticeDto>)
+		 * rservice.noticeList(); ArrayList<TypeDto> typeList = rservice.typeList();
+		 * 
+		 * model.addAttribute("noticeArray", array); model.addAttribute("typeList",
+		 * typeList); logger.info("goto recruitNoticeForm");
+		 */
 		return "/recruitnavigate/recruitnoticeform";
 
 	}
 
+	@PostMapping("/recruitNotice.do")
+	@ResponseBody
+	public ArrayList<RecruitNoticeDto> getRecruitNotice() throws Exception {
+		try {
+			return rservice.noticeList();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+	}
 	// 채용공고를 클릭하면 이 지원자가 해당공고를 지원하였는지 확인한다.
 	@RequestMapping("/recruitnoticeview")
 	public String recruitNoticeView(@RequestParam int recruitNo, HttpSession session, Model model) throws Exception {
@@ -104,4 +122,17 @@ public class RecruitNoticeController {
 
 	}
 
+	@PostMapping("/searchNotice.do")
+	@ResponseBody
+	public ArrayList<RecruitNoticeDto> searchNotice(@RequestParam Map<String, Object> map) throws Exception{
+		
+		try {
+			return rservice.searchNoticeList(map);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return null;
+		}
+	}
+	
+	
 }

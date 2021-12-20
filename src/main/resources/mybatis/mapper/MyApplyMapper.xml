@@ -4,46 +4,43 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.MyApplyMapper">
 	<select id="myApplyTitleList" resultType="com.example.demo.dto.RecruitNoticeDto">
-	
-	SELECT 
-	distinct ta_recruit_notice.recruitNo,ta_recruit_notice.recruitName,ta_recruit_notice.recruitEndDateTime
-	FROM 
-	ta_recruit_applicant,ta_recruit_notice 
-	where ta_recruit_applicant.applicantId= #{memberId}
-	and ta_recruit_applicant.recruitNo = ta_recruit_notice.recruitNo;
+
+	SELECT
+	DISTINCT
+	TA_RECRUIT_NOTICE.RECRUITNO
+	,TA_RECRUIT_NOTICE.RECRUITNAME
+	,TA_RECRUIT_NOTICE.RECRUITENDDATETIME
+	,TA_RECRUIT_NOTICE.TYPENAME
+	FROM
+	TA_RECRUIT_APPLICANT,TA_RECRUIT_NOTICE
+	WHERE TA_RECRUIT_APPLICANT.APPLICANTID = #{memberId}
+	AND
+	TA_RECRUIT_APPLICANT.RECRUITNO = TA_RECRUIT_NOTICE.RECRUITNO;
 	
 	</select>
 
-	<select id="myApplyTypeList" resultType="com.example.demo.dto.TypeDto">
-	select 
-	ta_recruit_type.typeName 
-	from
-	ta_recruit_applicant
-	,ta_recruit_type 
-	,ta_recruit_notice
-	where ta_recruit_applicant.applicantId= #{memberId}
-	and ta_recruit_applicant.recruitNo = ta_recruit_notice.recruitNo
-	and ta_recruit_type.typeNo = ta_recruit_notice.typeNo;
-	
-	
-	
-	</select>
 	
 	
 	<!-- 지원한 이력서가 최종제출되었는 지 확인하는 select문 -->
 	<select id = "myFinalApplyCheckedList" resultType="com.example.demo.dto.ApplicantDto">
-	select
+	SELECT
 	*
-	from
-	ta_recruit_applicant
-	where
-	ta_recruit_applicant.applicantId= #{memberId}
+	FROM
+	TA_RECRUIT_APPLICANT
+	WHERE
+	TA_RECRUIT_APPLICANT.APPLICANTID=
+	#{MEMBERID}
 	
 	</select>
 	
 	<!-- 현재 이력서를 삭제하는 delete문 -->
 	<delete id="myDeleteApply">
-		delete from ta_recruit_applicant  where applicantId= #{memberId} and recruitNo =#{recruitNo}
+	DELETE
+	FROM
+	TA_RECRUIT_APPLICANT
+	WHERE APPLICANTID= #{memberId}
+	AND
+	RECRUITNO = #{recruitNo}
 	
 	
 	</delete>

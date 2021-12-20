@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.example.demo.mapper.ApplyMapper">
-  	<select id="typeView" resultType="com.example.demo.dto.TypeDto">
+<!--   	<select id="typeView" resultType="com.example.demo.dto.TypeDto">
   	
   		SELECT 
   		TA_RECRUIT_TYPE.TYPENO
@@ -15,7 +15,7 @@
   		AND TA_RECRUIT_NOTICE.TYPENO = TA_RECRUIT_TYPE.TYPENO
   		 
   	
-  	</select>
+  	</select> -->
   	
   	<select id="workView" resultType="com.example.demo.dto.WorkDto">
   		SELECT

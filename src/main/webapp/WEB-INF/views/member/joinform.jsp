@@ -75,7 +75,7 @@
 						<span>
 							<span class="final_memberPw_ck"><a id="essentionalred">비밀번호를 입력해주세요.</a></span>
 						</span>
-						<input type="password" class="form-control input_memberPw"	maxlength="12" name="memberPw" placeholder="8자 이상, 12자 이하">
+						<input type="password" class="form-control input_memberPw"	maxlength="12" name="memberPw" placeholder="특수문자 포함 8자 이상, 12자 이하">
 
 					</div>
 					
@@ -151,14 +151,14 @@
 		var phoneNumberCheck = false; //휴대폰 번호 검사
 		
 		//각각의 input의 class의 이름을 받아온다.
-		var id = $('.input_memberId').val(); 
-		var pw = $('.input_memberPw').val();
-		var pwck = $('.input_memberPwConfirm').val();
-		var name = $('.input_memberName').val();
-		var birth = $('.input_memberBirth').val();
-		var phone1 = $('.input_memberPhoneNumber1').val();
-		var phone2 = $('.input_memberPhoneNumber2').val();
-		var phone3 = $('.input_memberPhoneNumber3').val();
+		var id = $.trim($('.input_memberId').val()); 
+		var pw = $.trim($('.input_memberPw').val());
+		var pwck = $.trim($('.input_memberPwConfirm').val());
+		var name = $.trim($('.input_memberName').val());
+		var birth = $.trim($('.input_memberBirth').val());
+		var phone1 = $.trim($('.input_memberPhoneNumber1').val());
+		var phone2 = $.trim($('.input_memberPhoneNumber2').val());
+		var phone3 = $.trim($('.input_memberPhoneNumber3').val());
 
 		$(document).ready(function() {
 			
@@ -167,14 +167,14 @@
 			$(".join_button").click(function() {
 
 				//각각의 input의 class의 이름을 받아온다.
-				var id = $('.input_memberId').val();
-				var pw = $('.input_memberPw').val();
-				var pwck = $('.input_memberPwConfirm').val();
-				var name = $('.input_memberName').val();
-				var birth = $('.input_memberBirth').val();
-				var phone1 = $('.input_memberPhoneNumber1').val();
-				var phone2 = $('.input_memberPhoneNumber2').val();
-				var phone3 = $('.input_memberPhoneNumber3').val();
+				var id = $.trim($('.input_memberId').val()); 
+				var pw = $.trim($('.input_memberPw').val());
+				var pwck = $.trim($('.input_memberPwConfirm').val());
+				var name = $.trim($('.input_memberName').val());
+				var birth = $.trim($('.input_memberBirth').val());
+				var phone1 = $.trim($('.input_memberPhoneNumber1').val());
+				var phone2 = $.trim($('.input_memberPhoneNumber2').val());
+				var phone3 = $.trim($('.input_memberPhoneNumber3').val());
 				var root = $('.select_memberRoot option:selected').val();
 				console.log(root);
 				
@@ -183,8 +183,17 @@
 				if (idCheck && pwCheck && pwckCheck && pwckcorCheck && nameCheck && birthCheck && phoneNumberCheck) {
 
 					$("#join_form").attr("action", "/member/join");
-					alert("회원가입이 완료되었습니다.");
-					$("#join_form").submit();
+					
+					var con_test = confirm("가입하시겠습니까?");
+					if (con_test == true) {
+						alert("회원가입이 완료되었습니다.");
+						$("#join_form").submit();
+						
+					} else if (con_test == false) {
+						return false;
+					}
+					
+					
 					
 				} else {
 					alert("입력되지 않는 항목이 있습니다.");
@@ -268,7 +277,7 @@
 			var pw = $('.input_memberPw').val();
 			var pwck = $('.input_memberPwConfirm').val();
 
-			var pwform = /^[A-Za-z0-9]{8,12}$/;
+			var pwform = /^[A-Za-z0-9!@#$%^&*]{8,12}$/;
 
 			/* 비밀번호 확인 유효성 검사 */
 			if (pwck == "" || pwform.test(pwck) == false) {
@@ -308,7 +317,7 @@
 
 			var pw = $('.input_memberPw').val();
 			var pwck = $('.input_memberPwConfirm').val();
-			var pwform = /^[A-Za-z0-9]{8,12}$/;
+			var pwform = /^[A-Za-z0-9!@#$%^&*]{8,12}$/;
 			//$('.final_memberPw_ck').css('display', 'none');
 			/* 비밀번호 유효성 검사 */
 			if (pw == "" || pw.length < 8 || pwform.test(pw) == false) {

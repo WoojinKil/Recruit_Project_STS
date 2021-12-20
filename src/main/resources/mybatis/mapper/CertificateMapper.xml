@@ -5,25 +5,25 @@
 <mapper namespace="com.example.demo.mapper.CertificateMapper">
 
 	<insert id="addCertificate">
-		insert into ta_recruit_certificate
-		(
-		certificateRegisterNo
-		,applicantNo
-		, certificateName
-		, certificateScore
-		, certificateDate
-		, certificateCode
-		)
-		values
-		(
-		(SELECT IFNULL(MAX(certificateRegisterNo),0) FROM ta_recruit_certificate C)+1
-		, #{applicantNo}
-		, #{certificateName}
-		, #{certificateScore}
-		, #{certificateDate}
-		, #{certificateCode}
+	INSERT INTO TA_RECRUIT_CERTIFICATE
+	(
+	CERTIFICATEREGISTERNO
+	,APPLICANTNO
+	, CERTIFICATENAME
+	, CERTIFICATESCORE
+	, CERTIFICATEDATE
+	, CERTIFICATECODE
+	)
+	VALUES
+	(
+	(SELECT IFNULL(MAX(CERTIFICATEREGISTERNO),0) FROM TA_RECRUIT_CERTIFICATE C)+1
+	, #{applicantNo}
+	, #{certificateName}
+	, #{certificateScore}
+	, #{certificateDate}
+	, #{certificateCode}
 
-		);
+	);
 
 
 
@@ -32,16 +32,16 @@
 	<select id="certificateList"
 		resultType="com.example.demo.dto.CertificateDto">
 
-		select * from
-		ta_recruit_certificate
-		where applicantNo = #{applicantNo};
+	SELECT * FROM
+	TA_RECRUIT_CERTIFICATE
+	WHERE APPLICANTNO = #{applicantNo};
 
 	</select>
 	
 	<delete id= "certificateDelete">
-		delete from
-		ta_recruit_certificate
-		where certificateRegisterNo = #{certificateRegisterNo};
+	DELETE FROM
+	TA_RECRUIT_CERTIFICATE
+	WHERE CERTIFICATEREGISTERNO = #{certificateRegisterNo};
 	
 	</delete>
 	

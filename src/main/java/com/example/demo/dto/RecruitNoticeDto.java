@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 public class RecruitNoticeDto {
 
 	private int recruitNo; //채용공고 번호
-	private String typeNo; //채용 유형 (수시, 공채, 혹은null)
+	private String typeName; //채용 유형 (수시, 공채, 혹은null)
 
 	private String recruitName; //채용공고 이름
 	private String recruitScale; //채용 규모 (000명, 혹은 null)
@@ -41,11 +41,11 @@ public class RecruitNoticeDto {
 		this.recruitNo = recruitNo;
 	}
 
-	public String getTypeNo() {
-		return typeNo;
+	public String getTypeName() {
+		return typeName;
 	}
-	public void setTypeNo(String typeNo) {
-		this.typeNo = typeNo;
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
 	}
 	
 	public String getRecruitName() {

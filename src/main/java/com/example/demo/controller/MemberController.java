@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.util.ParameterMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.dto.MemberDto;
@@ -36,12 +36,17 @@ public class MemberController {
 	}
 
 	@PostMapping("/join")
-	
-	public String join(@RequestParam Map <String, Object> map, Model model) throws Exception {
+	public String join(@RequestParam Map<String, Object> map, Model model) throws Exception {
 
+		logger.info("파라미터값"+map.toString());
 
 	try {
+		
+		logger.info("파라미터값"+map.toString());
+		
+		
 		service.join(map);
+		
 	} catch (Exception e) {
 		// TODO: handle exception
 		e.printStackTrace();

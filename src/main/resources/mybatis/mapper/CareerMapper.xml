@@ -4,46 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.example.demo.mapper.CareerMapper">
  	<insert id="addCareer">
- 		insert into ta_recruit_career
-		(
-		careerRegisterNo
-		,applicantNo
-		, careerName
-		, careerContract
-		, careerPart
-		, careerRole
-		, careerStartDate
-		, careerEndDate
-		, careerContent
-		)
-		values
-		(
-		(SELECT IFNULL(MAX(careerRegisterNo),0) FROM ta_recruit_career C)+1
-		, #{applicantNo}
-		, #{careerName}
-		, #{careerContract}
-		, #{careerPart}
-		, #{careerRole}
-		, #{careerStartDate}
-		, #{careerEndDate}
-		, #{careerContent}
-		);
+	INSERT INTO TA_RECRUIT_CAREER
+	(
+	CAREERREGISTERNO
+	,APPLICANTNO
+	, CAREERNAME
+	, CAREERCONTRACT
+	, CAREERPART
+	, CAREERROLE
+	, CAREERSTARTDATE
+	, CAREERENDDATE
+	, CAREERCONTENT
+	)
+	VALUES
+	(
+	(SELECT IFNULL(MAX(CAREERREGISTERNO),0) FROM TA_RECRUIT_CAREER C)+1
+	, #{applicantNo}
+	, #{careerName}
+	, #{careerContract}
+	, #{careerPart}
+	, #{careerRole}
+	, #{careerStartDate}
+	, #{careerEndDate}
+	, #{careerContent}
+	);
  		
  	
  	</insert>
  	
  	<select id="careerList" resultType="com.example.demo.dto.CareerDto">
- 		select * from
- 		ta_recruit_career
- 		where applicantNo = #{applicantNo};
+	SELECT * FROM
+	TA_RECRUIT_CAREER
+	WHERE APPLICANTNO = #{applicantNo};
  	
  	
  	</select>
  	
  	<delete id="careerDelete">
- 	
- 		delete from ta_recruit_career
- 		where careerRegisterNo = #{careerRegisterNo};
+
+	DELETE FROM TA_RECRUIT_CAREER
+	WHERE CAREERREGISTERNO = #{careerRegisterNo};
  	
  		
  	</delete>

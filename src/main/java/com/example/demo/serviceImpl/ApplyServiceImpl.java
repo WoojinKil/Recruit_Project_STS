@@ -26,14 +26,6 @@ public class ApplyServiceImpl implements ApplyService {
 	@Autowired
 	ApplyMapper mapper;
 	
-	
-	@Override
-	public TypeDto typeView(int recruitNo) throws Exception {
-		// TODO Auto-generated method stub
-	
-		
-		return mapper.typeView(recruitNo);
-	}
 
 
 	@Override

@@ -26,7 +26,6 @@ public class MemberServiceImpl implements MemberService {
 		
 		// TODO Auto-generated method stub
 
-		System.out.println("Service들어감"+ map);
 		mapper.join(map);
 
 	}

@@ -38,15 +38,12 @@ public class MyApplyController {
 		String memberId = mdto.getMemberId();
 		ArrayList<RecruitNoticeDto> rdtos = maservice.myApplyTitleList(memberId);
 		logger.info("rdto complete");
-		ArrayList<TypeDto> tdtos = maservice.myApplyTypeList(memberId);
-		logger.info("tdtos complete");
 		ArrayList<ApplicantDto> adtos= maservice.myFinalApplyCheckedList(memberId);
 		logger.info("adtos complete"+adtos);
 		
 		
 		
 		model.addAttribute("rdtos",rdtos);
-		model.addAttribute("tdtos",tdtos);
 		model.addAttribute("adtos",adtos);
 		return "/myapply/myapplylist";
 		

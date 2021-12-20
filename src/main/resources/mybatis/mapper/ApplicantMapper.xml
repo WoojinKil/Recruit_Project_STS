@@ -4,15 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.ApplicantMapper">
 	<select id="viewApplicant" resultType="com.example.demo.dto.ApplicantDto">
-		select * 
-		from ta_recruit_applicant 
-		where 
-		applicantId = #{memberId}
-		and
-		recruitNo = #{recruitNo}
+	SELECT *
+	FROM TA_RECRUIT_APPLICANT
+	WHERE
+	APPLICANTID = #{memberId}
+	AND
+	RECRUITNO = #{recruitNo}
 	
 	</select>
 
+	<delete id = "deleteApplicantNotFinalApply">
+	DELETE
+	FROM TA_RECRUIT_APPLICANT
+	WHERE
+	RECRUITNO = #{recruitNo}
+	AND
+	FINALAPPLYCHECKED = 0
+		
+	
+	
+	</delete>
 
 </mapper>
   

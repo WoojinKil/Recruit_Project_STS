@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -19,5 +20,6 @@ public interface RecruitNoticeMapper {
 	public void recruitNoticeHitUp(int recruitNo) throws Exception;
 	//채용공고 유형 리스트(수시/공채)
 	public ArrayList<TypeDto> typeList() throws Exception;
-	
+	//공고 검색
+	public ArrayList<RecruitNoticeDto> searchNoticeList(Map<String, Object> map) throws Exception;
 }

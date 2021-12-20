@@ -4,46 +4,53 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.example.demo.mapper.ActivationMapper">
  	<insert id="addActivation">
- 		insert into ta_recruit_activation
-		(
-		activationRegisterNo
-		,applicantNo
-		, activationName
-		, activationKind
-		, activationContent
-		, activationRole
-		, activationStartDate
-		, activationEndDate
-		, activationOrgan
-		)
-		values
-		(
-		(SELECT IFNULL(MAX(activationRegisterNo),0) FROM ta_recruit_activation A)+1
-		, #{applicantNo}
-		, #{activationName}
-		, #{activationKind}
-		, #{activationContent}
-		, #{activationRole}
-		, #{activationStartDate}
-		, #{activationEndDate}
-		, #{activationOrgan}
-		);
+	INSERT
+	INTO
+	TA_RECRUIT_ACTIVATION
+	(
+	ACTIVATIONREGISTERNO
+	,APPLICANTNO
+	, ACTIVATIONNAME
+	, ACTIVATIONKIND
+	, ACTIVATIONCONTENT
+	, ACTIVATIONROLE
+	, ACTIVATIONSTARTDATE
+	, ACTIVATIONENDDATE
+	, ACTIVATIONORGAN
+	)
+	VALUES
+	(
+	(SELECT IFNULL(MAX(ACTIVATIONREGISTERNO),0) FROM TA_RECRUIT_ACTIVATION A)+1
+	, #{applicantNo}
+	, #{activationName}
+	, #{activationKind}
+	, #{activationContent}
+	, #{activationRole}
+	, #{activationStartDate}
+	, #{activationEndDate}
+	, #{activationOrgan}
+	);
  		
  	
  	</insert>
  	
  	<select id="activationList" resultType="com.example.demo.dto.ActivationDto">
- 		select * from
- 		ta_recruit_activation
- 		where applicantNo = #{applicantNo};
+	SELECT *
+	FROM
+	TA_RECRUIT_ACTIVATION
+	WHERE
+	APPLICANTNO = #{applicantNo};
  	
  	
  	</select>
  	
  	<delete id="activationDelete">
- 	
- 		delete from ta_recruit_activation
- 		where activationRegisterNo = #{activationRegisterNo};
+
+	DELETE
+	FROM
+	TA_RECRUIT_ACTIVATION
+	WHERE
+	ACTIVATIONREGISTERNO = #{activationRegisterNo};
  	
  		
  	</delete>

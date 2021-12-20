@@ -114,3 +114,59 @@
 
 	</div>
 </nav>
+<script type="text/javascript">
+	var now = new Date;
+	
+	
+	$(document).ready(function(){
+		recruitNoticeList();
+		var now = new Date;
+		var nowyyyy= now.getFullYear();
+		var nowMM = now.getMonth()+1;
+		var nowdd = now.getDate();
+		var nowhh = now.getHours();
+		var nowmm = now.getMinutes();
+		var nowss = now.getSeconds();
+	
+		
+		nowFmt = nowyyyy+"-"+nowMM+"-"+nowdd+" "+ nowhh+":"+nowmm + ":" + nowss; 
+		function deleteApplicantNotFinalApply(recruitNo){
+			$.ajax({
+				url : '/applicant/deleteApplicantNotFinalApply.do',
+				type : 'post',
+				data : {"recruitNo" : recruitNo},
+				success : function(result) {
+
+				},
+				error : function(result){
+					alert("지원자 삭제 중 오류 발행");
+				}
+			
+			});	
+			
+		}
+		function recruitNoticeList(){
+			
+			$.ajax({
+				url : '/recruitnavigate/recruitNotice.do',
+				type : 'post',
+				success : function(data){
+					$.each(data, function(index, item) {
+
+						//마감시간이 지난 공고인 경우 미제출한 지원자 전부 삭제
+						if(nowFmt > data[index].recruitEndDateTime){
+							console.log(data[index].recruitNo+"번 공고 마감");
+							deleteApplicantNotFinalApply( data[index].recruitNo);
+						}
+						
+					});
+					
+				},
+				error : function(data){
+					alert("에러");
+				}
+			});
+		}
+			
+	});
+</script>

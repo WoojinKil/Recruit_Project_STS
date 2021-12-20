@@ -1,6 +1,7 @@
 package com.example.demo.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,6 +47,12 @@ public class RecruitNoticeServiceImpl implements RecruitNoticeService {
 		
 		return mapper.typeList();
 		
+	}
+	@Override
+	public ArrayList<RecruitNoticeDto> searchNoticeList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return mapper.searchNoticeList(map);
 	}
 	
 	
