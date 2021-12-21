@@ -60,8 +60,8 @@ body {
 
 					</div>
 					<div class="mb-3">
-						<label for="password">비밀번호</label> <input type="password"
-							class="form-control input_memberPw" name="memberPw">
+						<label for="password">비밀번호</label> 
+						<input type="password"	class="form-control input_memberPw" name="memberPw">
 	
 					</div>
 

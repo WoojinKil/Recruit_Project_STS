@@ -20,7 +20,7 @@
 		</div>
 
 	</nav>
-	<div class="container">
+	<div class="container" style = "margin-bottom : 3rem;">
 		<form id="view_form" method="post">
 			<div class="row">
 				<table border="1" class="table table-bordered" style="text-align: center;">

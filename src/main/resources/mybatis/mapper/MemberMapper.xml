@@ -11,7 +11,6 @@
 	, MEMBERBIRTH
 	, MEMBERID
 	, MEMBERPW
-	, MEMBERPWCONFIRM
 	, MEMBERROOT
 	, MEMBERPHONENUMBER1
 	, MEMBERPHONENUMBER2
@@ -24,7 +23,6 @@
 	, #{memberBirth}
 	, #{memberId}
 	, #{memberPw}
-	, #{memberPwConfirm}
 	, #{memberRoot}
 	, #{memberPhoneNumber1}
 	, #{memberPhoneNumber2}
@@ -90,6 +88,15 @@
 		
 	
 	</select>
-		
+	
+	<update id = "newPass">
+	update ta_recruit_member
+	set
+	MEMBERPW = #{memberPw}
+	where
+	MEMBERID = #{memberId}
+	
+	
+	</update>
 
 </mapper>

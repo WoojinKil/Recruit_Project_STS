@@ -24,6 +24,14 @@
 		</div>
 	</nav>
 	<div class="container">
+			<div class="search filter">
+			<div>
+				제목/내용 : <input type="text" class="search_keyword" name ="search_keyword" id="search_keyword">
+				<button class="btn-primary searchBtn">검색</button>
+			</div>
+			
+		
+		</div>
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
@@ -35,27 +43,16 @@
 						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="bbs_list">
 				
-					<c:forEach items ="${bbsArray}" var="bbsArray">
-					<tr>
-						<td>${bbsArray.bbsNo}</td>
-						
-						<td  style="text-align: left"><a href="/bbs/bbsView?bbsNo=${bbsArray.bbsNo}" >${bbsArray.bbsTitle }</a></td>
-						<td>${bbsArray.bbsWriteDate }</td>
-						<td>${bbsArray.bbsHit}</td>
-					</tr>
-					
-					
-					</c:forEach>
-				
+
 				</tbody>
 			</table>
 			
 			
 			<c:if test= "${member.memberIsAdmin == 1}">
 			
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="http://localhost:8081/pandora3/bo" class="btn btn-primary pull-right">글쓰기</a>
 			</c:if>
 			
 		</div>
@@ -63,5 +60,89 @@
 	<footer class="my-3 text-center text-small">
 		<%@ include file="../footer.jsp"%>
 	</footer>
+	
+	
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			
+			recruitNoticeList();
+			
+			//검색 버튼이 클릭되었을 때 발생하는 메소드
+			$(".searchBtn").click(function(){
+				var keyword = $.trim($(".search_keyword").val());
+				if(keyword == ""){
+					alert("검색어를 입력해주세요.");
+					return false;
+					
+				}
+				
+				
+				searchNoticeList(keyword);
+				
+				
+				
+				
+			});
+			function searchNoticeList(keyword){
+				$.ajax({
+					url : '/bbs/SearchbbsList.do',
+					type : 'post',
+					data : {
+						"bbsTitle" : keyword,
+						"bbsContent" : keyword
+					},
+					success : function(data){
+					
+						var outHtml = "";
+						$(".bbs_list").append(outHtml);
+						$.each(data,function(index, item){
+							
+
+						
+ 							outHtml += "<tr><td>" + data[index].bbsNo + "</td>";
+							outHtml += "<td style=\"text-align: left\"><a href=\"/bbs/bbsView?bbsNo="	+data[index].bbsNo+"\">" + data[index].bbsTitle + "</a></td>";
+							outHtml += "<td>" + data[index].bbsWriteDate +"</td>";
+							outHtml += "<td>" + data[index].bbsHit + "</td><tr>"; 
+						});
+						
+						$('.bbs_list').empty();
+						$('.bbs_list').append(outHtml);
+					}
+				})
+			} 
+			
+			//공지사항 리스트를 뿌리는 메소드
+			function recruitNoticeList(){
+				
+				$.ajax({
+					url : '/bbs/bbsList.do',
+					type : 'post',
+					success : function(data){
+						
+						var outHtml = "";
+						$(".bbs_list").append(outHtml);
+						$.each(data,function(index, item){
+							
+							
+ 							outHtml += "<tr><td>" + data[index].bbsNo + "</td>";
+							outHtml += "<td style=\"text-align: left\"><a href=\"/bbs/bbsView?bbsNo="	+data[index].bbsNo+"\">" + data[index].bbsTitle + "</a></td>";
+							outHtml += "<td>" + data[index].bbsWriteDate +"</td>";
+							outHtml += "<td>" + data[index].bbsHit + "</td><tr>"; 
+						});
+						
+						$('.bbs_list').empty();
+						$('.bbs_list').append(outHtml);
+						
+						
+					}
+				});
+				
+			}
+			
+		});
+	
+	
+	</script>	
 </body>
 </html>

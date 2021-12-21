@@ -16,7 +16,7 @@
 			<a class="navbar-brand" href="/bbs/bbsList">공지사항</a>
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container" style = "margin-bottom : 3rem;">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>

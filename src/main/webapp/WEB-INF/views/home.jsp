@@ -1,71 +1,134 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<title>채용 Homepage</title>
+<title>Welcome to Linkruit</title>
 
 </head>
+<style>
+body {
+        height: 100vh;
+        background-image: url('/resources/images/bg.png');
+        background-repeat : no-repeat;
+        background-size : cover;
+      }
+
+</style>
 <body>
 	<header><%@ include file="header.jsp"%></header>
-
-	<div class="container">
-		
-		<a href="./">HOME</a><br> <a href="./">회사소개</a>
-		<ol>
-
-			<li><a href="talent">인재상</a></li>
-			<li><a href="process">인사제도</a></li>
-
-		</ol>
-
 	
-		<a href="./">지원안내</a><br>
-		<ol>
-			<li><a href="/recruitnavigate/recruitnotice">채용공고</a></li>
-			
-			<li><a href="/bbs/bbsList">공지사항</a></li>
-		</ol>
-		<a href="./">나의 채용</a><br>
-		<ol>
+        <section class="pt-4">
+            <div class="container px-lg-5">
+                <!-- Page Features-->
+                <div class="row gx-lg-5">
+            
+                    
+                    <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                              
+                                <h2 class="fs-4 fw-bold">채용공고</h2>
+                                <p class="recruit_card">
+                               		
+                                
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            		 <div class="col-lg-6 col-xxl-4 mb-5">
+                        <div class="card bg-light border-0 h-100">
+                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0" >
+                              
+                                <h2 class="fs-4 fw-bold">공지사항</h2>
+                                <p class="bbs_card">
+                                
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+            </div>
+        </section>
+        
+        
+        
+	<footer class="my-3 text-center text-small">
+		<%@ include file="footer.jsp"%>
+	</footer>
 
-			<c:if test = "${member ==null}"> <!-- 로그인 안했으면 -->
-				<li><a href="/member/loginform">로그인</a></li>
-				<li><a href="/member/joinform">회원가입</a></li>
-			
-			
-			</c:if>
-		
-			<c:if test ="${member != null}"> <!-- 로그인 했으면 -->
-				
-				
-				<c:if test="${member.memberIsAdmin == 0 }">
-					
-					<li><a href="/myApply/myApplyList">나의 지원 이력</a></li>
-					<li><a href="/recruitnavigate/recruitnotice">지원하기</a></li>
-				</c:if>
-				<c:if test="${member.memberIsAdmin == 1 }">
-					
-					<li><a href="http://localhost:8081/pandora3/bo">관리자페이지</a></li>
-				
-				</c:if>
-				<li><a href="/member/logout.do">로그아웃</a></li> <!-- 로그아웃 하는 행위 -->
-			
-			</c:if>
-			
-		
-
-		</ol>
-
-
-	</div>
-
-
-	<footer><%@ include file="footer.jsp"%></footer>
 </body>
+	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			
+			recruitNoticeList();
+			bbsList();
+
+
+			//공지사항 리스트를 뿌리는 메소드
+			function bbsList(){
+				
+				$.ajax({
+					url : '/bbs/bbsList.do',
+					type : 'post',
+					success : function(data){
+						
+						var outHtml = "";
+						$(".bbs_card").append(outHtml);
+						$.each(data,function(index, item){
+							console.log(data[index].bbsNo);	
+							
+ 							
+							outHtml += "<li style='text-align: left'>";
+							outHtml += "<a href=\"/bbs/bbsView?bbsNo="	+data[index].bbsNo+"\">" + data[index].bbsTitle + "</a>";
+							outHtml += "</li>";
+
+						});
+						
+						$('.bbs_card').empty();
+						$('.bbs_card').append(outHtml);
+						
+						
+					}
+				});
+				
+			}
+			//채용공고 리스트를 뿌리는 메소드
+			function recruitNoticeList(){
+				
+				$.ajax({
+					url : '/recruitnavigate/recruitNotice.do',
+					type : 'post',
+					success : function(data){
+						
+						var outHtml = "";
+						$(".recruit_card").append(outHtml);
+						$.each(data,function(index, item){
+							
+							
+								
+							outHtml += "<li style=\"text-align: left\"><a href=\"/recruitnavigate/recruitnoticeview?recruitNo="
+												+data[index].recruitNo+"\">" + data[index].recruitName + "</a></li>";
+
+						});
+						
+						$('.recruit_card').empty();
+						$('.recruit_card').append(outHtml);
+						
+						
+					}
+				});
+				
+			}
+			
+		});
+	
+	
+	</script>
 </html>

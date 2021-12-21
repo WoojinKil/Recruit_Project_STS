@@ -43,13 +43,7 @@ public class RecruitNoticeController {
 
 	public String recruitNoticeForm(Model model) throws Exception {
 
-		/*
-		 * ArrayList<RecruitNoticeDto> array = (ArrayList<RecruitNoticeDto>)
-		 * rservice.noticeList(); ArrayList<TypeDto> typeList = rservice.typeList();
-		 * 
-		 * model.addAttribute("noticeArray", array); model.addAttribute("typeList",
-		 * typeList); logger.info("goto recruitNoticeForm");
-		 */
+
 		return "/recruitnavigate/recruitnoticeform";
 
 	}
@@ -130,6 +124,7 @@ public class RecruitNoticeController {
 			return rservice.searchNoticeList(map);
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -14,6 +14,15 @@
 	crossorigin="anonymous">
 <title>채용공고</title>
 </head>
+<style>
+body {
+        height: 100vh;
+        background-image: url('resources/images/bg.png');
+        background-repeat : no-repeat;
+        background-size : cover;
+      }
+
+</style>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
 
@@ -43,18 +52,7 @@
 					</tr>
 				</thead>
 				<tbody class = "recruitNotice_list">
-<%-- 				
-					<c:forEach items ="${noticeArray}" var="noticeArray" varStatus="status">
-					<tr>
-						<td>${noticeArray.recruitNo}</td>
-						<td>${typeList[status.index].typeName }</td>
-						<td style="text-align: left"><a href="/recruitnavigate/recruitnoticeview?recruitNo=${noticeArray.recruitNo}">${noticeArray.recruitName }</a></td>
-						<td>${noticeArray.recruitScale }</td>
-						<td>${noticeArray.recruitHit}</td>
-					</tr>
-					
-					
-					</c:forEach> --%>
+
 				
 				</tbody>
 			</table>
@@ -101,7 +99,7 @@
 						"recruitContent" : keyword
 					},
 					success : function(data){
-						alert(data);
+						
 						var outHtml = "";
 						$(".recruitNotice_list").append(outHtml);
 						$.each(data,function(index, item){

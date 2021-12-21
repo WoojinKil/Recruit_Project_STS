@@ -21,7 +21,7 @@
 
 	</nav>
 
-	<div class="container">
+	<div class="container" style = "margin-bottom : 3rem;">
 
 
 
@@ -629,25 +629,27 @@
 		</form>
 
 
+		<div class="group_btn">
+			<c:if test="${apdto.finalApplyChecked == 1 }">
+				<button style="margin: auto; width: 30%;" type="button" class="btn btn-primary save_temp">수정</button>
+			</c:if>
+			<c:if test="${apdto.finalApplyChecked == 0 }">
+				<button style="margin: auto; width: 30%;" type="button" class="btn btn-primary save_temp">저장</button>
+
+				<button style="margin: auto; width: 30%;" type="button" class="btn btn-danger finalApply">최종제출</button>
+
+			</c:if>
 
 
-		<c:if test="${apdto.finalApplyChecked == 1 }">
-			<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">수정</button>
-		</c:if>
-		<c:if test="${apdto.finalApplyChecked == 0 }">
-			<button style="margin: auto; width: 40%;" type="button" class="btn btn-primary save_temp">저장</button>
-		
-			<button style="margin: auto; width: 40%;" type="button" class="btn btn-danger finalApply" >최종제출</button>
-	
-		</c:if>
-		
-	
-	
-		<div class="row">
 
-			<a href="/recruitnavigate/recruitnotice" class="btn btn-primary">목록</a>
+			<!-- <div class="row"> -->
 
+				<a href="/recruitnavigate/recruitnotice" class="btn btn-secondary" style="margin: auto; width: 30%;">목록</a>
+
+			<!-- </div> -->
 		</div>
+
+
 
 
 	</div>
@@ -666,10 +668,6 @@
 							<fmt:parseDate var="now" value="<%= sf.format(new Date()) %>" pattern="yyyy-MM-dd HH:mm:ss" />
 							<fmt:parseDate var="recruitEndDateTime" value="${noticeInfo.recruitEndDateTime }" pattern="yyyy-MM-dd HH:mm:ss" />
 
-							<%--  <c:if test= "${now > recruitEndDateTime}">
-								마감시간이 지났습니다.
-								
-							</c:if>  --%>
 
 
 
@@ -992,6 +990,7 @@
 			function collegeList() { //대학교 리스트 구현 메소드
 				var applicantNo = '${apdto.applicantNo}';
 
+				alert("학교명");
 				$.ajax({
 					url : '/college/collegeList.do',
 					type : 'post',
@@ -1001,12 +1000,12 @@
 
 					},
 					success : function(data) {
-
+						alert(data);
 						var outHtml = "";
 						$(".college_list").append(outHtml);
 						$.each(data, function(index, item) {
 
-							console.log(data);
+							console.log("colleage"+data);
 							outHtml += "<tr><td>" + data[index].collegeName + "</td>";
 							outHtml += "<td>" + data[index].collegeLocation + "</td>";
 							outHtml += "<td>" + data[index].collegeMajor1 + "</td>";

@@ -63,7 +63,8 @@
 	WHERE
 	RECRUITNAME LIKE CONCAT('%',#{recruitName},'%')
 
-	OR RECRUITCONTENT LIKE CONCAT('%',#{recruitContent},'%') 
+	OR 
+	RECRUITCONTENT LIKE CONCAT('%',#{recruitContent},'%') 
 				
 	</select>
 

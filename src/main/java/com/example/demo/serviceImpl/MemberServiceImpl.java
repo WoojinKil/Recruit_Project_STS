@@ -79,4 +79,14 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+
+
+
+	@Override
+	public void newPass(MemberDto member) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.newPass(member);
+	}
+
+
 }

@@ -15,5 +15,7 @@ public interface MemberMapper {
 	public MemberDto memberLogin(MemberDto dto);
 	public MemberDto memberView(String memberId);
 	public MemberDto memberFindPass(MemberDto dto);
+	public void newPass(MemberDto member);
+	
 	
 }

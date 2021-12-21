@@ -2,10 +2,10 @@ package com.example.demo.controller;
 
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.util.ParameterMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.SHA256;
 import com.example.demo.dto.MemberDto;
 import com.example.demo.service.MemberService;
 
@@ -25,7 +27,7 @@ import com.example.demo.service.MemberService;
 @RequestMapping("member")
 public class MemberController {
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
-	
+	private static final SHA256 sha256 = new SHA256();
 	@Autowired
 	MemberService service;
 
@@ -39,6 +41,13 @@ public class MemberController {
 	public String join(@RequestParam Map<String, Object> map, Model model) throws Exception {
 
 		logger.info("파라미터값"+map.toString());
+		String pass = (String)map.get("memberPw");
+		System.out.println("빼온 pass"+ pass);
+		SHA256 sha256 = new SHA256();
+		String cryptpass = sha256.encrypt(pass);
+		System.out.println("암호화한 pass"+ cryptpass);
+		map.put("memberPw", cryptpass);
+		
 
 	try {
 		
@@ -90,6 +99,11 @@ public class MemberController {
 
     	HttpSession session = request.getSession();
     	
+    	
+    	String memberPw = request.getParameter("memberPw");
+    	String pass = sha256.encrypt(memberPw);
+    	
+    	member.setMemberPw(pass);
     	MemberDto member1 = service.memberLogin(member); //객체끼리 비교하기 위해서
  
         if(member1 == null) {                                // 일치하지 않는 아이디, 비밀번호 입력 경우
@@ -137,11 +151,32 @@ public class MemberController {
     	model.addAttribute("member",member1);
     	
     	
-    	return "/member/viewpassform";
+    	return "/member/newpassform";
     	
     }
     
 
+    @PostMapping("/newPass")
+    public String newPass(HttpServletRequest request, MemberDto member, HttpSession session) throws Exception{
+    	
+    	String input_id = request.getParameter("input_memberId");
+    	String new_pw  = request.getParameter("memberPw");
+    	
+    	String enc_pw = sha256.encrypt(new_pw);
+    	member.setMemberId(input_id);
+    	member.setMemberPw(enc_pw);
+    	
+    	try {
+			service.newPass(member);
+			return "home";
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return "";
+			
+		}
+    	
+    }
 }
 
 

@@ -7,16 +7,17 @@
 
 <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        
-        
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> 
  </head> 
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <nav class="navbar navbar-expand  navbar-dark bg-primary">
+
 	<div class="container">
 
 		<div class="navbar-header">
-
+			
 			<a class="navbar-brand" href="/">HOME</a>
 			
 	
@@ -43,8 +44,7 @@
 				</div>
 			</div>
 			
-			
-			
+
 			<!-- 만약 세션이 존재하면, 로그인이 되어있으면 나타나는 태그 -->
 			<c:if test="${member != null }">
 				

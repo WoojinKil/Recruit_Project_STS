@@ -8,7 +8,8 @@
 	<select id="bbsList" resultType="com.example.demo.dto.BbsDto">
 
 		SELECT *
-		FROM TA_RECRUIT_BBS
+		FROM 
+			TA_RECRUIT_BBS
 
 	</select>
 <!-- 공지사항 상세보기 -->
@@ -21,8 +22,24 @@
 	</select>
 
 	<update id="bbsHitUp">
-	UPDATE TA_RECRUIT_BBS SET BBSHIT = BBSHIT + 1 WHERE BBSNO = #{bbsNo}
+		UPDATE 
+			TA_RECRUIT_BBS 
+		SET 
+			BBSHIT = BBSHIT + 1 
+		WHERE 
+			BBSNO = #{bbsNo}
 	
 	
 	</update>
+	<select id= "searchBbsList" resultType="com.example.demo.dto.BbsDto">
+		SELECT * 
+		FROM
+			TA_RECRUIT_BBS
+		WHERE 
+			BBSTITLE LIKE CONCAT('%',#{bbsTitle},'%')
+
+		OR 
+			BBSCONTENT LIKE CONCAT('%',#{bbsContent},'%') 
+	
+	</select>
 </mapper>
