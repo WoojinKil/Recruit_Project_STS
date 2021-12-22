@@ -35,7 +35,7 @@
 
 	<select id="idCheck" resultType="int">
 
-	SELECT COUNT(*) FROM TA_RECRUIT_MEMBER WHERE MEMBERID = #{MEMBERID}
+	SELECT COUNT(*) FROM TA_RECRUIT_MEMBER WHERE MEMBERID = #{memberId}
 
 	</select>
 
@@ -48,6 +48,7 @@
 	, MEMBERNAME
 	, MEMBERPW
 	, MEMBERISADMIN
+	, MEMBERBIRTH
 	FROM
 	TA_RECRUIT_MEMBER
 	WHERE
@@ -90,13 +91,37 @@
 	</select>
 	
 	<update id = "newPass">
-	update ta_recruit_member
-	set
+	UPDATE TA_RECRUIT_MEMBER
+	SET
 	MEMBERPW = #{memberPw}
-	where
+	, MEMBERUPDATEDATE = SYSDATE()
+	WHERE
 	MEMBERID = #{memberId}
 	
 	
 	</update>
+	
+	<delete id="withdraw">
+	DELETE
+	FROM TA_RECRUIT_MEMBER
+	WHERE MEMBERID = #{memberId}
+	AND MEMBERPW = #{memberPw}
+	AND MEMBERNAME = #{memberName}
+	AND MEMBERBIRTH = #{memberBirth}
+	
+	
+	</delete>
 
+	<select id="checkPass" resultType="int">
+		SELECT 
+		COUNT(*) 
+		FROM 
+		TA_RECRUIT_MEMBER 
+		WHERE 
+		MEMBERID = #{memberId} 
+		AND 
+		MEMBERPW = #{memberPw}
+		
+		
+	</select>
 </mapper>

@@ -12,7 +12,7 @@
 	<div class="container">
 
 
-	<h1>아이디 또는 비밀번호를 확인하고 다시 로그인 해주세요.</h1>
+	<h1>페이지를 찾을 수 없습니다.</h1>
 	<h1>오류 발생 시 관리자에게 문의해주세요.</h1>
 	<a type="button" class="btn btn-primary" href="/"> 홈 화면으로 돌아가기</a>
 	

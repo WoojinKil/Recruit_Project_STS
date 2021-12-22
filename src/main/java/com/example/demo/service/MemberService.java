@@ -16,4 +16,7 @@ public interface MemberService {
 	public MemberDto memberView(String memberId) throws Exception;
 	public MemberDto memberFindPass(MemberDto member) throws Exception;
 	public void newPass(MemberDto member) throws Exception;
+	public void withdraw(Map<String, Object> map) throws Exception;
+	public int checkPass(Map<String, Object> map) throws Exception;
+	
 }

@@ -14,5 +14,5 @@ position:fixed;
 
 <footer class="container my-3 text-center text-small" >
 	<!-- footer -->
-	<p>&copy; 2021 All Rights Reserved 서울시 강북구 삼양로</p>
+	<p>&copy; 2021 All Rights Reserved 서울시 강북구 삼양로256 링크 컴패니</p>
 </footer>

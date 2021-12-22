@@ -52,7 +52,7 @@
 	SELECT * FROM
 	TA_RECRUIT_COLLEGE
 	WHERE
-	APPLICANTNO = #{APPLICANTNO};
+	APPLICANTNO = #{applicantNo};
   		</select>
   
   
@@ -60,7 +60,7 @@
   		<delete id="collegeDelete">
 	DELETE FROM TA_RECRUIT_COLLEGE
 	WHERE
-	COLLEGEREGISTERNO = #{COLLEGEREGISTERNO};
+	COLLEGEREGISTERNO = #{collegeRegisterNo};
   		
   		
   		</delete>

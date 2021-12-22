@@ -45,14 +45,14 @@
 
 	<select id="recruitNoticeView" resultType="com.example.demo.dto.RecruitNoticeDto">
 
-	SELECT * FROM TA_RECRUIT_NOTICE WHERE RECRUITNO = #{RECRUITNO}
+	SELECT * FROM TA_RECRUIT_NOTICE WHERE RECRUITNO = #{recruitNo}
 
 	</select>
 
 
 	<update id="recruitNoticeHitUp">
 	UPDATE TA_RECRUIT_NOTICE SET RECRUITHIT = RECRUITHIT + 1 WHERE
-	RECRUITNO = #{RECRUITNO}
+	RECRUITNO = #{recruitNo}
 	
 	
 	</update>

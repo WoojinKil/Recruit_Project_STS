@@ -20,11 +20,12 @@
 </head>
 
 <script type="text/javascript">
-	
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
 </script>
 
 
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 
 	<header><%@ include file="../header.jsp"%></header>
 	<div class="container">
@@ -188,7 +189,16 @@
 					if (con_test == true) {
 						alert("회원가입이 완료되었습니다.");
 						$("#join_form").submit();
-						
+						window.history.forward();
+
+						function noBack() {
+
+							window.history.forward();
+
+						}
+
+
+
 					} else if (con_test == false) {
 						return false;
 					}

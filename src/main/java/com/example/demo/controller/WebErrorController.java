@@ -25,7 +25,7 @@ public class WebErrorController implements ErrorController {
 
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "error/404error";
-            } else {
+            } else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 return "error/500error";
             }
         }

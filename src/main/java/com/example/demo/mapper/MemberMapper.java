@@ -10,12 +10,14 @@ import com.example.demo.dto.MemberDto;
 @Mapper
 @Repository
 public interface MemberMapper {
-	public void join(Map<String, Object> map);
-	public int idCheck(String memberId);
-	public MemberDto memberLogin(MemberDto dto);
-	public MemberDto memberView(String memberId);
-	public MemberDto memberFindPass(MemberDto dto);
-	public void newPass(MemberDto member);
+	public void join(Map<String, Object> map) throws Exception;
+	public int idCheck(String memberId) throws Exception;
+	public MemberDto memberLogin(MemberDto dto) throws Exception;
+	public MemberDto memberView(String memberId) throws Exception;
+	public MemberDto memberFindPass(MemberDto dto) throws Exception;
+	public void newPass(MemberDto member) throws Exception;
+	public void withdraw(Map<String, Object> map) throws Exception;
+	public int checkPass(Map<String, Object> map) throws Exception;
 	
 	
 }

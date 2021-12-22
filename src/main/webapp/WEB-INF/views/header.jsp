@@ -56,7 +56,8 @@
 					<div class="dropdown-menu">
 					
 						<a class="dropdown-item" href="/myApply/myApplyList">나의 지원 이력</a> 
-						<a class="dropdown-item" href="/member/logout.do">로그아웃</a> 
+						<button class="dropdown-item btn-secondary logout_btn">로그아웃</button> 
+						<button class="dropdown-item btn-danger withdraw_btn" onclick="/member/withdrawform">회원탈퇴</button> 
 						
 				
 					</div>
@@ -69,9 +70,8 @@
 						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">admin</button>
 					<div class="dropdown-menu">
 					
-						<a class="dropdown-item" href="http://localhost:8080/pandora3/bo">관리자페이지</a> 
-						<a class="dropdown-item" href="/member/logout.do">로그아웃</a> 
-						
+						<a class="dropdown-item" href="http://localhost:8081/pandora3/bo">관리자페이지</a> 
+						<button class="dropdown-item btn logout_btn" >로그아웃</button>	
 				
 					</div>
 					</div>
@@ -167,6 +167,31 @@
 				}
 			});
 		}
+		
+		$(".logout_btn").click(function(){
 			
+		
+			
+			var con_test = confirm("임시저장 하지 않은 정보들은 지워질 수 있습니다. 로그아웃 하시겠습니까?");
+			if(con_test == true){
+				alert("로그아웃 되었습니다. 메인 화면으로 돌아갑니다.");
+				window.location.href = "/member/logout";
+			}else{
+				return false;
+			}
+			
+
+		}) ;
+		$(".withdraw_btn").click(function(){
+			
+			var con_test = confirm("회원탈퇴를 하시게 되면 진행 중인 전형에 불합격 되며 채용 도중인 경우 불이익을 받을 수 있습니다.");
+			if(con_test == true){
+				alert("탈퇴 페이지 화면으로 돌아갑니다.");
+				window.location.href = "/member/withdrawform";
+			}else{
+				return false;
+			}
+			
+		});
 	});
 </script>

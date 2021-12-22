@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.relational.core.query.Criteria;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.dto.BbsDto;

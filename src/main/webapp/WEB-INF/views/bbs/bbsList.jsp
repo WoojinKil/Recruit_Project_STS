@@ -49,13 +49,23 @@
 				</tbody>
 			</table>
 			
-			
+			<nav aria-label="...">
+				<ul class="pagination">
+					
+
+				</ul>
+			</nav>
 			<c:if test= "${member.memberIsAdmin == 1}">
 			
 			<a href="http://localhost:8081/pandora3/bo" class="btn btn-primary pull-right">글쓰기</a>
 			</c:if>
-			
+
+
+
+
+
 		</div>
+
 	</div>
 	<footer class="my-3 text-center text-small">
 		<%@ include file="../footer.jsp"%>
@@ -78,13 +88,11 @@
 				}
 				
 				
-				searchNoticeList(keyword);
-				
-				
+				searchBbsList(keyword);
 				
 				
 			});
-			function searchNoticeList(keyword){
+			function searchBbsList(keyword){
 				$.ajax({
 					url : '/bbs/SearchbbsList.do',
 					type : 'post',
@@ -112,7 +120,7 @@
 				})
 			} 
 			
-			//공지사항 리스트를 뿌리는 메소드
+ 			//공지사항 리스트를 뿌리는 메소드
 			function recruitNoticeList(){
 				
 				$.ajax({
@@ -138,8 +146,9 @@
 					}
 				});
 				
-			}
+			} 
 			
+
 		});
 	
 	

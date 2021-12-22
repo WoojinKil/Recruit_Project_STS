@@ -89,4 +89,24 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+
+
+
+	@Override
+	public void withdraw(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		mapper.withdraw(map);
+	}
+
+
+
+
+
+	@Override
+	public int checkPass(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.checkPass(map);
+	}
+
+
 }

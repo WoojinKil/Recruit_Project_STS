@@ -10,6 +10,7 @@
 		SELECT *
 		FROM 
 			TA_RECRUIT_BBS
+		ORDER BY BBSNO DESC;
 
 	</select>
 <!-- 공지사항 상세보기 -->
@@ -42,4 +43,8 @@
 			BBSCONTENT LIKE CONCAT('%',#{bbsContent},'%') 
 	
 	</select>
+	
+
+	
+	
 </mapper>

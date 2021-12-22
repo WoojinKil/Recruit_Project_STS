@@ -51,7 +51,7 @@
 			
 			<c:if test= "${member.memberIsAdmin == 1}">
 			
-			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="http://localhost:8081/pandora3/bo" class="btn btn-primary pull-right">글쓰기</a>
 			</c:if>
 			
 		</div>

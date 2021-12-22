@@ -10,6 +10,7 @@ public class BbsDto {
 	private String bbsContent;
 	private String bbsWriteDate;
 	private int bbsHit;
+	
 	public int getBbsNo() {
 		return bbsNo;
 	}
@@ -39,6 +40,23 @@ public class BbsDto {
 	}
 	public void setBbsHit(int bbsHit) {
 		this.bbsHit = bbsHit;
+	}
+	@Override
+	public String toString() {
+		return "BbsDto [bbsNo=" + bbsNo + ", bbsTitle=" + bbsTitle + ", bbsContent=" + bbsContent + ", bbsWriteDate="
+				+ bbsWriteDate + ", bbsHit=" + bbsHit + "]";
+	}
+	public BbsDto(int bbsNo, String bbsTitle, String bbsContent, String bbsWriteDate, int bbsHit) {
+		super();
+		this.bbsNo = bbsNo;
+		this.bbsTitle = bbsTitle;
+		this.bbsContent = bbsContent;
+		this.bbsWriteDate = bbsWriteDate;
+		this.bbsHit = bbsHit;
+	}
+	public BbsDto() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	

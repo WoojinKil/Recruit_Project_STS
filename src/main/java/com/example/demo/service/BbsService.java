@@ -11,4 +11,5 @@ public interface BbsService {
 	public BbsDto bbsView(int bbsNo) throws Exception;
 	public void bbsHitUp(int bbsNo) throws Exception;
 	public ArrayList<BbsDto> searchBbsList(Map<String, Object> map) throws Exception;
+
 }

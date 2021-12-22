@@ -8,10 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <title>입사지원 페이지</title>
-
-
+<!-- 뒤로가기 방지 페이지 -->
+<script type="text/javascript">
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
+</script>
 </head>
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<header><%@ include file="../header.jsp"%></header>
 
 	<nav class="navbar navbar-default">
@@ -676,7 +679,11 @@
 
 		//ready function 시작
 		$(document).ready(function() {
-
+			alert("로그인이 필요합니다!!!!");
+			if('${member.memberId}'== ""){
+				alert("로그인이 필요합니다.");
+				window.location.href="/member/loginform"
+			}
 			var now = new Date;
 			var recruitEndDateTime = '${recruitEndDateTime}'
 	 		var nowyyyy= now.getFullYear();
@@ -989,7 +996,7 @@
 
 			function collegeList() { //대학교 리스트 구현 메소드
 				var applicantNo = '${apdto.applicantNo}';
-
+				alert("수험번호"+applicantNo);
 				alert("학교명");
 				$.ajax({
 					url : '/college/collegeList.do',
@@ -1000,12 +1007,12 @@
 
 					},
 					success : function(data) {
-						alert(data);
+						
 						var outHtml = "";
 						$(".college_list").append(outHtml);
 						$.each(data, function(index, item) {
-
-							console.log("colleage"+data);
+							
+							console.log("colleage"+data[index].collegeName);
 							outHtml += "<tr><td>" + data[index].collegeName + "</td>";
 							outHtml += "<td>" + data[index].collegeLocation + "</td>";
 							outHtml += "<td>" + data[index].collegeMajor1 + "</td>";

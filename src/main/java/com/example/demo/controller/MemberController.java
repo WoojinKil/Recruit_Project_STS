@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -123,13 +124,13 @@ public class MemberController {
 	
 
     //로그아웃
-    @RequestMapping(value="/logout.do", method=RequestMethod.GET)
+    @RequestMapping(value="/logout", method=RequestMethod.GET)
     public String logout(HttpServletRequest request) throws Exception{
     	logger.info("goto logoutMainGET");
     	HttpSession session = request.getSession(); //세션을 가져오게 함
     	
     	session.invalidate(); //세션 무효화 =로그아웃 
-    	return "home";
+    	return "/member/logout";
     }
     
 
@@ -176,6 +177,56 @@ public class MemberController {
 			
 		}
     	
+    }
+    
+    @RequestMapping("/withdrawform")
+    public String withdrawform() throws Exception{
+    	try {
+			return "/member/withdrawform";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+			// TODO: handle exception
+		}
+    }
+    
+    @PostMapping("/withdraw.do")
+    @ResponseBody
+    public String withdraw(@RequestParam Map<String, Object> map,HttpServletRequest request) throws Exception{
+    	try {
+    		
+    		String pass = (String)map.get("memberPw");
+    		HttpSession session = request.getSession(); //세션을 가져오게 함
+        
+			String enc_pw = sha256.encrypt(pass);
+			map.put("memberPw", enc_pw);
+			service.withdraw(map);
+			String result = "success";
+			
+        	session.invalidate(); //세션 무효화 =로그아웃 
+    		return result;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			String result = "fail";
+			return result;
+		}
+    }
+    @PostMapping("/chkpassword.do")
+    @ResponseBody
+    public int chkpassword(@RequestParam Map<String, Object> map) throws Exception{
+    	try {
+    		String pass = (String)map.get("memberPw");
+			
+			String enc_pw = sha256.encrypt(pass);
+			map.put("memberPw", enc_pw);
+			return service.checkPass(map);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return 0;
+		}
     }
 }
 

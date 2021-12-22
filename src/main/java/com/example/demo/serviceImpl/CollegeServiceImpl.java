@@ -24,6 +24,9 @@ public class CollegeServiceImpl implements CollegeService {
 	@Override
 	public ArrayList<CollegeDto> collegeList(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
+		System.out.println("map의 결과값"+map);
+		System.out.println("매퍼에서"+mapper.collegeList(map));
+		
 		return mapper.collegeList(map);
 	}
 
