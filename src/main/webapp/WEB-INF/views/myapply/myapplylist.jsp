@@ -17,15 +17,16 @@
 	crossorigin="anonymous">
 <title>나의 지원 내역</title>
 </head>
+<script type="text/javascript">
+	
+
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
+</script>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
 	
-<%-- 	<%
-		String memberId = null;
-		if (session.getAttribute("memberId") != null) {
-			memberId = (String) session.getAttribute("memberId");
-		}
-	%> --%>
+
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/myApply/myApplyList">나의 지원 내역</a>
@@ -41,6 +42,7 @@
 						<th style="background-color: #eeeeee; text-align: center;">채용유형</th>
 						<th style="background-color: #eeeeee; text-align: center;">공고명</th>
 						<th style="background-color: #eeeeee; text-align: center;">마감시간</th>
+						<th style="background-color: #eeeeee; text-align: center;">지원시간</th>
 						
 						<th style="background-color: #eeeeee; text-align: center;">진행상태</th>
 						<th style="background-color: #eeeeee; text-align: center;">삭제/수정</th>
@@ -74,7 +76,13 @@
 								
 							</c:if> 
 						</td>
+						<td>
+						
 
+							<c:if test="${adtos[status.index].finalApplyChecked ==1 }">${adtos[status.index].applyDate}</c:if>								
+					
+ 							
+						</td>
 						<td>
 						
 							 <c:if test= "${now > recruitEndDateTime}">
@@ -86,7 +94,9 @@
 							
 							<c:if test= "${now < recruitEndDateTime}">
 								<c:if test="${adtos[status.index].finalApplyChecked ==0 }">미제출</c:if>
-								<c:if test="${adtos[status.index].finalApplyChecked ==1 }">제출완료</c:if>
+								<c:if test="${adtos[status.index].finalApplyChecked ==1 }">제출완료<br>
+								지원번호 :${adtos[status.index].applicantNo }
+								</c:if>
 							 
 							</c:if> 
 							

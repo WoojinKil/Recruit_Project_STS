@@ -3,12 +3,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 확인</title>
+<title>새 비밀번호 입력</title>
 </head>
+<script type="text/javascript">
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
+</script>
 <!-- CSS 적용 -->
 <link rel="stylesheet" href="/resources/css/member/newpassform.css">
 
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<header><%@ include file="../header.jsp"%></header>
 	<div class="container">
 		<div class="input-form col-md-12 mx-auto">

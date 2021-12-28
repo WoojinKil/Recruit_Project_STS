@@ -117,16 +117,7 @@
 					var partNo = $(".select_part").val();
 				console.log(partNo);
 				console.log(recruitNo);
-/* 				
-				if(partNo === "P001"){
-					
-				}else if(partNo === "P002"){
-					
-				}else if(partNo === "P003"){
-					
-				}else if(partNo === "P004"){
-					
-				} */
+
 				
 	/* 			
 				var data = {

@@ -25,7 +25,7 @@
 </script>
 
 
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body>
 
 	<header><%@ include file="../header.jsp"%></header>
 	<div class="container">
@@ -189,13 +189,9 @@
 					if (con_test == true) {
 						alert("회원가입이 완료되었습니다.");
 						$("#join_form").submit();
-						window.history.forward();
-
-						function noBack() {
-
-							window.history.forward();
-
-						}
+						$( 'body' ).attr( 'onload', 'noBack();' );
+					    $( 'body' ).attr( 'onpageshow', 'if(event.persisted) noBack();' );
+					    $( 'body' ).attr( 'onunload', '' );
 
 
 

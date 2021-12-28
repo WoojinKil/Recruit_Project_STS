@@ -41,18 +41,16 @@ public class MemberController {
 	@PostMapping("/join")
 	public String join(@RequestParam Map<String, Object> map, Model model) throws Exception {
 
-		logger.info("파라미터값"+map.toString());
+		
 		String pass = (String)map.get("memberPw");
-		System.out.println("빼온 pass"+ pass);
 		SHA256 sha256 = new SHA256();
 		String cryptpass = sha256.encrypt(pass);
-		System.out.println("암호화한 pass"+ cryptpass);
 		map.put("memberPw", cryptpass);
 		
 
 	try {
 		
-		logger.info("파라미터값"+map.toString());
+
 		
 		
 		service.join(map);
@@ -69,11 +67,11 @@ public class MemberController {
 	@PostMapping("/memberIdChk.do")
 	@ResponseBody
 	public String memberIdChkPost(String memberId) throws Exception{
-		logger.info("go to memberIdChkPost method");
+
 		
 		int result = service.idCheck(memberId);
 		
-		logger.info("결과값 = " + result);
+
 		
 		if(result != 0) {
 			
@@ -96,7 +94,7 @@ public class MemberController {
     @RequestMapping(value="/login", method=RequestMethod.POST)
 
     public String loginPOST(HttpServletRequest request, MemberDto member, RedirectAttributes rttr) throws Exception{
-    	logger.info("try to login");
+
 
     	HttpSession session = request.getSession();
     	
@@ -117,16 +115,16 @@ public class MemberController {
         
         session.setAttribute("member", member1);             // 일치하는 아이디, 비밀번호 경우 (로그인 성공)
         
-        logger.info("login complete");
+       
         
-        return "redirect:/";
+        return "/member/logincomplete";
     }
 	
 
     //로그아웃
     @RequestMapping(value="/logout", method=RequestMethod.GET)
     public String logout(HttpServletRequest request) throws Exception{
-    	logger.info("goto logoutMainGET");
+ 
     	HttpSession session = request.getSession(); //세션을 가져오게 함
     	
     	session.invalidate(); //세션 무효화 =로그아웃 
@@ -144,7 +142,7 @@ public class MemberController {
     public String findPass(MemberDto member, Model model) throws Exception {
     	
     	
-    	logger.info(member.toString());
+    	
     	MemberDto member1 = service.memberFindPass(member);
     	if(member1 == null) {
     		return "redirect:/member/findpassform";
@@ -208,7 +206,7 @@ public class MemberController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			String result = "fail";
+			String result = "";
 			return result;
 		}
     }
@@ -227,6 +225,10 @@ public class MemberController {
 			e.printStackTrace();
 			return 0;
 		}
+    }
+    @RequestMapping("/thankyouforuse")
+    public String thankYouForUse() {
+    	return "/member/thankyouforuse";
     }
 }
 

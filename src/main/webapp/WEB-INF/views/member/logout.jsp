@@ -5,17 +5,37 @@
 <head>
 <meta charset="UTF-8">
 <title>로그아웃 완료</title>
-<script type="text/javascript">
-	 window.history.forward();
-	 function noBack(){window.history.forward();}
-</script>
 
 </head>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 
-</body>
 <script type="text/javascript">
-	alert("로그아웃 되었습니다. 메인화면으로 돌아갑니다.");
-	window.location.href="/";
+	
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
+		$(document).ready(function(){
+			location.href = document.referrer;
+		    
+			window.location.href="home";
+			location.href = document.referrer;
+			 $( 'body' ).attr( 'onload', 'noBack();' );
+		     $( 'body' ).attr( 'onpageshow', 'if(event.persisted) noBack();' );
+		     $( 'body' ).attr( 'onunload', '' );
+		});
 </script>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<header><%@ include file="../header.jsp"%></header>
+
+
+	<h1>안전하게 로그아웃 되었습니다.</h1>
+	
+	<a type="button" class="btn btn-primary" href="/"> 홈 화면으로 돌아가기</a>
+	
+
+
+<footer class="my-3 text-center text-small">
+		<%@ include file="../footer.jsp"%>
+	</footer>
+</body>
+
+
 </html>

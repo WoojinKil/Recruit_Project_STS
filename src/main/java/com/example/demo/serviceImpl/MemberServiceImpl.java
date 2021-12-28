@@ -49,7 +49,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberDto memberLogin(MemberDto member) throws Exception {
 		// TODO Auto-generated method stub
-		logger.info("goto memberLogin serviceImpl");
+		
 
 		return mapper.memberLogin(member);
 		

@@ -16,7 +16,7 @@ public class TalentController {
 	
 	@RequestMapping(value="/talent")
 	public String talent(Locale locale) {
-		logger.info("Welcome process page", locale);
+		
 
 		return "/introduce/talent";
 	}

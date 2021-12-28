@@ -67,7 +67,7 @@ public class RecruitNoticeController {
 		MemberDto mdto = (MemberDto) session.getAttribute("member");
 		int applyChecked;
 		if (mdto == null) {
-			logger.info("비어있는 세션");
+			
 			applyChecked = 0;
 		} else {
 			String memberId = mdto.getMemberId();
@@ -85,24 +85,15 @@ public class RecruitNoticeController {
 
 		// 버튼을 클릭하면 직무를 볼 수 있다.
 		ArrayList<PartDto> pdtos = aservice.partView(recruitNo);
-		logger.info("pdtos complete" + pdtos);
-		ArrayList<WorkDto> wdtos = aservice.workView(recruitNo);
-		logger.info("wdtos complete" + wdtos);
-		ArrayList<ObjectDto> odtos = aservice.objectView(recruitNo);
-		logger.info("odtos complete" + odtos);
-		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
-		logger.info("adtos complete" + adtos);
 
-		
-//		  
-//		  for(int i = 0; i < adtos.size(); i++) { 
-//			  String want =  adtos.get(i).getApplyContent(); 
-//			  want.replace("\\n", "<br>");
-//		  
-//			  adtos.get(i).setApplyContent(want);
-//		  
-//		  }
-//		 
+		ArrayList<WorkDto> wdtos = aservice.workView(recruitNo);
+
+		ArrayList<ObjectDto> odtos = aservice.objectView(recruitNo);
+
+		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
+
+
+			 
 
 		model.addAttribute("NoticeView", dto);
 		model.addAttribute("applyCheckedResult", applyChecked);

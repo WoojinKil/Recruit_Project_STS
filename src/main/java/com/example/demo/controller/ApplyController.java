@@ -48,27 +48,27 @@ public class ApplyController {
 	@GetMapping("/applyForm")
 	public String applyForm(@RequestParam Map<String, Object> map, HttpSession session, Model model) throws Exception {
 		
-		logger.info("goto applyForm controller");
+		
 		MemberDto dto = (MemberDto) session.getAttribute("member");
-		logger.info("session complete");
+		
 		String memberId = dto.getMemberId();
 
 		int recruitNo = Integer.parseInt((String) map.get("recruitNo"));
 
 			
 		
-		logger.info("goto applyForm" + recruitNo + memberId);
+
 
 		
 		RecruitNoticeDto rdto = rservice.recruitNoticeView(recruitNo);
-		logger.info("rdto complete" + rdto);
+
 		MemberDto mdto = mservice.memberView(memberId);
-		logger.info("mdto complete" + mdto);
+
 
 
 
 		 int app_ck = aservice.applyChecked(recruitNo, memberId);
-		 logger.info("app_ck " + app_ck);
+
 		if(app_ck == 0) {
 			aservice.applicantInsert(recruitNo, memberId);
 				
@@ -78,13 +78,13 @@ public class ApplyController {
 		
 		// 콤보박스를 누르면 사업부-직무-전형대상 순으로 뜬다.
 		ArrayList<PartDto> pdtos = aservice.partView(recruitNo);
-		logger.info("pdtos complete" + pdtos);
+
 		ArrayList<WorkDto> wdtos = aservice.workView(recruitNo);
-		logger.info("wdtos complete" + wdtos);
+
 		ArrayList<ObjectDto> odtos = aservice.objectView(recruitNo);
-		logger.info("odtos complete" + odtos);
+		
 		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
-		logger.info("adtos complete" + adtos);
+		
 		ApplicantDto apdto = apcntservice.viewApplicant(memberId, recruitNo);
 		model.addAttribute("noticeInfo", rdto);
 		model.addAttribute("applicant", mdto);
@@ -104,22 +104,22 @@ public class ApplyController {
 	@GetMapping("/updateApplyForm")
 	public String updateApplyForm(@RequestParam Map<String, Object> map, HttpSession session, Model model) throws Exception {
 		
-		logger.info("goto applyForm controller");
+		
 		MemberDto dto = (MemberDto) session.getAttribute("member");
-		logger.info("session complete");
+		
 		String memberId = dto.getMemberId();
 
 		int recruitNo = Integer.parseInt((String) map.get("recruitNo"));
 
 			
 		
-		logger.info("goto applyForm" + recruitNo + memberId);
+		
 
 		
 		RecruitNoticeDto rdto = rservice.recruitNoticeView(recruitNo);
-		logger.info("rdto complete" + rdto);
+
 		MemberDto mdto = mservice.memberView(memberId);
-		logger.info("mdto complete" + mdto);
+
 
 
 		
@@ -129,15 +129,15 @@ public class ApplyController {
 		
 		// 콤보박스를 누르면 사업부-직무-전형대상 순으로 뜬다.
 		ArrayList<PartDto> pdtos = aservice.partView(recruitNo);
-		logger.info("pdtos complete" + pdtos);
+
 		ArrayList<WorkDto> wdtos = aservice.workView(recruitNo);
-		logger.info("wdtos complete" + wdtos);
+
 		ArrayList<ObjectDto> odtos = aservice.objectView(recruitNo);
-		logger.info("odtos complete" + odtos);
+
 		ArrayList<ApplyDto> adtos = aservice.applyView(recruitNo);
-		logger.info("adtos complete" + adtos);
+
 		ApplicantDto apdto = apcntservice.viewApplicant(memberId, recruitNo);
-		logger.info("apdto complete" + apdto);
+
 		model.addAttribute("noticeInfo", rdto);
 		model.addAttribute("applicant", mdto);
 
@@ -157,7 +157,7 @@ public class ApplyController {
 	@PostMapping("/applicantSaveTemp.do")
 	@ResponseBody
 	public String applicantSaveTemp(@RequestParam Map<String, Object> map) throws Exception{
-		logger.info("try to save temp");
+
 		try {
 			aservice.applicantSaveTemp(map);
 			String result="success";

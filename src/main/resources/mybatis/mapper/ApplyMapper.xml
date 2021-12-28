@@ -113,19 +113,19 @@
   <!-- 임시저장을 누르면 값들을 전부 update한다. -->
  <update id="applicantSaveTemp">
  	UPDATE 
- 	ta_recruit_applicant
+ 	TA_RECRUIT_APPLICANT
  	SET
- 	applicantMillitary = #{applicantMillitary}
- 	, applyNo = #{applyNo}
- 	, applicantVeteran = #{applicantVeteran}
- 	, applicantDisability = #{applicantDisability}
- 	, applicantJobProtect = #{applicantJobProtect}
- 	, applicantAssay1 = #{applicantAssay1}
-  	, applicantAssay2 = #{applicantAssay2}
- 	, applicantAssay3 = #{applicantAssay3}
- 	, applicantHighSchoolName = #{applicantHighSchoolName}
- 	, applicantHighSchoolGraduateYear = #{applicantHighSchoolGraduateYear}
- 	, applicantHighSchoolGraduateState = #{applicantHighSchoolGraduateState} 
+ 	APPLICANTMILLITARY = #{applicantMillitary}
+ 	, APPLYNO = #{applyNo}
+ 	, APPLICANTVETERAN = #{applicantVeteran}
+ 	, APPLICANTDISABILITY = #{applicantDisability}
+ 	, APPLICANTJOBPROTECT = #{applicantJobProtect}
+ 	, APPLICANTASSAY1 = #{applicantAssay1}
+  	, APPLICANTASSAY2 = #{applicantAssay2}
+ 	, APPLICANTASSAY3 = #{applicantAssay3}
+ 	, APPLICANTHIGHSCHOOLNAME = #{applicantHighSchoolName}
+ 	, APPLICANTHIGHSCHOOLGRADUATEYEAR = #{applicantHighSchoolGraduateYear}
+ 	, APPLICANTHIGHSCHOOLGRADUATESTATE = #{applicantHighSchoolGraduateState} 
  	WHERE
  	applicantNo = #{applicantNo}
  

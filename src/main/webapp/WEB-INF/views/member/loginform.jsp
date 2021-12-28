@@ -14,11 +14,21 @@
 
 
 </head>
+
 <script type="text/javascript">
-	 window.history.forward();
-	 function noBack(){window.history.forward();}
+
+		window.history.forward();
+
+		function noBack() {
+
+			window.history.forward();
+
+		}
+		
 </script>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body>
+
+
 	<header><%@ include file="../header.jsp"%></header>
 	<div class="container">
 		<div class="input-form-backgroud row">
@@ -76,7 +86,7 @@
 	</footer>
 	
 	<script>
- 
+
     /* 로그인 버튼 클릭 메서드 */
     $(".login_button").click(function(){
         
@@ -86,7 +96,10 @@
         /* 로그인 메서드 서버 요청 */
         $("#login_form").attr("action", "/member/login");
         $("#login_form").submit();
-
+        $( 'body' ).attr( 'onload', 'noBack();' );
+        $( 'body' ).attr( 'onpageshow', 'if(event.persisted) noBack();' );
+        $( 'body' ).attr( 'onunload', '' );
+        
     });
 	</script>
 

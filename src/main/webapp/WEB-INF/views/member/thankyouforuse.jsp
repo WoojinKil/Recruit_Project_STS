@@ -4,26 +4,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>404페이지 에러</title>
+<title>회원탈퇴 완료</title>
 </head>
 <script type="text/javascript">
+	
 	 window.history.forward();
 	 function noBack(){window.history.forward();}
 </script>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
-	<header><%@ include file="../header.jsp"%></header>
+<body  onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<header><%@ include file="../header.jsp"%></header>
 
-	<div class="container">
-
-
-	<h1>페이지를 찾을 수 없습니다.</h1>
-	<h1>오류 발생 시 관리자에게 문의해주세요.</h1>
+<h3>안전하게 처리가 되었습니다.</h3><br>
+<h3>링크루트를 이용해주셔서 감사합니다.</h3>
 	<a type="button" class="btn btn-primary" href="/"> 홈 화면으로 돌아가기</a>
 	
-	
-	</div>
-	
-	<footer class="my-3 text-center text-small">
+
+<footer class="my-3 text-center text-small">
 		<%@ include file="../footer.jsp"%>
 	</footer>
 

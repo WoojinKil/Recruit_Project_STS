@@ -34,12 +34,12 @@ public class MyApplyController {
 	public String myApplyList( HttpSession session,Model model) throws Exception {
 		
 		MemberDto mdto =(MemberDto)session.getAttribute("member");
-		logger.info("session complete");
+		
 		String memberId = mdto.getMemberId();
 		ArrayList<RecruitNoticeDto> rdtos = maservice.myApplyTitleList(memberId);
-		logger.info("rdto complete");
+		
 		ArrayList<ApplicantDto> adtos= maservice.myFinalApplyCheckedList(memberId);
-		logger.info("adtos complete"+adtos);
+		
 		
 		
 		
@@ -58,7 +58,7 @@ public class MyApplyController {
 		MemberDto mdto = (MemberDto)session.getAttribute("member");
 		String memberId = mdto.getMemberId();
 		maservice.myDeleteApply(memberId, recruitNo);
-		logger.info("삭제 성공");
+		
 		String result= "success";
 		return result;
 	}

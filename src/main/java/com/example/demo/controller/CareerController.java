@@ -29,7 +29,7 @@ public class CareerController {
 	public String addActivation(@RequestParam Map<String, Object> map) throws Exception{
 	
 		try {
-			logger.info("goto addCareer");
+			
 			carservice.addCareer(map);
 			String result = "success";
 			
@@ -47,7 +47,7 @@ public class CareerController {
 	@ResponseBody
 	public ArrayList<CareerDto> activationList(@RequestParam Map<String, Object> map) throws Exception{
 		try {
-			logger.info("goto careerList");
+			
 			//model attribute 안함
 			return carservice.activationList(map);
 		} catch (Exception e) {

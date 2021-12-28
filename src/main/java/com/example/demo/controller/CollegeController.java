@@ -31,7 +31,7 @@ public class CollegeController {
 		try {
 			colservice.addCollege(map);
 			String result = "success";
-			logger.info("college add success");
+			
 			
 			return result;
 		} catch (Exception e) {
@@ -48,9 +48,9 @@ public class CollegeController {
 		
 		
 		try {
-			logger.info("collegeController진입"+ map);
+			
 			ArrayList<CollegeDto> data = colservice.collegeList(map);
-			logger.info("data값"+data);
+			
 			return data;
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -6,10 +6,14 @@
 <meta charset="UTF-8">
 <title>지원 완료되었습니다.</title>
 </head>
+<script type="text/javascript">
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
+</script>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
 	<div class="container">
-	<h1>귀하의 수험번호는 ${applicantNo }	번 입니다.</h1>
+	<h1>귀하의 지원번호는 ${applicantNo }	번 입니다.</h1>
 	<a type="button" class="btn btn-primary" href="/"> 메인 화면으로 돌아가기</a>
 	
 	

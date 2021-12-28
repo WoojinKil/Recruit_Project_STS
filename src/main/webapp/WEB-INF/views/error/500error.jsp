@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>500페이지에러</title>
 <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/4/40/Home_Icon_by_Lakas.svg">
@@ -20,12 +21,13 @@
 	
 <script type="text/javascript">
 
-	alert("로그인이 필요합니다.");
-	window.location.href="/member/joinform";
-
+	alert("내부 서버 오류입니다. 메인화면으로 돌아갑니다.");
+	window.location.href="/";
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
 </script>
 </head>
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<header><%@ include file="../header.jsp"%></header>
 
 

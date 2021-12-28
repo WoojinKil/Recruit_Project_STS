@@ -30,7 +30,7 @@ public class ActivationController {
 	public String addActivation(@RequestParam Map<String, Object> map) throws Exception{
 	
 		try {
-			logger.info("goto addActivation");
+			
 			actservice.addActivation(map);
 			String result ="success";
 			
@@ -48,7 +48,7 @@ public class ActivationController {
 	@ResponseBody
 	public ArrayList<ActivationDto> activationList(@RequestParam Map<String, Object> map, Model model) throws Exception{
 		try {
-			logger.info("goto activationList");
+			
 			//model attribute 안함
 			return actservice.activationList(map);
 		} catch (Exception e) {

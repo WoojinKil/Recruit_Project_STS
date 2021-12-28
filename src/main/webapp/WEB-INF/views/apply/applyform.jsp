@@ -14,7 +14,7 @@
 	 function noBack(){window.history.forward();}
 </script>
 </head>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body>
 	<header><%@ include file="../header.jsp"%></header>
 
 	<nav class="navbar navbar-default">
@@ -145,7 +145,7 @@
 						<div>
 							
 							<input type="text" class="input_highschool_name" style="width:40%" placeholder="검정고시일 경우 '대입검정고시'라고 작성해주세요." value="${apdto.applicantHighSchoolName }">
-							<input type="text" placeholder="졸업년도(합격년도)" maxlength="4" value="${apdto.applicantHighSchoolGraduateYear }">
+							<input type="text" class="input_highschool_year" placeholder="졸업년도(합격년도)" maxlength="4" value="${apdto.applicantHighSchoolGraduateYear }">
 							재적
 						<select class=select_highschool_graduate>
 								<option value="졸업">졸업(합격)</option>
@@ -679,11 +679,8 @@
 
 		//ready function 시작
 		$(document).ready(function() {
-			alert("로그인이 필요합니다!!!!");
-			if('${member.memberId}'== ""){
-				alert("로그인이 필요합니다.");
-				window.location.href="/member/loginform"
-			}
+
+
 			var now = new Date;
 			var recruitEndDateTime = '${recruitEndDateTime}'
 	 		var nowyyyy= now.getFullYear();
@@ -828,7 +825,11 @@
 	        		alert("취업 보호 대상자 여부를 선택해주세요.");
 	        		return false;
 	        		
-	        	}			
+	        	}else if(applicantAssay1=="" || applicantAssay2=="" || applicantAssay3==""){
+	        		alert("자기소개서 항목을 입력해주세요.");
+	        		return false;
+	        		
+	        	}
 				
 				
 	        	var con_test = confirm("최종지원을 하시겠습니까?");
@@ -996,8 +997,7 @@
 
 			function collegeList() { //대학교 리스트 구현 메소드
 				var applicantNo = '${apdto.applicantNo}';
-				alert("수험번호"+applicantNo);
-				alert("학교명");
+
 				$.ajax({
 					url : '/college/collegeList.do',
 					type : 'post',
@@ -1228,7 +1228,7 @@
 					},
 					success : function(result) {
 						if (result == "success") {
-
+							alert("추가되었습니다.");
 							$("#certificateForm")[0].reset();
 
 							certificateList();
@@ -1355,7 +1355,7 @@
 					success : function(result) {
 						if (result == "success") {
 
-							alert("추가성공");
+							alert("추가되었습니다.");
 							$("#activationForm")[0].reset();
 
 							activationList();
@@ -1479,7 +1479,7 @@
 					success : function(result) {
 						if (result == "success") {
 
-							alert("추가성공");
+							alert("추가되었습니다.");
 							$("#careerForm")[0].reset();
 
 							careerList();

@@ -187,7 +187,6 @@
 
 
 
-				console.log("아이디체크"+idCheck + "비번체크"+pwCheck +"비번확인체크"+ pwckCheck +"비번일치체크" + pwckcorCheck +"이름체크"+ nameCheck+"생일 체크" + birthCheck+"전화 체크" + phoneNumberCheck);
 												
 				//최종 유효성 검사
 				if (idCheck && pwCheck	&& pwckCheck && pwckcorCheck && nameCheck && birthCheck	&& phoneNumberCheck) {
@@ -201,8 +200,6 @@
 				}
 				return false;
 			
-				console.log("아이디체크"+idCheck + "비번체크"+pwCheck +"비번확인체크"+ pwckCheck +"비번일치체크" + pwckcorCheck +"이름체크"+ nameCheck+"생일 체크" + birthCheck+"전화 체크" + phoneNumberCheck);
-				
 			});
 		});
 
@@ -261,7 +258,7 @@
 								$('.input_memberId_re1').css("display",	"none");
 								idCheck = false;
 							}
-						console.log("아이디체크"+idCheck + "비번체크"+pwCheck +"비번확인체크"+ pwckCheck +"비번일치체크" + pwckcorCheck +"이름체크"+ nameCheck+"생일 체크" + birthCheck+"전화 체크" + phoneNumberCheck);
+						
 						}//success종료
 					}); // ajax 종료
 
@@ -273,7 +270,7 @@
 
 		$('.input_memberPwConfirm').on(
 				"propertychange change keyup paste input", function() {
-					console.log("come on");
+
 
 					var pw = $('.input_memberPw').val();
 					var pwck = $('.input_memberPwConfirm').val();
@@ -284,11 +281,11 @@
 					if (pwck == "") {
 						$('.final_memberPwConfirm_ck').css('display','inline-block');
 							pwckCheck = false;
-							console.log("비밀번호확인" + pwck + pwckCheck);
+	
 					} else {
 						$('.final_memberPwConfirm_ck').css('display','none');
 							pwckCheck = true;
-							console.log("비밀번호확인" + pwck + pwckCheck);
+					
 					}
 					
 					if (pw == pwck) {
@@ -296,23 +293,23 @@
 						$('.input_memberPw_re2').css('display', 'none');
 
 						pwckcorCheck = true;
-						console.log("일치여부" + pwckcorCheck);
+
 
 					} else {
 						$('.input_memberPw_re1').css('display', 'none');
 						$('.input_memberPw_re2').css('display', 'block');
 
 						pwckcorCheck = false;
-						console.log("일치여부" + pwckcorCheck);
+
 
 					}
-					console.log("아이디체크"+idCheck + "비번체크"+pwCheck +"비번확인체크"+ pwckCheck +"비번일치체크" + pwckcorCheck +"이름체크"+ nameCheck+"생일 체크" + birthCheck+"전화 체크" + phoneNumberCheck);
+					
 				});
 		
 		/* 비밀번호 유효성 검사 */		
 		$('.input_memberPw').on(
 				"propertychange change keyup paste input", function() {
-					console.log("come on");
+
 
 					var pw = $('.input_memberPw').val();
 					var pwck = $('.input_memberPwConfirm').val();
@@ -322,11 +319,11 @@
 					if (pw == "" || pw.length < 8) {
 						$('.final_memberPw_ck').css('display','inline-block');
 						pwCheck = false;
-						console.log("비밀번호" + pw + pwCheck);}
+		
 					else {
 						$('.final_memberPw_ck').css('display', 'none');
 						pwCheck = true;
-						console.log("비밀번호" + pw + pwCheck);
+		
 
 					}
 					if (pw == pwck) {
@@ -334,23 +331,23 @@
 						$('.input_memberPw_re2').css('display', 'none');
 
 						pwckcorCheck = true;
-						console.log("일치여부" + pwckcorCheck);
+
 
 					} else {
 						$('.input_memberPw_re1').css('display', 'none');
 						$('.input_memberPw_re2').css('display', 'inline-block');
 
 						pwckcorCheck = false;
-						console.log("일치여부" + pwckcorCheck);
+
 
 					}
-				console.log("아이디체크"+idCheck + "비번체크"+pwCheck +"비번확인체크"+ pwckCheck +"비번일치체크" + pwckcorCheck +"이름체크"+ nameCheck+"생일 체크" + birthCheck+"전화 체크" + phoneNumberCheck);
+
 		});				
 				
 		/*이름 유효성 검사*/		
 		$('.input_memberName').on(
 				"propertychange change keyup paste input", function() {
-					console.log("come on");
+
 
 					var name = $('.input_memberName').val();
 					

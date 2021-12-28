@@ -117,7 +117,10 @@
 <script type="text/javascript">
 	var now = new Date;
 	
-	
+	 window.history.forward();
+	 function noBack(){window.history.forward();}
+	 
+	 
 	$(document).ready(function(){
 		recruitNoticeList();
 		var now = new Date;
@@ -174,8 +177,15 @@
 			
 			var con_test = confirm("임시저장 하지 않은 정보들은 지워질 수 있습니다. 로그아웃 하시겠습니까?");
 			if(con_test == true){
-				alert("로그아웃 되었습니다. 메인 화면으로 돌아갑니다.");
+				location.href = document.referrer;
+			    
 				window.location.href = "/member/logout";
+				 
+				alert("로그아웃 되었습니다. 메인화면으로 돌아갑니다.");
+				
+				$( 'body' ).attr( 'onload', 'noBack();' );
+			     $( 'body' ).attr( 'onpageshow', 'if(event.persisted) noBack();' );
+			     $( 'body' ).attr( 'onunload', '' );
 			}else{
 				return false;
 			}
